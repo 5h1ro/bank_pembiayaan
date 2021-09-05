@@ -11,16 +11,16 @@ Route::get('/', function () {
 
 //Language Change
 Route::get('lang/{locale}', function ($locale) {
-    if (! in_array($locale, ['en', 'de', 'es','fr','pt', 'cn', 'ae'])) {
+    if (!in_array($locale, ['en', 'de', 'es', 'fr', 'pt', 'cn', 'ae'])) {
         abort(400);
-    }   
+    }
     Session()->put('locale', $locale);
     Session::get('locale');
     return redirect()->back();
 })->name('lang');
-    
+
 Route::prefix('dashboard')->group(function () {
-    Route::view('index', 'dashboard.index')->name('index');
+    Route::view('datatable-ext-html-5-data-export', 'tables.datatable-ext-html-5-data-export')->name('index');
     Route::view('dashboard-02', 'dashboard.dashboard-02')->name('dashboard-02');
 });
 
@@ -30,14 +30,14 @@ Route::prefix('widgets')->group(function () {
 });
 
 Route::prefix('page-layouts')->group(function () {
-    Route::view('box-layout', 'page-layout.box-layout')->name('box-layout');    
-    Route::view('layout-rtl', 'page-layout.layout-rtl')->name('layout-rtl');    
-    Route::view('layout-dark', 'page-layout.layout-dark')->name('layout-dark');    
-    Route::view('hide-on-scroll', 'page-layout.hide-on-scroll')->name('hide-on-scroll');    
-    Route::view('footer-light', 'page-layout.footer-light')->name('footer-light');    
-    Route::view('footer-dark', 'page-layout.footer-dark')->name('footer-dark');    
-    Route::view('footer-fixed', 'page-layout.footer-fixed')->name('footer-fixed');    
-}); 
+    Route::view('box-layout', 'page-layout.box-layout')->name('box-layout');
+    Route::view('layout-rtl', 'page-layout.layout-rtl')->name('layout-rtl');
+    Route::view('layout-dark', 'page-layout.layout-dark')->name('layout-dark');
+    Route::view('hide-on-scroll', 'page-layout.hide-on-scroll')->name('hide-on-scroll');
+    Route::view('footer-light', 'page-layout.footer-light')->name('footer-light');
+    Route::view('footer-dark', 'page-layout.footer-dark')->name('footer-dark');
+    Route::view('footer-fixed', 'page-layout.footer-fixed')->name('footer-fixed');
+});
 
 Route::prefix('project')->group(function () {
     Route::view('projects', 'project.projects')->name('projects');
@@ -188,7 +188,7 @@ Route::prefix('forms')->group(function () {
     Route::view('form-wizard', 'forms.form-wizard')->name('form-wizard');
     Route::view('form-wizard-two', 'forms.form-wizard-two')->name('form-wizard-two');
     Route::view('form-wizard-three', 'forms.form-wizard-three')->name('form-wizard-three');
-    Route::post('form-wizard-three', function(){
+    Route::post('form-wizard-three', function () {
         return redirect()->route('form-wizard-three');
     })->name('form-wizard-three-post');
 });
@@ -339,17 +339,16 @@ Route::prefix('layouts')->group(function () {
     Route::view('modern-layout', 'admin_unique_layouts.modern-layout');
 });
 
-Route::get('layout-{light}', function($light){
+Route::get('layout-{light}', function ($light) {
     session()->put('layout', $light);
     session()->get('layout');
-    if($light == 'vertical-layout')
-    {
+    if ($light == 'vertical-layout') {
         return redirect()->route('pages-vertical-layout');
     }
     return redirect()->route('index');
     return 1;
 });
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('config:cache');
     Artisan::call('cache:clear');
     Artisan::call('config:clear');
