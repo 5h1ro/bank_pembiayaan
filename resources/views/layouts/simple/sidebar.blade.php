@@ -24,26 +24,11 @@
                         <a class="sidebar-link sidebar-title {{ request()->route()->getPrefix() == '/tables'
     ? 'active'
     : '' }}"
-                            href="#"><i data-feather="server"></i><span>{{ trans('lang.Tables') }}</span>
-                            <div class="according-menu"><i
-                                    class="fa fa-angle-{{ request()->route()->getPrefix() == '/tables'
-    ? 'down'
-    : 'right' }}"></i>
-                            </div>
-                        </a>
-                        <ul class="sidebar-submenu"
-                            style="display: {{ request()->route()->getPrefix() == '/tables'
-    ? 'block;'
-    : 'none;' }}">
-
-                            <li><a href="{{ route('datatable-ext-html-5-data-export') }}"
-                                    class="{{ Route::currentRouteName() == 'datatable-ext-html-5-data-export' ? 'active' : '' }}">HTML
-                                    5 Export</a></li>
-                        </ul>
+                            href="{{ route('admin') }}">
+                            <i data-feather="server"></i><span>Data Peminjam</span>
                     </li>
                 </ul>
             </div>
-            <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </nav>
     </div>
 </div>

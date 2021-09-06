@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -13,7 +15,9 @@ Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->na
 Route::post('/loginpost', [LoginController::class, 'login'])->name('loginpost');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/export={id}', [ExportController::class, 'pdf'])->name('export');
 });
 //Language Change
 Route::get('lang/{locale}', function ($locale) {

@@ -24,26 +24,11 @@
                         <a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/tables'
     ? 'active'
     : ''); ?>"
-                            href="#"><i data-feather="server"></i><span><?php echo e(trans('lang.Tables')); ?></span>
-                            <div class="according-menu"><i
-                                    class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/tables'
-    ? 'down'
-    : 'right'); ?>"></i>
-                            </div>
-                        </a>
-                        <ul class="sidebar-submenu"
-                            style="display: <?php echo e(request()->route()->getPrefix() == '/tables'
-    ? 'block;'
-    : 'none;'); ?>">
-
-                            <li><a href="<?php echo e(route('datatable-ext-html-5-data-export')); ?>"
-                                    class="<?php echo e(Route::currentRouteName() == 'datatable-ext-html-5-data-export' ? 'active' : ''); ?>">HTML
-                                    5 Export</a></li>
-                        </ul>
+                            href="<?php echo e(route('admin')); ?>">
+                            <i data-feather="server"></i><span>Data Peminjam</span>
                     </li>
                 </ul>
             </div>
-            <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </nav>
     </div>
 </div>

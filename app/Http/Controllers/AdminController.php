@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('tables.datatable-ext-html-5-data-export');
+        $customer = Customer::all();
+        return view('admin.index', compact('customer'));
     }
 }
