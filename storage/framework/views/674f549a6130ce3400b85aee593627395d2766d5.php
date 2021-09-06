@@ -1,25 +1,25 @@
-@extends('layouts.authentication.master')
-@section('title', 'Login')
+<?php $__env->startSection('title', 'Login'); ?>
 
-@section('css')
-@endsection
+<?php $__env->startSection('css'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid p-0">
         <div class="row m-0">
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo" href="{{ route('index') }}"><img class="img-fluid for-light"
-                                    src="{{ asset('assets/images/logo/login.png') }}" alt="looginpage"><img
-                                    class="img-fluid for-dark" src="{{ asset('assets/images/logo/logo_dark.png') }}"
+                        <div><a class="logo" href="<?php echo e(route('index')); ?>"><img class="img-fluid for-light"
+                                    src="<?php echo e(asset('assets/images/logo/login.png')); ?>" alt="looginpage"><img
+                                    class="img-fluid for-dark" src="<?php echo e(asset('assets/images/logo/logo_dark.png')); ?>"
                                     alt="looginpage"></a></div>
                         <div class="login-main">
-                            <form method="POST" action="{{ route('loginpost') }}" class="theme-form">
-                                {{ csrf_field() }}
+                            <form method="POST" action="<?php echo e(route('loginpost')); ?>" class="theme-form">
+                                <?php echo e(csrf_field()); ?>
+
                                 <h4>Sign in to account</h4>
                                 <p>Enter your email & password to login</p>
                                 <div class="form-group">
@@ -57,7 +57,9 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-@endsection
+<?php $__env->startSection('script'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.authentication.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\pinjol\resources\views/authentication/login.blade.php ENDPATH**/ ?>
