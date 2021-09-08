@@ -10,11 +10,11 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Data Baru</h3>
+    <h3>Data New Customer</h3>
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item active">Data Baru</li>
+    <li class="breadcrumb-item active">Data New Customer</li>
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data Baru</h5>
+                        <h5>Data New Customer</h5>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
@@ -56,7 +56,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($customers as $data)
+                                    @foreach ($newcustomer as $data)
                                         <tr>
                                             <td>{{ $data->tanggal_input }}</td>
                                             <td>{{ $data->nik }}</td>
@@ -81,9 +81,15 @@
                                             <td>{{ $data->keputusan }}</td>
                                             <td>{{ $data->url_pdf }}</td>
                                             <td class="col-2">
-                                                <a href="{{ route('newcustomer.create', $data->id) }}"
+                                                <a href="{{ route('newcustomer.acc', $data->id) }}"
                                                     class="btn btn-icon icon-left btn-success">
-                                                    <i class="fas fa-trash"></i> Add</a>
+                                                    <i class="fas fa-trash"></i> Approved</a>
+                                                <a href="{{ route('newcustomer.cancel', $data->id) }}"
+                                                    class="btn btn-icon icon-left btn-danger">
+                                                    <i class="fas fa-trash"></i> Cancel</a>
+                                                <a href="{{ route('archieve.create', $data->id) }}"
+                                                    class="btn btn-icon icon-left btn-primary">
+                                                    <i class="fas fa-trash"></i> Archieve</a>
                                             </td>
                                         </tr>
                                     @endforeach

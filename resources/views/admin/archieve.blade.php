@@ -10,11 +10,11 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Data Baru</h3>
+    <h3>Data Archieve</h3>
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item active">Data Baru</li>
+    <li class="breadcrumb-item active">Data Archieve</li>
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data Baru</h5>
+                        <h5>Data Archieve</h5>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
@@ -52,11 +52,12 @@
                                         <th>tanggal_keputusan</th>
                                         <th>keputusan</th>
                                         <th>url_pdf</th>
+                                        <th>tanggal_archieve</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($customers as $data)
+                                    @foreach ($archieve as $data)
                                         <tr>
                                             <td>{{ $data->tanggal_input }}</td>
                                             <td>{{ $data->nik }}</td>
@@ -80,10 +81,11 @@
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>{{ $data->keputusan }}</td>
                                             <td>{{ $data->url_pdf }}</td>
+                                            <td>{{ $data->tanggal_archieve }}</td>
                                             <td class="col-2">
-                                                <a href="{{ route('newcustomer.create', $data->id) }}"
-                                                    class="btn btn-icon icon-left btn-success">
-                                                    <i class="fas fa-trash"></i> Add</a>
+                                                <a href="{{ route('export', $data->id) }}"
+                                                    class="btn btn-icon icon-left btn-primary">
+                                                    <i class="fas fa-trash"></i> Export</a>
                                             </td>
                                         </tr>
                                     @endforeach

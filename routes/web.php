@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArchieveController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NewCustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
@@ -17,6 +19,16 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+
+    Route::get('/newcustomer', [NewCustomerController::class, 'index'])->name('newcustomer');
+    Route::get('/newcustomer{id}', [NewCustomerController::class, 'create'])->name('newcustomer.create');
+    Route::get('/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('newcustomer.acc');
+    Route::get('/newcustomer/cancel{id}', [NewCustomerController::class, 'cancel'])->name('newcustomer.cancel');
+
+    Route::get('/archieve', [ArchieveController::class, 'index'])->name('archieve');
+    Route::get('/archieve{id}', [ArchieveController::class, 'create'])->name('archieve.create');
+    Route::get('/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('archieve.cancel');
     Route::get('/export={id}', [ExportController::class, 'pdf'])->name('export');
 });
 //Language Change

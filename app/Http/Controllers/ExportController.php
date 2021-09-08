@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\NewCustomer;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ExportController extends Controller
     }
     function get_customer_data($id)
     {
-        $customer_data = Customer::where('id', $id)->first();
+        $customer_data = NewCustomer::where('id', $id)->first();
         return $customer_data;
     }
 
