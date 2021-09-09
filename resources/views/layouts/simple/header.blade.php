@@ -26,7 +26,7 @@
             <ul class="nav-menus">
                 <li class="onhover-dropdown">
                     <div class="notification-box"><i data-feather="bell"> </i><span
-                            class="badge rounded-pill badge-secondary">{{ $notification }} </span></div>
+                            class="badge rounded-pill badge-secondary">{{ $notification }} \</span></div>
                     <ul class="notification-dropdown onhover-show-div">
                         <li>
                             <i data-feather="bell"></i>

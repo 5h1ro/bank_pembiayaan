@@ -20,13 +20,55 @@
                         </div>
                     </li>
 
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/tables'
+                    <?php if(auth()->user()->role == 'admin'): ?>
+                        <li class="">
+                        <a class=" sidebar-link sidebar-title"
+                            <?php echo e(request()->route()->getPrefix() == '/admin'
     ? 'active'
-    : ''); ?>"
+    : ''); ?>
+
                             href="<?php echo e(route('admin')); ?>">
-                            <i data-feather="server"></i><span>Data Peminjam</span>
-                    </li>
+                            <i data-feather="server"></i><span>Data Baru</span>
+                        </li>
+                        <li class="">
+                        <a class=" sidebar-link sidebar-title"
+                            <?php echo e(request()->route()->getPrefix() == '/newcustomer'
+    ? 'active'
+    : ''); ?>
+
+                            href="<?php echo e(route('admin.newcustomer')); ?>">
+                            <i data-feather="server"></i><span>Data New Customer</span>
+                        </li>
+                        <li class="">
+                        <a class=" sidebar-link sidebar-title"
+                            <?php echo e(request()->route()->getPrefix() == '/archieve'
+    ? 'active'
+    : ''); ?>
+
+                            href="<?php echo e(route('admin.archieve')); ?>">
+                            <i data-feather="server"></i><span>Data Archieve</span>
+                        </li>
+                    <?php else: ?>
+                        <li class="">
+                    <a class=" sidebar-link sidebar-title"
+                            <?php echo e(request()->route()->getPrefix() == '/admin'
+    ? 'active'
+    : ''); ?>
+
+                            href="<?php echo e(route('user')); ?>">
+                            <i data-feather="server"></i><span>Data Baru</span>
+                        </li>
+                        <li class="">
+                    <a class=" sidebar-link sidebar-title"
+                            <?php echo e(request()->route()->getPrefix() == '/newcustomer'
+    ? 'active'
+    : ''); ?>
+
+                            href="<?php echo e(route('user.newcustomer')); ?>">
+                            <i data-feather="server"></i><span>Data New Customer</span>
+                        </li>
+                        <li class="">
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>

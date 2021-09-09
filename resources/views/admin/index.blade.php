@@ -32,26 +32,7 @@
                                     <tr>
                                         <th>tanggal_input</th>
                                         <th>nik</th>
-                                        <th>nopen</th>
                                         <th>nama</th>
-                                        <th>alamat_jalan</th>
-                                        <th>alamat_kec</th>
-                                        <th>alamat_kotakab</th>
-                                        <th>alamat_propinsi</th>
-                                        <th>telepon</th>
-                                        <th>pembiayaan</th>
-                                        <th>tenor</th>
-                                        <th>cicilan</th>
-                                        <th>status</th>
-                                        <th>url_ktp</th>
-                                        <th>url_kk</th>
-                                        <th>url_karip</th>
-                                        <th>url_sk_pensiun</th>
-                                        <th>url_video_interview</th>
-                                        <th>url_video_kesehatan</th>
-                                        <th>tanggal_keputusan</th>
-                                        <th>keputusan</th>
-                                        <th>url_pdf</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
@@ -60,38 +41,18 @@
                                         <tr>
                                             <td>{{ $data->tanggal_input }}</td>
                                             <td>{{ $data->nik }}</td>
-                                            <td>{{ $data->nopen }}</td>
                                             <td>{{ $data->nama }}</td>
-                                            <td>{{ $data->alamat_jalan }}</td>
-                                            <td>{{ $data->alamat_kec }}</td>
-                                            <td>{{ $data->alamat_kotakab }}</td>
-                                            <td>{{ $data->alamat_propinsi }}</td>
-                                            <td>{{ $data->telepon }}</td>
-                                            <td>{{ $data->pembiayaan }}</td>
-                                            <td>{{ $data->tenor }}</td>
-                                            <td>{{ $data->cicilan }}</td>
-                                            <td>{{ $data->status }}</td>
-                                            <td>{{ $data->url_ktp }}</td>
-                                            <td>{{ $data->url_kk }}</td>
-                                            <td>{{ $data->url_karip }}</td>
-                                            <td>{{ $data->url_sk_pensiun }}</td>
-                                            <td>{{ $data->url_video_interview }}</td>
-                                            <td>{{ $data->url_video_kesehatan }}</td>
-                                            <td>{{ $data->tanggal_keputusan }}</td>
-                                            <td>{{ $data->keputusan }}</td>
-                                            <td>{{ $data->url_pdf }}</td>
-
                                             @if (auth()->user()->role == 'admin')
                                                 <td class="col-2">
                                                     <a href="{{ route('admin.newcustomer.create', $data->id) }}"
                                                         class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i> Add</a>
+                                                        <i class="fas fa-trash"></i>Lihat Data</a>
                                                 </td>
                                             @else
                                                 <td class="col-2">
                                                     <a href="{{ route('user.newcustomer.create', $data->id) }}"
                                                         class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i> Add</a>
+                                                        <i class="fas fa-trash"></i>Lihat Data</a>
                                                 </td>
                                             @endif
                                         </tr>
