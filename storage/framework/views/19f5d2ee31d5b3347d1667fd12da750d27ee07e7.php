@@ -10,11 +10,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
-    <h3>Data Baru</h3>
+    <h3>Data Peminjam</h3>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
-    <li class="breadcrumb-item active">Data Baru</li>
+    <li class="breadcrumb-item active">Data Peminjam</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
