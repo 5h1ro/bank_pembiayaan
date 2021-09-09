@@ -80,17 +80,23 @@
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>{{ $data->keputusan }}</td>
                                             <td>{{ $data->url_pdf }}</td>
-                                            <td class="col-2">
-                                                <a href="{{ route('newcustomer.acc', $data->id) }}"
-                                                    class="btn btn-icon icon-left btn-success">
-                                                    <i class="fas fa-trash"></i> Approved</a>
-                                                <a href="{{ route('newcustomer.cancel', $data->id) }}"
-                                                    class="btn btn-icon icon-left btn-danger">
-                                                    <i class="fas fa-trash"></i> Cancel</a>
-                                                <a href="{{ route('archieve.create', $data->id) }}"
-                                                    class="btn btn-icon icon-left btn-primary">
-                                                    <i class="fas fa-trash"></i> Archieve</a>
-                                            </td>
+
+                                            @if (auth()->user()->role == 'admin')
+                                                <td class="col-2">
+                                                    <a href="{{ route('admin.archieve.create', $data->id) }}"
+                                                        class="btn btn-icon icon-left btn-primary">
+                                                        <i class="fas fa-trash"></i> Archieve</a>
+                                                </td>
+                                            @else
+                                                <td class="col-2">
+                                                    <a href="{{ route('user.newcustomer.acc', $data->id) }}"
+                                                        class="btn btn-icon icon-left btn-success">
+                                                        <i class="fas fa-trash"></i> Approved</a>
+                                                    <a href="{{ route('user.newcustomer.cancel', $data->id) }}"
+                                                        class="btn btn-icon icon-left btn-danger">
+                                                        <i class="fas fa-trash"></i> Cancel</a>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

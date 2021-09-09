@@ -22,8 +22,9 @@ class LoginController extends Controller
         // Attempt to log the user in
         // Passwordnya pake bcrypt
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
             // if successful, then redirect to their intended location
-            return redirect()->route('admin');
+            return redirect()->route('home');
         } else {
             return redirect()->route('logout');
         }

@@ -20,30 +20,50 @@
                         </div>
                     </li>
 
-                    <li class="">
+                    @if (auth()->user()->role == 'admin')
+                        <li class="">
                         <a class=" sidebar-link sidebar-title"
-                        {{ request()->route()->getPrefix() == '/admin'
+                            {{ request()->route()->getPrefix() == '/admin'
     ? 'active'
     : '' }}
-                        href="{{ route('admin') }}">
-                        <i data-feather="server"></i><span>Data Baru</span>
-                    </li>
-                    <li class="">
+                            href="{{ route('admin') }}">
+                            <i data-feather="server"></i><span>Data Baru</span>
+                        </li>
+                        <li class="">
                         <a class=" sidebar-link sidebar-title"
-                        {{ request()->route()->getPrefix() == '/newcustomer'
+                            {{ request()->route()->getPrefix() == '/newcustomer'
     ? 'active'
     : '' }}
-                        href="{{ route('newcustomer') }}">
-                        <i data-feather="server"></i><span>Data New Customer</span>
-                    </li>
-                    <li class="">
+                            href="{{ route('admin.newcustomer') }}">
+                            <i data-feather="server"></i><span>Data New Customer</span>
+                        </li>
+                        <li class="">
                         <a class=" sidebar-link sidebar-title"
-                        {{ request()->route()->getPrefix() == '/archieve'
+                            {{ request()->route()->getPrefix() == '/archieve'
     ? 'active'
     : '' }}
-                        href="{{ route('archieve') }}">
-                        <i data-feather="server"></i><span>Data Archieve</span>
-                    </li>
+                            href="{{ route('admin.archieve') }}">
+                            <i data-feather="server"></i><span>Data Archieve</span>
+                        </li>
+                    @else
+                        <li class="">
+                    <a class=" sidebar-link sidebar-title"
+                            {{ request()->route()->getPrefix() == '/admin'
+    ? 'active'
+    : '' }}
+                            href="{{ route('user') }}">
+                            <i data-feather="server"></i><span>Data Baru</span>
+                        </li>
+                        <li class="">
+                    <a class=" sidebar-link sidebar-title"
+                            {{ request()->route()->getPrefix() == '/newcustomer'
+    ? 'active'
+    : '' }}
+                            href="{{ route('user.newcustomer') }}">
+                            <i data-feather="server"></i><span>Data New Customer</span>
+                        </li>
+                        <li class="">
+                    @endif
                 </ul>
             </div>
         </nav>

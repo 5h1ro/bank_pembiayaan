@@ -79,11 +79,20 @@
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
                                             <td><?php echo e($data->keputusan); ?></td>
                                             <td><?php echo e($data->url_pdf); ?></td>
-                                            <td class="col-2">
-                                                <a href="<?php echo e(route('newcustomer.create', $data->id)); ?>"
-                                                    class="btn btn-icon icon-left btn-success">
-                                                    <i class="fas fa-trash"></i> Add</a>
-                                            </td>
+
+                                            <?php if(auth()->user()->role == 'admin'): ?>
+                                                <td class="col-2">
+                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-success">
+                                                        <i class="fas fa-trash"></i> Add</a>
+                                                </td>
+                                            <?php else: ?>
+                                                <td class="col-2">
+                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-success">
+                                                        <i class="fas fa-trash"></i> Add</a>
+                                                </td>
+                                            <?php endif; ?>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>

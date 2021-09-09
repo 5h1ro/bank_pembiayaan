@@ -6,6 +6,7 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewCustomerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
@@ -18,18 +19,28 @@ Route::post('/loginpost', [LoginController::class, 'login'])->name('loginpost');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
+    Route::middleware(['admin'])->group(function () {
+        Route::get('admin', [AdminController::class, 'index'])->name('admin');
+        Route::get('admin/newcustomer{id}', [AdminController::class, 'create'])->name('admin.newcustomer.create');
 
-    Route::get('/newcustomer', [NewCustomerController::class, 'index'])->name('newcustomer');
-    Route::get('/newcustomer{id}', [NewCustomerController::class, 'create'])->name('newcustomer.create');
-    Route::get('/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('newcustomer.acc');
-    Route::get('/newcustomer/cancel{id}', [NewCustomerController::class, 'cancel'])->name('newcustomer.cancel');
+        Route::get('admin/newcustomer', [NewCustomerController::class, 'index'])->name('admin.newcustomer');
+        Route::get('admin/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('admin.newcustomer.acc');
+        Route::get('admin/newcustomer/cancel{id}', [NewCustomerController::class, 'cancel'])->name('admin.newcustomer.cancel');
 
-    Route::get('/archieve', [ArchieveController::class, 'index'])->name('archieve');
-    Route::get('/archieve{id}', [ArchieveController::class, 'create'])->name('archieve.create');
-    Route::get('/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('archieve.cancel');
-    Route::get('/export={id}', [ExportController::class, 'pdf'])->name('export');
+        Route::get('admin/archieve', [ArchieveController::class, 'index'])->name('admin.archieve');
+        Route::get('admin/archieve{id}', [ArchieveController::class, 'create'])->name('admin.archieve.create');
+        Route::get('admin/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('admin.archieve.cancel');
+        Route::get('admin/export={id}', [ExportController::class, 'pdf'])->name('export');
+    });
+    Route::middleware(['user'])->group(function () {
+        Route::get('user', [UserController::class, 'index'])->name('user');
+        Route::get('user/newcustomer{id}', [UserController::class, 'create'])->name('user.newcustomer.create');
+
+        Route::get('user/newcustomer', [NewCustomerController::class, 'index'])->name('user.newcustomer');
+        Route::get('user/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('user.newcustomer.acc');
+        Route::get('user/newcustomer/cancel{id}', [NewCustomerController::class, 'cancel'])->name('user.newcustomer.cancel');
+    });
 });
 //Language Change
 Route::get('lang/{locale}', function ($locale) {

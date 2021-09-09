@@ -80,11 +80,20 @@
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>{{ $data->keputusan }}</td>
                                             <td>{{ $data->url_pdf }}</td>
-                                            <td class="col-2">
-                                                <a href="{{ route('newcustomer.create', $data->id) }}"
-                                                    class="btn btn-icon icon-left btn-success">
-                                                    <i class="fas fa-trash"></i> Add</a>
-                                            </td>
+
+                                            @if (auth()->user()->role == 'admin')
+                                                <td class="col-2">
+                                                    <a href="{{ route('admin.newcustomer.create', $data->id) }}"
+                                                        class="btn btn-icon icon-left btn-success">
+                                                        <i class="fas fa-trash"></i> Add</a>
+                                                </td>
+                                            @else
+                                                <td class="col-2">
+                                                    <a href="{{ route('user.newcustomer.create', $data->id) }}"
+                                                        class="btn btn-icon icon-left btn-success">
+                                                        <i class="fas fa-trash"></i> Add</a>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

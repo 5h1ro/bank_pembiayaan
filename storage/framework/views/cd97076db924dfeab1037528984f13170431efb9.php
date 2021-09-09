@@ -79,17 +79,23 @@
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
                                             <td><?php echo e($data->keputusan); ?></td>
                                             <td><?php echo e($data->url_pdf); ?></td>
-                                            <td class="col-2">
-                                                <a href="<?php echo e(route('newcustomer.acc', $data->id)); ?>"
-                                                    class="btn btn-icon icon-left btn-success">
-                                                    <i class="fas fa-trash"></i> Approved</a>
-                                                <a href="<?php echo e(route('newcustomer.cancel', $data->id)); ?>"
-                                                    class="btn btn-icon icon-left btn-danger">
-                                                    <i class="fas fa-trash"></i> Cancel</a>
-                                                <a href="<?php echo e(route('archieve.create', $data->id)); ?>"
-                                                    class="btn btn-icon icon-left btn-primary">
-                                                    <i class="fas fa-trash"></i> Archieve</a>
-                                            </td>
+
+                                            <?php if(auth()->user()->role == 'admin'): ?>
+                                                <td class="col-2">
+                                                    <a href="<?php echo e(route('admin.archieve.create', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-primary">
+                                                        <i class="fas fa-trash"></i> Archieve</a>
+                                                </td>
+                                            <?php else: ?>
+                                                <td class="col-2">
+                                                    <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-success">
+                                                        <i class="fas fa-trash"></i> Approved</a>
+                                                    <a href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-danger">
+                                                        <i class="fas fa-trash"></i> Cancel</a>
+                                                </td>
+                                            <?php endif; ?>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>

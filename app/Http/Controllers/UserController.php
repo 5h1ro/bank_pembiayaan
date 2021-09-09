@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
@@ -31,7 +31,6 @@ class AdminController extends Controller
         $notification = count($customers);
         return view('admin.index', compact('customers', 'notification'));
     }
-
 
     public function create($id)
     {
@@ -70,7 +69,7 @@ class AdminController extends Controller
                 $newcustomer->url_video_interview = $api->url_video_interview;
                 $newcustomer->url_video_kesehatan = $api->url_video_kesehatan;
                 $newcustomer->save();
-                return redirect()->to('admin/newcustomer');
+                return redirect()->to('user/newcustomer');
             } else {
             }
         }
