@@ -24,7 +24,7 @@ class ArchieveController extends Controller
         $customer = $responseBody->data;
         $customers = [];
         foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
             } else {
                 array_push($customers, $api);
             }
@@ -60,6 +60,7 @@ class ArchieveController extends Controller
         $newcustomer->url_video_kesehatan = $data->url_video_kesehatan;
         $newcustomer->tanggal_keputusan = $data->tanggal_keputusan;
         $newcustomer->keputusan = $data->keputusan;
+        $newcustomer->url_pdf = $data->url_pdf;
         $newcustomer->tanggal_archieve = $date->toDateTimeString();
         $newcustomer->save();
 

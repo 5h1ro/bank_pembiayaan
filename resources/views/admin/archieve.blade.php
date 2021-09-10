@@ -82,11 +82,6 @@
                                             <td>{{ $data->keputusan }}</td>
                                             <td>{{ $data->url_pdf }}</td>
                                             <td>{{ $data->tanggal_archieve }}</td>
-                                            <td class="col-2">
-                                                <a href="{{ route('export', $data->id) }}"
-                                                    class="btn btn-icon icon-left btn-primary">
-                                                    <i class="fas fa-trash"></i> Export</a>
-                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

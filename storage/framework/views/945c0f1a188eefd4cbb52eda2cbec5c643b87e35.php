@@ -43,15 +43,15 @@
                                             <td><?php echo e($data->nama); ?></td>
                                             <?php if(auth()->user()->role == 'admin'): ?>
                                                 <td class="col-2">
-                                                    <a href="<?php echo e(route('admin.detaildata', $data->id)); ?>"
+                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->id)); ?>"
                                                         class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i>Lihat Data</a>
+                                                        <i class="fas fa-trash"></i>Ambil Data</a>
                                                 </td>
                                             <?php else: ?>
                                                 <td class="col-2">
-                                                    <a href="<?php echo e(route('user.detaildata', $data->id)); ?>"
+                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->id)); ?>"
                                                         class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i>Lihat Data</a>
+                                                        <i class="fas fa-trash"></i>Ambil Data</a>
                                                 </td>
                                             <?php endif; ?>
                                         </tr>

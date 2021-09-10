@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archieve;
 use App\Models\NewCustomer;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -23,7 +24,7 @@ class AdminController extends Controller
         $customer = $responseBody->data;
         $customers = [];
         foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
             } else {
                 array_push($customers, $api);
             }
@@ -48,7 +49,7 @@ class AdminController extends Controller
 
         $date = Carbon::now()->locale('id');
         foreach ($customer as $api) {
-            if ($api->id = $id) {
+            if ($api->id == $id) {
                 $newcustomer = new NewCustomer;
                 $newcustomer->tanggal_input = $api->tanggal_input;
                 $newcustomer->nik = $api->nik;
@@ -90,16 +91,14 @@ class AdminController extends Controller
         $customer = $responseBody->data;
         $customers = [];
         foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
             } else {
                 array_push($customers, $api);
             }
         }
         $notification = count($customers);
-        foreach ($customer as $data) {
-            if ($data->id = $id) {
-                return view('admin.detaildata', compact('data', 'notification'));
-            }
-        }
+
+        $data = NewCustomer::where('id', $id)->first();
+        return view('admin.detaildata', compact('data', 'notification'));
     }
 }

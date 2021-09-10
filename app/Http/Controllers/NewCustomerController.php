@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archieve;
 use App\Models\NewCustomer;
 // use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -9,6 +10,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class NewCustomerController extends Controller
@@ -28,7 +30,7 @@ class NewCustomerController extends Controller
         $customer = $responseBody->data;
         $customers = [];
         foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
             } else {
                 array_push($customers, $api);
             }
@@ -36,6 +38,20 @@ class NewCustomerController extends Controller
         $notification = count($customers);
         $newcustomer = NewCustomer::all();
         return view('admin.newcustomer', compact('newcustomer', 'notification'));
+    }
+
+    function pdf($id)
+    {
+
+        $this->convert_customer_data_to_html($id);
+        $role = Auth::user()->role;
+        if ($role == "admin") {
+            return redirect()->to('admin/newcustomer');
+        } else if ($role == "user") {
+            return redirect()->to('user/newcustomer');
+        } else {
+            return redirect()->to('logout');
+        }
     }
 
     function get_customer_data($id)
@@ -50,6 +66,9 @@ class NewCustomerController extends Controller
 
         $date = Carbon::now()->locale('id');
         $my_pdf_path_for_example = public_path('pdf/' . $date->format('Y-m-d-His') . '.pdf');
+        $data = NewCustomer::where('id', $id)->first();
+        $data->url_pdf = $my_pdf_path_for_example;
+        $data->save();
         $customer_data = $this->get_customer_data($id);
         PDF::loadHTML('
         <!DOCTYPE html>
@@ -216,93 +235,21 @@ class NewCustomerController extends Controller
 
     public function acc($id)
     {
-        $client = new Client();
-        $url = "https://si-bima.com/api/customer";
-
-
-        $response = $client->request('GET', $url, [
-            'verify'  => false,
-        ]);
-
-        $responseBody = json_decode($response->getBody());
-        $customer = $responseBody->data;
-
-        // dd($customer[1]);
         $date = Carbon::now()->locale('id');
-        foreach ($customer as $api) {
-            if ($api->id == $id) {
-                $newcustomer = new NewCustomer;
-                $newcustomer->tanggal_input = $api->tanggal_input;
-                $newcustomer->nik = $api->nik;
-                $newcustomer->nopen = $api->nopen;
-                $newcustomer->nama = $api->nama;
-                $newcustomer->alamat_jalan = $api->alamat_jalan;
-                $newcustomer->alamat_kec = $api->alamat_kec;
-                $newcustomer->alamat_kotakab = $api->alamat_kotakab;
-                $newcustomer->alamat_propinsi = $api->alamat_propinsi;
-                $newcustomer->telepon = $api->telepon;
-                $newcustomer->pembiayaan = $api->pembiayaan;
-                $newcustomer->tenor = $api->tenor;
-                $newcustomer->cicilan = $api->cicilan;
-                $newcustomer->status = $api->status;
-                $newcustomer->url_ktp = $api->url_ktp;
-                $newcustomer->url_kk = $api->url_kk;
-                $newcustomer->url_karip = $api->url_karip;
-                $newcustomer->url_sk_pensiun = $api->url_sk_pensiun;
-                $newcustomer->url_video_interview = $api->url_video_interview;
-                $newcustomer->url_video_kesehatan = $api->url_video_kesehatan;
-                $newcustomer->tanggal_keputusan = $date->toDateTimeString();
-                $newcustomer->keputusan = 1;
-                $newcustomer->save();
-                $this->convert_customer_data_to_html($id);
-
-                return redirect()->to('user/newcustomer');
-            }
-        }
+        $data = NewCustomer::where('id', $id)->first();
+        $data->tanggal_keputusan = $date->toDateTimeString();
+        $data->keputusan = 1;
+        $data->save();
+        return redirect()->to('user/newcustomer');
     }
 
     public function cancel($id)
     {
-        $client = new Client();
-        $url = "https://si-bima.com/api/customer";
-
-
-        $response = $client->request('GET', $url, [
-            'verify'  => false,
-        ]);
-
-        $responseBody = json_decode($response->getBody());
-        $customer = $responseBody->data;
-
         $date = Carbon::now()->locale('id');
-        foreach ($customer as $api) {
-            if ($api->id = $id) {
-                $newcustomer = new NewCustomer;
-                $newcustomer->tanggal_input = $api->tanggal_input;
-                $newcustomer->nik = $api->nik;
-                $newcustomer->nopen = $api->nopen;
-                $newcustomer->nama = $api->nama;
-                $newcustomer->alamat_jalan = $api->alamat_jalan;
-                $newcustomer->alamat_kec = $api->alamat_kec;
-                $newcustomer->alamat_kotakab = $api->alamat_kotakab;
-                $newcustomer->alamat_propinsi = $api->alamat_propinsi;
-                $newcustomer->telepon = $api->telepon;
-                $newcustomer->pembiayaan = $api->pembiayaan;
-                $newcustomer->tenor = $api->tenor;
-                $newcustomer->cicilan = $api->cicilan;
-                $newcustomer->status = $api->status;
-                $newcustomer->url_ktp = $api->url_ktp;
-                $newcustomer->url_kk = $api->url_kk;
-                $newcustomer->url_karip = $api->url_karip;
-                $newcustomer->url_sk_pensiun = $api->url_sk_pensiun;
-                $newcustomer->url_video_interview = $api->url_video_interview;
-                $newcustomer->url_video_kesehatan = $api->url_video_kesehatan;
-                $newcustomer->tanggal_keputusan = $date->toDateTimeString();
-                $newcustomer->keputusan = 2;
-                $newcustomer->save();
-                return redirect()->to('user/newcustomer');
-            } else {
-            }
-        }
+        $data = NewCustomer::where('id', $id)->first();
+        $data->tanggal_keputusan = $date->toDateTimeString();
+        $data->keputusan = 2;
+        $data->save();
+        return redirect()->to('user/newcustomer');
     }
 }

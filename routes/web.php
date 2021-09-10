@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewCustomerController;
 use App\Http\Controllers\UserController;
+use App\Models\NewCustomer;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
@@ -32,13 +33,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/archieve', [ArchieveController::class, 'index'])->name('admin.archieve');
         Route::get('admin/archieve{id}', [ArchieveController::class, 'create'])->name('admin.archieve.create');
         Route::get('admin/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('admin.archieve.cancel');
-        Route::get('admin/export={id}', [ExportController::class, 'pdf'])->name('export');
+        Route::get('admin/export={id}', [NewCustomerController::class, 'pdf'])->name('admin.export');
     });
     Route::middleware(['user'])->group(function () {
         Route::get('user', [UserController::class, 'index'])->name('user');
         Route::get('user/newcustomer{id}', [UserController::class, 'create'])->name('user.newcustomer.create');
         Route::get('user/detaildata{id}', [UserController::class, 'detail'])->name('user.detaildata');
 
+        Route::get('user/export={id}', [NewCustomerController::class, 'pdf'])->name('user.export');
         Route::get('user/newcustomer', [NewCustomerController::class, 'index'])->name('user.newcustomer');
         Route::get('user/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('user.newcustomer.acc');
         Route::get('user/newcustomer/cancel{id}', [NewCustomerController::class, 'cancel'])->name('user.newcustomer.cancel');

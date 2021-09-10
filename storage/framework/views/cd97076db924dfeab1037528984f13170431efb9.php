@@ -82,11 +82,21 @@
 
                                             <?php if(auth()->user()->role == 'admin'): ?>
                                                 <td class="col-2">
+                                                    <a href="<?php echo e(route('admin.detaildata', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-primary">
+                                                        <i class="fas fa-trash"></i>Detail Data</a>
+                                                </td>
+                                                <td class="col-2">
                                                     <a href="<?php echo e(route('admin.archieve.create', $data->id)); ?>"
                                                         class="btn btn-icon icon-left btn-primary">
-                                                        <i class="fas fa-trash"></i> Archieve</a>
+                                                        <i class="fas fa-trash"></i>Archieve Data</a>
                                                 </td>
                                             <?php else: ?>
+                                                <td class="col-2">
+                                                    <a href="<?php echo e(route('user.detaildata', $data->id)); ?>"
+                                                        class="btn btn-icon icon-left btn-primary">
+                                                        <i class="fas fa-trash"></i>Detail Data</a>
+                                                </td>
                                             <?php endif; ?>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

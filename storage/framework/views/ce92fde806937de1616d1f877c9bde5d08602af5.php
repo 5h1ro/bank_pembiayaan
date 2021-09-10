@@ -119,13 +119,21 @@
                                 </thead>
                             </table>
                             <?php if(auth()->user()->role == 'admin'): ?>
-                            <?php else: ?>
-                                <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
-                                    <button class="btn btn-success me-3 mt-4">approve</button>
-                                </a>
-                                <a href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
-                                    <button class="btn btn-danger mt-4">cancel</button>
-                                </a>
+                                <a href="<?php echo e(route('admin.export', $data->id)); ?>" <?php if($data->keputusan == 0 || $data->keputusan == 2): ?> style="display:none"
+                            <?php endif; ?>>
+                            <button class="btn btn-info mt-4">Generate PDF</button>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                <button class="btn btn-success me-3 mt-4">approve</button>
+                            </a>
+                            <a href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
+                                <button class="btn btn-danger mt-4">cancel</button>
+                            </a>
+                            <a href="<?php echo e(route('user.export', $data->id)); ?>" <?php if($data->keputusan == 0 || $data->keputusan == 2): ?> style="display:none"
+                                <?php endif; ?>>
+                                <button class="btn btn-info ms-3 mt-4">Generate PDF</button>
+                            </a>
                             <?php endif; ?>
                         </div>
                     </div>

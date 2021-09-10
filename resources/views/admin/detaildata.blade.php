@@ -120,13 +120,21 @@
                                 </thead>
                             </table>
                             @if (auth()->user()->role == 'admin')
-                            @else
-                                <a href="{{ route('user.newcustomer.acc', $data->id) }}">
-                                    <button class="btn btn-success me-3 mt-4">approve</button>
-                                </a>
-                                <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
-                                    <button class="btn btn-danger mt-4">cancel</button>
-                                </a>
+                                <a href="{{ route('admin.export', $data->id) }}" @if ($data->keputusan == 0 || $data->keputusan == 2) style="display:none"
+                            @endif>
+                            <button class="btn btn-info mt-4">Generate PDF</button>
+                            </a>
+                        @else
+                            <a href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                <button class="btn btn-success me-3 mt-4">approve</button>
+                            </a>
+                            <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                <button class="btn btn-danger mt-4">cancel</button>
+                            </a>
+                            <a href="{{ route('user.export', $data->id) }}" @if ($data->keputusan == 0 || $data->keputusan == 2) style="display:none"
+                                @endif>
+                                <button class="btn btn-info ms-3 mt-4">Generate PDF</button>
+                            </a>
                             @endif
                         </div>
                     </div>
