@@ -32,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/archieve{id}', [ArchieveController::class, 'create'])->name('admin.archieve.create');
         Route::get('admin/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('admin.archieve.cancel');
         Route::get('admin/export={id}', [ExportController::class, 'pdf'])->name('export');
+
+        Route::view('admin/detaildata', 'admin.detaildata');
     });
     Route::middleware(['user'])->group(function () {
         Route::get('user', [UserController::class, 'index'])->name('user');

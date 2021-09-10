@@ -15,8 +15,8 @@
             </div>
         </form>
         <div class="header-logo-wrapper col-auto p-0">
-            <div class="logo-wrapper"><a href="{{ route('/') }}"><img class="img-fluid"
-                        src="{{ asset('assets/images/logo/logo.png') }}" alt=""></a></div>
+            <div class="logo-wrapper"><a href="<?php echo e(route('/')); ?>"><img class="img-fluid"
+                        src="<?php echo e(asset('assets/images/logo/logo.png')); ?>" alt=""></a></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <ul class="nav-menus">
                 <li class="onhover-dropdown">
                     <div class="notification-box"><i data-feather="bell"> </i><span
-                            class="badge rounded-pill badge-secondary">{{ $notification }} \</span></div>
+                            class="badge rounded-pill badge-secondary"></span></div>
                     <ul class="notification-dropdown onhover-show-div">
                         <li>
                             <i data-feather="bell"></i>
@@ -58,7 +58,7 @@
                         onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
                 <li class="profile-nav onhover-dropdown p-0 me-0">
                     <div class="media profile-media">
-                        <img class="b-r-10" src="{{ asset('assets/images/dashboard/profile.jpg') }}" alt="">
+                        <img class="b-r-10" src="<?php echo e(asset('assets/images/dashboard/profile.jpg')); ?>" alt="">
                         <div class="media-body">
                             <span>Emay Walter</span>
                             <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
@@ -69,7 +69,7 @@
                         <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
                         <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
                         <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-                        <li><a href="{{ route('logout') }}"><i data-feather="log-out"> </i><span>Log out</span></a>
+                        <li><a href="<?php echo e(route('logout')); ?>"><i data-feather="log-out"> </i><span>Log out</span></a>
                         </li>
                     </ul>
                 </li>
@@ -81,7 +81,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay m-0"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
                                 </div>
                                 <div class="ProfileCard-details">
-                                    <div class="ProfileCard-realName">@{{ name }}</div>
+                                    <div class="ProfileCard-realName">{{ name }}</div>
                                 </div>
                             </div>
                         </script>
@@ -90,3 +90,4 @@
                         </script>
     </div>
 </div>
+<?php /**PATH C:\xampp\htdocs\Github\pinjol\resources\views/layouts/simple/header.blade.php ENDPATH**/ ?>
