@@ -74,4 +74,31 @@ class UserController extends Controller
             }
         }
     }
+
+    public function detail($id)
+    {
+        $client = new Client();
+        $url = "https://si-bima.com/api/customer";
+
+
+        $response = $client->request('GET', $url, [
+            'verify'  => false,
+        ]);
+
+        $responseBody = json_decode($response->getBody());
+        $customer = $responseBody->data;
+        $customers = [];
+        foreach ($customer as $api) {
+            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+            } else {
+                array_push($customers, $api);
+            }
+        }
+        $notification = count($customers);
+        foreach ($customers as $data) {
+            if ($data->id = $id) {
+                return view('admin.detaildata', compact('data', 'notification'));
+            }
+        }
+    }
 }

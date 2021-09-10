@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Data Peminjam'); ?>
+<?php $__env->startSection('title', 'Datai Data Peminjam'); ?>
 
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
@@ -9,11 +9,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
-    <h3>Data New Customer</h3>
+    <h3>Detail Data</h3>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
-    <li class="breadcrumb-item active">Data New Customer</li>
+    <li class="breadcrumb-item active">Detail Data</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -22,76 +22,111 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data New Customer</h5>
+                        <h5>Detail Data Peminjam</h5>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="export-button">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>tanggal_input</th>
+                                        <th><?php echo e($data->tanggal_input); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>nik</th>
+                                        <th><?php echo e($data->nik); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>nopen</th>
+                                        <th><?php echo e($data->nopen); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>nama</th>
+                                        <th><?php echo e($data->nama); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>alamat_jalan</th>
+                                        <th><?php echo e($data->alamat_jalan); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>alamat_kec</th>
+                                        <th><?php echo e($data->alamat_kec); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>alamat_kotakab</th>
+                                        <th><?php echo e($data->alamat_kotakab); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>alamat_propinsi</th>
+                                        <th><?php echo e($data->alamat_propinsi); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>telepon</th>
+                                        <th><?php echo e($data->telepon); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>pembiayaan</th>
+                                        <th><?php echo e($data->pembiayaan); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>tenor</th>
+                                        <th><?php echo e($data->tenor); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>cicilan</th>
+                                        <th><?php echo e($data->cicilan); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>status</th>
+                                        <th><?php echo e($data->status); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_ktp</th>
+                                        <th><?php echo e($data->url_ktp); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_kk</th>
+                                        <th><?php echo e($data->url_kk); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_karip</th>
+                                        <th><?php echo e($data->url_karip); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_sk_pensiun</th>
+                                        <th><?php echo e($data->url_sk_pensiun); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_video_interview</th>
+                                        <th><?php echo e($data->url_video_interview); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_video_kesehatan</th>
+                                        <th><?php echo e($data->url_video_kesehatan); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>tanggal_keputusan</th>
+                                        <th><?php echo e($data->tanggal_keputusan); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>keputusan</th>
+                                        <th><?php echo e($data->keputusan); ?></th>
+                                    </tr>
+                                    <tr>
                                         <th>url_pdf</th>
-                                        <th>action</th>
+                                        <th><?php echo e($data->url_pdf); ?></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php $__currentLoopData = $newcustomer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <tr>
-                                            <td><?php echo e($data->tanggal_input); ?></td>
-                                            <td><?php echo e($data->nik); ?></td>
-                                            <td><?php echo e($data->nopen); ?></td>
-                                            <td><?php echo e($data->nama); ?></td>
-                                            <td><?php echo e($data->alamat_jalan); ?></td>
-                                            <td><?php echo e($data->alamat_kec); ?></td>
-                                            <td><?php echo e($data->alamat_kotakab); ?></td>
-                                            <td><?php echo e($data->alamat_propinsi); ?></td>
-                                            <td><?php echo e($data->telepon); ?></td>
-                                            <td><?php echo e($data->pembiayaan); ?></td>
-                                            <td><?php echo e($data->tenor); ?></td>
-                                            <td><?php echo e($data->cicilan); ?></td>
-                                            <td><?php echo e($data->status); ?></td>
-                                            <td><?php echo e($data->url_ktp); ?></td>
-                                            <td><?php echo e($data->url_kk); ?></td>
-                                            <td><?php echo e($data->url_karip); ?></td>
-                                            <td><?php echo e($data->url_sk_pensiun); ?></td>
-                                            <td><?php echo e($data->url_video_interview); ?></td>
-                                            <td><?php echo e($data->url_video_kesehatan); ?></td>
-                                            <td><?php echo e($data->tanggal_keputusan); ?></td>
-                                            <td><?php echo e($data->keputusan); ?></td>
-                                            <td><?php echo e($data->url_pdf); ?></td>
-
-                                            <?php if(auth()->user()->role == 'admin'): ?>
-                                                <td class="col-2">
-                                                    <a href="<?php echo e(route('admin.archieve.create', $data->id)); ?>"
-                                                        class="btn btn-icon icon-left btn-primary">
-                                                        <i class="fas fa-trash"></i> Archieve</a>
-                                                </td>
-                                            <?php else: ?>
-                                            <?php endif; ?>
-                                        </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
                             </table>
+                            <?php if(auth()->user()->role == 'admin'): ?>
+                            <?php else: ?>
+                                <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                    <button class="btn btn-success me-3 mt-4">approve</button>
+                                </a>
+                                <a href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
+                                    <button class="btn btn-danger mt-4">cancel</button>
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -123,4 +158,4 @@
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/custom.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\bank_pembiayaan\resources\views/admin/newcustomer.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\bank_pembiayaan\resources\views/admin/detaildata.blade.php ENDPATH**/ ?>

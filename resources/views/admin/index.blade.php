@@ -44,13 +44,13 @@
                                             <td>{{ $data->nama }}</td>
                                             @if (auth()->user()->role == 'admin')
                                                 <td class="col-2">
-                                                    <a href="{{ route('admin.newcustomer.create', $data->id) }}"
+                                                    <a href="{{ route('admin.detaildata', $data->id) }}"
                                                         class="btn btn-icon icon-left btn-success">
                                                         <i class="fas fa-trash"></i>Lihat Data</a>
                                                 </td>
                                             @else
                                                 <td class="col-2">
-                                                    <a href="{{ route('user.newcustomer.create', $data->id) }}"
+                                                    <a href="{{ route('user.detaildata', $data->id) }}"
                                                         class="btn btn-icon icon-left btn-success">
                                                         <i class="fas fa-trash"></i>Lihat Data</a>
                                                 </td>

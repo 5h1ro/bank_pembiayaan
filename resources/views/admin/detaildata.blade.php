@@ -31,95 +31,103 @@
                                 <thead>
                                     <tr>
                                         <th>tanggal_input</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->tanggal_input }}</th>
                                     </tr>
                                     <tr>
                                         <th>nik</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->nik }}</th>
                                     </tr>
                                     <tr>
                                         <th>nopen</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->nopen }}</th>
                                     </tr>
                                     <tr>
                                         <th>nama</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->nama }}</th>
                                     </tr>
                                     <tr>
                                         <th>alamat_jalan</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->alamat_jalan }}</th>
                                     </tr>
                                     <tr>
                                         <th>alamat_kec</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->alamat_kec }}</th>
                                     </tr>
                                     <tr>
                                         <th>alamat_kotakab</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->alamat_kotakab }}</th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_proponsi</th>
-                                        <th>isi</th>
+                                        <th>alamat_propinsi</th>
+                                        <th>{{ $data->alamat_propinsi }}</th>
                                     </tr>
                                     <tr>
                                         <th>telepon</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->telepon }}</th>
                                     </tr>
                                     <tr>
                                         <th>pembiayaan</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->pembiayaan }}</th>
                                     </tr>
                                     <tr>
                                         <th>tenor</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->tenor }}</th>
                                     </tr>
                                     <tr>
                                         <th>cicilan</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->cicilan }}</th>
                                     </tr>
                                     <tr>
                                         <th>status</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->status }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_ktp</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_ktp }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_kk</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_kk }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_karip</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_karip }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_sk_pensiun</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_sk_pensiun }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_video_interview</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_video_interview }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_video_kesehatan</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_video_kesehatan }}</th>
                                     </tr>
                                     <tr>
                                         <th>tanggal_keputusan</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->tanggal_keputusan }}</th>
                                     </tr>
                                     <tr>
                                         <th>keputusan</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->keputusan }}</th>
                                     </tr>
                                     <tr>
                                         <th>url_pdf</th>
-                                        <th>isi</th>
+                                        <th>{{ $data->url_pdf }}</th>
                                     </tr>
                                 </thead>
                             </table>
-                            <a><button class="btn btn-success me-3 mt-4">approve</button></a><a><button class="btn btn-danger mt-4">cancle</button></a>
+                            @if (auth()->user()->role == 'admin')
+                            @else
+                                <a href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                    <button class="btn btn-success me-3 mt-4">approve</button>
+                                </a>
+                                <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                    <button class="btn btn-danger mt-4">cancel</button>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

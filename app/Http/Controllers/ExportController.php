@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\NewCustomer;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;

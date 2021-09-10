@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['admin'])->group(function () {
         Route::get('admin', [AdminController::class, 'index'])->name('admin');
+        Route::get('admin/detaildata{id}', [AdminController::class, 'detail'])->name('admin.detaildata');
         Route::get('admin/newcustomer{id}', [AdminController::class, 'create'])->name('admin.newcustomer.create');
 
         Route::get('admin/newcustomer', [NewCustomerController::class, 'index'])->name('admin.newcustomer');
@@ -32,12 +33,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/archieve{id}', [ArchieveController::class, 'create'])->name('admin.archieve.create');
         Route::get('admin/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('admin.archieve.cancel');
         Route::get('admin/export={id}', [ExportController::class, 'pdf'])->name('export');
-
-        Route::view('admin/detaildata', 'admin.detaildata');
     });
     Route::middleware(['user'])->group(function () {
         Route::get('user', [UserController::class, 'index'])->name('user');
         Route::get('user/newcustomer{id}', [UserController::class, 'create'])->name('user.newcustomer.create');
+        Route::get('user/detaildata{id}', [UserController::class, 'detail'])->name('user.detaildata');
 
         Route::get('user/newcustomer', [NewCustomerController::class, 'index'])->name('user.newcustomer');
         Route::get('user/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('user.newcustomer.acc');

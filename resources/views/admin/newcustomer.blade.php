@@ -88,14 +88,6 @@
                                                         <i class="fas fa-trash"></i> Archieve</a>
                                                 </td>
                                             @else
-                                                <td class="col-2">
-                                                    <a href="{{ route('user.newcustomer.acc', $data->id) }}"
-                                                        class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i> Approved</a>
-                                                    <a href="{{ route('user.newcustomer.cancel', $data->id) }}"
-                                                        class="btn btn-icon icon-left btn-danger">
-                                                        <i class="fas fa-trash"></i> Cancel</a>
-                                                </td>
                                             @endif
                                         </tr>
                                     @endforeach

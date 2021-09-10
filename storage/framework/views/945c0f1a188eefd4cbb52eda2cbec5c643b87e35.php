@@ -31,26 +31,7 @@
                                     <tr>
                                         <th>tanggal_input</th>
                                         <th>nik</th>
-                                        <th>nopen</th>
                                         <th>nama</th>
-                                        <th>alamat_jalan</th>
-                                        <th>alamat_kec</th>
-                                        <th>alamat_kotakab</th>
-                                        <th>alamat_propinsi</th>
-                                        <th>telepon</th>
-                                        <th>pembiayaan</th>
-                                        <th>tenor</th>
-                                        <th>cicilan</th>
-                                        <th>status</th>
-                                        <th>url_ktp</th>
-                                        <th>url_kk</th>
-                                        <th>url_karip</th>
-                                        <th>url_sk_pensiun</th>
-                                        <th>url_video_interview</th>
-                                        <th>url_video_kesehatan</th>
-                                        <th>tanggal_keputusan</th>
-                                        <th>keputusan</th>
-                                        <th>url_pdf</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
@@ -59,38 +40,18 @@
                                         <tr>
                                             <td><?php echo e($data->tanggal_input); ?></td>
                                             <td><?php echo e($data->nik); ?></td>
-                                            <td><?php echo e($data->nopen); ?></td>
                                             <td><?php echo e($data->nama); ?></td>
-                                            <td><?php echo e($data->alamat_jalan); ?></td>
-                                            <td><?php echo e($data->alamat_kec); ?></td>
-                                            <td><?php echo e($data->alamat_kotakab); ?></td>
-                                            <td><?php echo e($data->alamat_propinsi); ?></td>
-                                            <td><?php echo e($data->telepon); ?></td>
-                                            <td><?php echo e($data->pembiayaan); ?></td>
-                                            <td><?php echo e($data->tenor); ?></td>
-                                            <td><?php echo e($data->cicilan); ?></td>
-                                            <td><?php echo e($data->status); ?></td>
-                                            <td><?php echo e($data->url_ktp); ?></td>
-                                            <td><?php echo e($data->url_kk); ?></td>
-                                            <td><?php echo e($data->url_karip); ?></td>
-                                            <td><?php echo e($data->url_sk_pensiun); ?></td>
-                                            <td><?php echo e($data->url_video_interview); ?></td>
-                                            <td><?php echo e($data->url_video_kesehatan); ?></td>
-                                            <td><?php echo e($data->tanggal_keputusan); ?></td>
-                                            <td><?php echo e($data->keputusan); ?></td>
-                                            <td><?php echo e($data->url_pdf); ?></td>
-
                                             <?php if(auth()->user()->role == 'admin'): ?>
                                                 <td class="col-2">
-                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->id)); ?>"
+                                                    <a href="<?php echo e(route('admin.detaildata', $data->id)); ?>"
                                                         class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i> Add</a>
+                                                        <i class="fas fa-trash"></i>Lihat Data</a>
                                                 </td>
                                             <?php else: ?>
                                                 <td class="col-2">
-                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->id)); ?>"
+                                                    <a href="<?php echo e(route('user.detaildata', $data->id)); ?>"
                                                         class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i> Add</a>
+                                                        <i class="fas fa-trash"></i>Lihat Data</a>
                                                 </td>
                                             <?php endif; ?>
                                         </tr>
