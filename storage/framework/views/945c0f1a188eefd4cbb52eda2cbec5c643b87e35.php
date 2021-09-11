@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="export-button">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>tanggal_input</th>
@@ -42,16 +42,20 @@
                                             <td><?php echo e($data->nik); ?></td>
                                             <td><?php echo e($data->nama); ?></td>
                                             <?php if(auth()->user()->role == 'admin'): ?>
-                                                <td class="col-2">
-                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->id)); ?>"
-                                                        class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i>Ambil Data</a>
+                                                <td>
+                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->id)); ?>">
+                                                        <button class="btn btn-primary ">
+                                                            <i class="fa fa-download"></i><br>Ambil Data
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             <?php else: ?>
-                                                <td class="col-2">
-                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->id)); ?>"
-                                                        class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i>Ambil Data</a>
+                                                <td>
+                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->id)); ?>">
+                                                        <button class="btn btn-primary ">
+                                                            <i class="fa fa-download"></i><br>Ambil Data
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             <?php endif; ?>
                                         </tr>

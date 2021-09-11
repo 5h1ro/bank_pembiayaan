@@ -53,7 +53,6 @@
                                         <th>keputusan</th>
                                         <th>url_pdf</th>
                                         <th>tanggal_archieve</th>
-                                        <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

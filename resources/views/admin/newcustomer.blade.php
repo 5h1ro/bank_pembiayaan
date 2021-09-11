@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="export-button">
+                            {{-- <table class="display" id="export-button">
                                 <thead>
                                     <tr>
                                         <th>tanggal_input</th>
@@ -97,6 +97,56 @@
                                                     <a href="{{ route('user.detaildata', $data->id) }}"
                                                         class="btn btn-icon icon-left btn-primary">
                                                         <i class="fas fa-trash"></i>Detail Data</a>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table> --}}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>tanggal_input</th>
+                                        <th>nik</th>
+                                        <th>nama</th>
+                                        <th>pembiayaan</th>
+                                        <th>tanggal_keputusan</th>
+                                        <th>keputusan</th>
+                                        <th>url_pdf</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($newcustomer as $data)
+                                        <tr>
+                                            <td>{{ $data->tanggal_input }}</td>
+                                            <td>{{ $data->nik }}</td>
+                                            <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->pembiayaan }}</td>
+                                            <td>{{ $data->tanggal_keputusan }}</td>
+                                            <td>{{ $data->keputusan }}</td>
+                                            <td>{{ $data->url_pdf }}</td>
+
+                                            @if (auth()->user()->role == 'admin')
+                                                <td class="col">
+                                                    <a href="{{ route('admin.detaildata', $data->id) }}">
+                                                        <button class="btn btn-primary w-100">
+                                                            <i class="fa fa-info"></i><br>Detail
+                                                        </button>
+                                                    </a>
+                                                    <a href="{{ route('admin.archieve.create', $data->id) }}">
+                                                        <button class="btn btn-primary w-100 mt-3">
+                                                            <i class="fa fa-save"></i><br>Archieve
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td class="col">
+                                                    <a href="{{ route('user.detaildata', $data->id) }}">
+                                                        <button class="btn btn-primary">
+                                                            <i class="fa fa-info"></i><br>Detail
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             @endif
                                         </tr>

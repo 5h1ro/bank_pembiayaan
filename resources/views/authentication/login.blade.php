@@ -31,25 +31,12 @@
                                     <label class="col-form-label">Password</label>
                                     <input class="form-control" type="password" name="password" required=""
                                         placeholder="*********">
-                                    <div class="show-hide"><span class="show"> </span></div>
+                                    <div class="mt-3 show-hide"><span class="show"></span></div>
                                 </div>
-                                <div class="form-group mb-0">
-                                    <div class="checkbox p-0">
-                                        <input id="checkbox1" type="checkbox">
-                                        <label class="text-muted" for="checkbox1">Remember password</label>
-                                    </div>
+                                <div class="form-group mb-0 d-flex justify-content-end mt-3">
                                     <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                                 </div>
-                                <h6 class="text-muted mt-4 or">Or Sign in with</h6>
-                                <div class="social mt-4">
-                                    <div class="btn-showcase"><a class="btn btn-light"
-                                            href="https://www.linkedin.com/login" target="_blank"><i class="txt-linkedin"
-                                                data-feather="linkedin"></i> LinkedIn </a><a class="btn btn-light"
-                                            href="https://twitter.com/login?lang=en" target="_blank"><i
-                                                class="txt-twitter" data-feather="twitter"></i>twitter</a><a
-                                            class="btn btn-light" href="https://www.facebook.com/" target="_blank"><i
-                                                class="txt-fb" data-feather="facebook"></i>facebook</a></div>
-                                </div>
+
                             </form>
                         </div>
                     </div>

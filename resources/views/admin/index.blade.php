@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
-                            <table class="display" id="export-button">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>tanggal_input</th>
@@ -43,16 +43,20 @@
                                             <td>{{ $data->nik }}</td>
                                             <td>{{ $data->nama }}</td>
                                             @if (auth()->user()->role == 'admin')
-                                                <td class="col-2">
-                                                    <a href="{{ route('admin.newcustomer.create', $data->id) }}"
-                                                        class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i>Ambil Data</a>
+                                                <td>
+                                                    <a href="{{ route('admin.newcustomer.create', $data->id) }}">
+                                                        <button class="btn btn-primary ">
+                                                            <i class="fa fa-download"></i><br>Ambil Data
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             @else
-                                                <td class="col-2">
-                                                    <a href="{{ route('user.newcustomer.create', $data->id) }}"
-                                                        class="btn btn-icon icon-left btn-success">
-                                                        <i class="fas fa-trash"></i>Ambil Data</a>
+                                                <td>
+                                                    <a href="{{ route('user.newcustomer.create', $data->id) }}">
+                                                        <button class="btn btn-primary ">
+                                                            <i class="fa fa-download"></i><br>Ambil Data
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             @endif
                                         </tr>
