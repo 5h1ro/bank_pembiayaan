@@ -125,12 +125,28 @@
                             <button class="btn btn-info mt-4">Generate PDF</button>
                             </a>
                         @else
-                            <a href="{{ route('user.newcustomer.acc', $data->id) }}">
-                                <button class="btn btn-success me-3 mt-4">approve</button>
-                            </a>
-                            <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
-                                <button class="btn btn-danger mt-4">cancel</button>
-                            </a>
+                            @if ($data->keputusan == 1)
+                                <a href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                    <button class="btn btn-dark me-3 mt-4" disabled>approve</button>
+                                </a>
+                                <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                    <button class="btn btn-danger mt-4">cancel</button>
+                                </a>
+                            @elseif ($data->keputusan == 2)
+                                <a href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                    <button class="btn btn-success me-3 mt-4">approve</button>
+                                </a>
+                                <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                    <button class="btn btn-dark mt-4" disabled>cancel</button>
+                                </a>
+                            @else
+                                <a href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                    <button class="btn btn-success me-3 mt-4">approve</button>
+                                </a>
+                                <a href="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                    <button class="btn btn-danger mt-4">cancel</button>
+                                </a>
+                            @endif
                             <a href="{{ route('user.export', $data->id) }}" @if ($data->keputusan == 0 || $data->keputusan == 2) style="display:none"
                                 @endif>
                                 <button class="btn btn-info ms-3 mt-4">Generate PDF</button>

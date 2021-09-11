@@ -49,7 +49,7 @@
                                             <td><?php echo e($data->pembiayaan); ?></td>
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
                                             <td><?php echo e($data->keputusan); ?></td>
-                                            <td><?php echo e($data->url_pdf); ?></td>
+                                            <td><a href="<?php echo e($data->url_pdf); ?>"><?php echo e($data->url_pdf); ?></a></td>
 
                                             <?php if(auth()->user()->role == 'admin'): ?>
                                                 <td class="col">

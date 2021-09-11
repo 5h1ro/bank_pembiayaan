@@ -124,9 +124,15 @@
                             <button class="btn btn-info mt-4">Generate PDF</button>
                             </a>
                         <?php else: ?>
-                            <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
-                                <button class="btn btn-success me-3 mt-4">approve</button>
-                            </a>
+                            <?php if($data->keputusan == 1): ?>
+                                <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                    <button class="btn btn-dark me-3 mt-4" disabled>approve</button>
+                                </a>
+                            <?php else: ?>
+                                <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                    <button class="btn btn-success me-3 mt-4">approve</button>
+                                </a>
+                            <?php endif; ?>
                             <a href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
                                 <button class="btn btn-danger mt-4">cancel</button>
                             </a>
