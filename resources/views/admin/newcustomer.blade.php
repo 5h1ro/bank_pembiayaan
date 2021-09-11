@@ -125,7 +125,7 @@
                                             <td>{{ $data->pembiayaan }}</td>
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>{{ $data->keputusan }}</td>
-                                            <td>{{ $data->url_pdf }}</td>
+                                            <td><a href="{{ $data->url_pdf }}">{{ $data->url_pdf }}</a></td>
 
                                             @if (auth()->user()->role == 'admin')
                                                 <td class="col">

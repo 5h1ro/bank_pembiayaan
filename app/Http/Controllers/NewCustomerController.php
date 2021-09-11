@@ -65,8 +65,10 @@ class NewCustomerController extends Controller
 
 
         $date = Carbon::now()->locale('id');
-        $my_pdf_path_for_example = public_path('pdf/' . $date->format('Y-m-d-His') . '.pdf');
+        $namedate = $date->format('Y-m-d-His');
+        $my_pdf_path_for_example = public_path('pdf/' . $namedate . '.pdf');
         $data = NewCustomer::where('id', $id)->first();
+        // $url = 'https://bank.si-bima.com/pdf/' . $namedate . '.pdf';
         $data->url_pdf = $my_pdf_path_for_example;
         $data->save();
         $customer_data = $this->get_customer_data($id);
