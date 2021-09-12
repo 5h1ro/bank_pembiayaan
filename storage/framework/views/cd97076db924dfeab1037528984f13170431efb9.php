@@ -3,6 +3,10 @@
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css')); ?>/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css')); ?>/vendors/sweetalert2.css">
+    <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('style'); ?>
@@ -58,7 +62,7 @@
                                                             <i class="fa fa-info"></i><br>Detail
                                                         </button>
                                                     </a>
-                                                    <a href="<?php echo e(route('admin.archieve.create', $data->id)); ?>">
+                                                    <a id="archive" data-id="<?php echo e($data->id); ?>">
                                                         <button class="btn btn-primary w-100 mt-3">
                                                             <i class="fa fa-save"></i><br>Archieve
                                                         </button>
@@ -106,6 +110,59 @@
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/custom.js')); ?>"></script>
+    <!-- latest jquery-->
+    <script src="<?php echo e(asset('assets/js')); ?>/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- feather icon js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/icons/feather-icon/feather.min.js"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/icons/feather-icon/feather-icon.js"></script>
+    <!-- scrollbar js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/scrollbar/simplebar.js"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/scrollbar/custom.js"></script>
+    <!-- Sidebar jquery-->
+    <script src="<?php echo e(asset('assets/js')); ?>/config.js"></script>
+    <!-- Plugins JS start-->
+    <script src="<?php echo e(asset('assets/js')); ?>/sidebar-menu.js"></script>
+    <!-- Sweet alert jquery-->
+    <script src="<?php echo e(asset('assets/js/sweet-alert/sweetalert.min.js')); ?>"></script>
+    <script type="text/javascript">
+        var SweetAlert_custom = {
+            init: function() {
+                document.getElementById('archive').onclick = function() {
+                    let id = document.getElementById('archive').getAttribute('data-id');
+                    swal({
+                            title: "Apakah kamu yakin?",
+                            text: "Kamu akan mengarchive data",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                swal("Data berhasil diarchive", {
+                                    icon: "success"
+                                }).then(function() {
+                                    window.location.href = "archieve" + id;
+                                });
+                            } else {
+                                swal("Data tidak diarchive");
+                            }
+                        });
+                };
+            }
+        };
+        (function($) {
+            SweetAlert_custom.init()
+        })(jQuery);
+    </script>
+    <script src="<?php echo e(asset('assets/js')); ?>/tooltip-init.js"></script>
+    <!-- Plugins JS Ends-->
+    <!-- Theme js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/script.js"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/theme-customizer/customizer.js"></script>
+    <!-- login js-->
+    <!-- Plugin used-->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\bank_pembiayaan\resources\views/admin/newcustomer.blade.php ENDPATH**/ ?>

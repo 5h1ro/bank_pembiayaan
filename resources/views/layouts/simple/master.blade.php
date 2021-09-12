@@ -77,6 +77,7 @@
     </div>
     <!-- latest jquery-->
     @include('layouts.simple.script')
+    @yield('script')
     <!-- Plugin used-->
 
     <script type="text/javascript">

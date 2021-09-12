@@ -3,6 +3,10 @@
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css')); ?>/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css')); ?>/vendors/sweetalert2.css">
+    <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('style'); ?>
@@ -125,17 +129,29 @@
                             </a>
                         <?php else: ?>
                             <?php if($data->keputusan == 1): ?>
-                                <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                <a id="approve" href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
                                     <button class="btn btn-dark me-3 mt-4" disabled>approve</button>
                                 </a>
+                                <a id="cancel" data-id="<?php echo e($data->id); ?>">
+                                    <button class="btn btn-danger mt-4">cancel</button>
+                                </a>
+
+                                
+                            <?php elseif($data->keputusan == 2): ?>
+                                <a id="approve" data-id="<?php echo e($data->id); ?>">
+                                    <button class="btn btn-success me-3 mt-4 sweet-5">approve</button>
+                                </a>
+                                <a id="cancel" href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
+                                    <button class="btn btn-dark mt-4" disabled>cancel</button>
+                                </a>
                             <?php else: ?>
-                                <a href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                <a id="approve" data-id="<?php echo e($data->id); ?>">
                                     <button class="btn btn-success me-3 mt-4">approve</button>
                                 </a>
+                                <a id="cancel" data-id="<?php echo e($data->id); ?>">
+                                    <button class="btn btn-danger mt-4">cancel</button>
+                                </a>
                             <?php endif; ?>
-                            <a href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
-                                <button class="btn btn-danger mt-4">cancel</button>
-                            </a>
                             <a href="<?php echo e(route('user.export', $data->id)); ?>" <?php if($data->keputusan == 0 || $data->keputusan == 2): ?> style="display:none"
                                 <?php endif; ?>>
                                 <button class="btn btn-info ms-3 mt-4">Generate PDF</button>
@@ -170,6 +186,30 @@
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/custom.js')); ?>"></script>
+    <!-- latest jquery-->
+    <script src="<?php echo e(asset('assets/js')); ?>/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- feather icon js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/icons/feather-icon/feather.min.js"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/icons/feather-icon/feather-icon.js"></script>
+    <!-- scrollbar js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/scrollbar/simplebar.js"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/scrollbar/custom.js"></script>
+    <!-- Sidebar jquery-->
+    <script src="<?php echo e(asset('assets/js')); ?>/config.js"></script>
+    <!-- Plugins JS start-->
+    <script src="<?php echo e(asset('assets/js')); ?>/sidebar-menu.js"></script>
+    <!-- Sweet alert jquery-->
+    <script src="<?php echo e(asset('assets/js/sweet-alert/sweetalert.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/sweet-alert/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/tooltip-init.js"></script>
+    <!-- Plugins JS Ends-->
+    <!-- Theme js-->
+    <script src="<?php echo e(asset('assets/js')); ?>/script.js"></script>
+    <script src="<?php echo e(asset('assets/js')); ?>/theme-customizer/customizer.js"></script>
+    <!-- login js-->
+    <!-- Plugin used-->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\bank_pembiayaan\resources\views/admin/detaildata.blade.php ENDPATH**/ ?>
