@@ -43,7 +43,7 @@
                                             <td><?php echo e($data->nama); ?></td>
                                             <?php if(auth()->user()->role == 'admin'): ?>
                                                 <td>
-                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->id)); ?>">
+                                                    <a href="<?php echo e(route('admin.newcustomer.create', $data->nik)); ?>">
                                                         <button class="btn btn-primary ">
                                                             <i class="fa fa-download"></i><br>Ambil Data
                                                         </button>
@@ -51,7 +51,7 @@
                                                 </td>
                                             <?php else: ?>
                                                 <td>
-                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->id)); ?>">
+                                                    <a href="<?php echo e(route('user.newcustomer.create', $data->nik)); ?>">
                                                         <button class="btn btn-primary ">
                                                             <i class="fa fa-download"></i><br>Ambil Data
                                                         </button>

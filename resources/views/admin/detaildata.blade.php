@@ -50,6 +50,10 @@
                                         <th>{{ $data->nama }}</th>
                                     </tr>
                                     <tr>
+                                        <th>Tanggal Lahir</th>
+                                        <th>{{ $data->tanggal_lahir }}</th>
+                                    </tr>
+                                    <tr>
                                         <th>Jalan</th>
                                         <th>{{ $data->alamat_jalan }}</th>
                                     </tr>
@@ -75,18 +79,22 @@
                                     </tr>
                                     <tr>
                                         <th>Tenor</th>
-                                        <th>Rp {{ number_format($data->tenor, 0, ',', '.') }},-</th>
+                                        <th>{{ $data->tenor }} Bulan</th>
                                     </tr>
                                     <tr>
                                         <th>Cicilan</th>
-                                        <th>{{ $data->cicilan }} Bulan</th>
+                                        <th>Rp {{ number_format($data->cicilan, 0, ',', '.') }},-</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Gaji Pokok</th>
+                                        <th>Rp {{ number_format($data->gaji_pokok, 0, ',', '.') }},-</th>
                                     </tr>
                                     <tr>
                                         <th>Status</th>
                                         <th>
-                                            @if ($data->keputusan == 0)
+                                            @if ($data->keputusan_bank == 0)
                                                 Belum Ada Keputusan
-                                            @elseif ($data->keputusan == 1)
+                                            @elseif ($data->keputusan_bank == 1)
                                                 Disetujui
                                             @else
                                                 Tidak Disetujui
@@ -126,11 +134,23 @@
                                         <th>{{ $data->tanggal_keputusan }}</th>
                                     </tr>
                                     <tr>
-                                        <th>Keputusan</th>
+                                        <th>Keputusan Bank</th>
                                         <th>
-                                            @if ($data->keputusan == 0)
+                                            @if ($data->keputusan_bank == 0)
                                                 Belum Ada Keputusan
-                                            @elseif ($data->keputusan == 1)
+                                            @elseif ($data->keputusan_bank == 1)
+                                                Disetujui
+                                            @else
+                                                Tidak Disetujui
+                                            @endif
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Keputusan Asuransi</th>
+                                        <th>
+                                            @if ($data->keputusan_asuransi == 0)
+                                                Belum Ada Keputusan
+                                            @elseif ($data->keputusan_asuransi == 1)
                                                 Disetujui
                                             @else
                                                 Tidak Disetujui
@@ -144,34 +164,57 @@
                                 </thead>
                             </table>
                             @if (auth()->user()->role == 'admin')
-                                <a href="{{ route('admin.export', $data->id) }}" @if ($data->keputusan == 0 || $data->keputusan == 2) style="display:none"
+                                <a href="{{ route('admin.export', $data->id) }}" @if ($data->keputusan_bank == 0 || $data->keputusan_bank == 2)
+                                    style="display:none"
                             @endif>
                             <button class="btn btn-info mt-4">Generate PDF</button>
                             </a>
                         @else
-                            @if ($data->keputusan == 1)
-                                <a id="approve" href="{{ route('user.newcustomer.acc', $data->id) }}">
-                                    <button class="btn btn-dark me-3 mt-4" disabled>approve</button>
+                            <script type="text/javascript">
+                                function enable() {
+                                    document.getElementById("btnapprove").disabled = false;
+                                    document.getElementById("btnapprove").classList.add('btn-success');
+                                    document.getElementById("btnapprove").classList.remove('btn-dark');
+                                    document.getElementById("btncancel").disabled = false;
+                                    document.getElementById("btncancel").classList.add('btn-danger');
+                                    document.getElementById("btncancel").classList.remove('btn-dark');
+                                }
+                            </script>
+
+                            @if ($data->keputusan_bank == 1)
+                                <a id="approve" data-id="{{ $data->id }}"
+                                    href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                    <button class="btn btn-dark me-3 mt-4" id="btnapprove" disabled>approve</button>
                                 </a>
-                                <a id="cancel" data-id="{{ $data->id }}">
-                                    <button class="btn btn-danger mt-4">cancel</button>
+                                <a id="cancel" data-id="{{ $data->id }}"
+                                    data-id="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                    <button class="btn btn-dark me-3 mt-4" id="btncancel" disabled>cancel</button>
                                 </a>
-                            @elseif ($data->keputusan == 2)
-                                <a id="approve" data-id="{{ $data->id }}">
+                                <a id="edit" onclick="enable()">
+                                    <button class="btn btn-warning mt-4" onclick="enable()">Edit</button>
+                                @elseif ($data->keputusan_bank == 2)
+                                    {{-- <a id="approve" data-id="{{ $data->id }}">
                                     <button class="btn btn-success me-3 mt-4 sweet-5">approve</button>
-                                </a>
-                                <a id="cancel" href="{{ route('user.newcustomer.cancel', $data->id) }}">
-                                    <button class="btn btn-dark mt-4" disabled>cancel</button>
-                                </a>
-                            @else
-                                <a id="approve" data-id="{{ $data->id }}">
-                                    <button class="btn btn-success me-3 mt-4">approve</button>
-                                </a>
-                                <a id="cancel" data-id="{{ $data->id }}">
-                                    <button class="btn btn-danger mt-4">cancel</button>
-                                </a>
+                                </a> --}}
+                                    <a id="approve" data-id="{{ $data->id }}"
+                                        href="{{ route('user.newcustomer.acc', $data->id) }}">
+                                        <button class="btn btn-dark me-3 mt-4" id="btnapprove" disabled>approve</button>
+                                    </a>
+                                    <a id="cancel" data-id="{{ $data->id }}"
+                                        data-id="{{ route('user.newcustomer.cancel', $data->id) }}">
+                                        <button class="btn btn-dark me-3 mt-4" id="btncancel" disabled>cancel</button>
+                                    </a>
+                                    <a id="edit" onclick="enable()">
+                                        <button class="btn btn-warning mt-4" onclick="enable()">Edit</button>
+                                    @else
+                                        <a id="approve" data-id="{{ $data->id }}">
+                                            <button class="btn btn-success me-3 mt-4">approve</button>
+                                        </a>
+                                        <a id="cancel" data-id="{{ $data->id }}">
+                                            <button class="btn btn-danger mt-4">cancel</button>
+                                        </a>
                             @endif
-                            <a href="{{ route('user.export', $data->id) }}" @if ($data->keputusan == 0 || $data->keputusan == 2) style="display:none"
+                            <a href="{{ route('user.export', $data->id) }}" @if ($data->keputusan_bank == 0 || $data->keputusan_bank == 2) style="display:none"
                                 @endif>
                                 <button class="btn btn-info ms-3 mt-4">Generate PDF</button>
                             </a>

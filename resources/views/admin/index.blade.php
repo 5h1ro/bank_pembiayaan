@@ -44,7 +44,7 @@
                                             <td>{{ $data->nama }}</td>
                                             @if (auth()->user()->role == 'admin')
                                                 <td>
-                                                    <a href="{{ route('admin.newcustomer.create', $data->id) }}">
+                                                    <a href="{{ route('admin.newcustomer.create', $data->nik) }}">
                                                         <button class="btn btn-primary ">
                                                             <i class="fa fa-download"></i><br>Ambil Data
                                                         </button>
@@ -52,7 +52,7 @@
                                                 </td>
                                             @else
                                                 <td>
-                                                    <a href="{{ route('user.newcustomer.create', $data->id) }}">
+                                                    <a href="{{ route('user.newcustomer.create', $data->nik) }}">
                                                         <button class="btn btn-primary ">
                                                             <i class="fa fa-download"></i><br>Ambil Data
                                                         </button>

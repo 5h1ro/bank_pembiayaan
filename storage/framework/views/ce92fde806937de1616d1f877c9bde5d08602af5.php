@@ -17,7 +17,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
-    <li class="breadcrumb-item active">Detail Data</li>
+    <li class="breadcrumb-item active">Detail Data Peminjam</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -33,126 +33,187 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>tanggal_input</th>
+                                        <th>Tanggal Input</th>
                                         <th><?php echo e($data->tanggal_input); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>nik</th>
+                                        <th>NIK</th>
                                         <th><?php echo e($data->nik); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>nopen</th>
+                                        <th>Nopen</th>
                                         <th><?php echo e($data->nopen); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>nama</th>
+                                        <th>Nama</th>
                                         <th><?php echo e($data->nama); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_jalan</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th><?php echo e($data->tanggal_lahir); ?></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Jalan</th>
                                         <th><?php echo e($data->alamat_jalan); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_kec</th>
+                                        <th>Kecamatan</th>
                                         <th><?php echo e($data->alamat_kec); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_kotakab</th>
+                                        <th>Kota/Kabupaten</th>
                                         <th><?php echo e($data->alamat_kotakab); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_propinsi</th>
+                                        <th>Provinsi</th>
                                         <th><?php echo e($data->alamat_propinsi); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>telepon</th>
+                                        <th>No Telepon</th>
                                         <th><?php echo e($data->telepon); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>pembiayaan</th>
-                                        <th><?php echo e($data->pembiayaan); ?></th>
+                                        <th>Pembiayaan</th>
+                                        <th>Rp <?php echo e(number_format($data->pembiayaan, 0, ',', '.')); ?>,-</th>
                                     </tr>
                                     <tr>
-                                        <th>tenor</th>
-                                        <th><?php echo e($data->tenor); ?></th>
+                                        <th>Tenor</th>
+                                        <th><?php echo e($data->tenor); ?> Bulan</th>
                                     </tr>
                                     <tr>
-                                        <th>cicilan</th>
-                                        <th><?php echo e($data->cicilan); ?></th>
+                                        <th>Cicilan</th>
+                                        <th>Rp <?php echo e(number_format($data->cicilan, 0, ',', '.')); ?>,-</th>
                                     </tr>
                                     <tr>
-                                        <th>status</th>
-                                        <th><?php echo e($data->status); ?></th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Rp <?php echo e(number_format($data->gaji_pokok, 0, ',', '.')); ?>,-</th>
                                     </tr>
                                     <tr>
-                                        <th>url_ktp</th>
-                                        <th><?php echo e($data->url_ktp); ?></th>
+                                        <th>Status</th>
+                                        <th>
+                                            <?php if($data->keputusan_bank == 0): ?>
+                                                Belum Ada Keputusan
+                                            <?php elseif($data->keputusan_bank == 1): ?>
+                                                Disetujui
+                                            <?php else: ?>
+                                                Tidak Disetujui
+                                            <?php endif; ?>
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>url_kk</th>
-                                        <th><?php echo e($data->url_kk); ?></th>
+                                        <th>Url KTP</th>
+                                        <th><a href="<?php echo e($data->url_ktp); ?>"></a><?php echo e($data->url_ktp); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>url_karip</th>
-                                        <th><?php echo e($data->url_karip); ?></th>
+                                        <th>Url KK</th>
+                                        <th><a href="<?php echo e($data->url_kk); ?>"></a><?php echo e($data->url_kk); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>url_sk_pensiun</th>
-                                        <th><?php echo e($data->url_sk_pensiun); ?></th>
+                                        <th>Url karip</th>
+                                        <th><a href="<?php echo e($data->url_karip); ?>"></a><?php echo e($data->url_karip); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>url_video_interview</th>
-                                        <th><?php echo e($data->url_video_interview); ?></th>
+                                        <th>Url SK Pensiun</th>
+                                        <th><a href="<?php echo e($data->url_sk_pensiun); ?>"></a><?php echo e($data->url_sk_pensiun); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>url_video_kesehatan</th>
-                                        <th><?php echo e($data->url_video_kesehatan); ?></th>
+                                        <th>Url Video Interview</th>
+                                        <th><a
+                                                href="<?php echo e($data->url_video_interview); ?>"></a><?php echo e($data->url_video_interview); ?>
+
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>tanggal_keputusan</th>
+                                        <th>Url Video Kesehatan</th>
+                                        <th><a
+                                                href="<?php echo e($data->url_video_kesehatan); ?>"></a><?php echo e($data->url_video_kesehatan); ?>
+
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Tanggal Keputusan</th>
                                         <th><?php echo e($data->tanggal_keputusan); ?></th>
                                     </tr>
                                     <tr>
-                                        <th>keputusan</th>
-                                        <th><?php echo e($data->keputusan); ?></th>
+                                        <th>Keputusan Bank</th>
+                                        <th>
+                                            <?php if($data->keputusan_bank == 0): ?>
+                                                Belum Ada Keputusan
+                                            <?php elseif($data->keputusan_bank == 1): ?>
+                                                Disetujui
+                                            <?php else: ?>
+                                                Tidak Disetujui
+                                            <?php endif; ?>
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>url_pdf</th>
-                                        <th><?php echo e($data->url_pdf); ?></th>
+                                        <th>Keputusan Asuransi</th>
+                                        <th>
+                                            <?php if($data->keputusan_asuransi == 0): ?>
+                                                Belum Ada Keputusan
+                                            <?php elseif($data->keputusan_asuransi == 1): ?>
+                                                Disetujui
+                                            <?php else: ?>
+                                                Tidak Disetujui
+                                            <?php endif; ?>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Url PDF</th>
+                                        <th><a href="<?php echo e($data->url_pdf); ?>"></a><?php echo e($data->url_pdf); ?></th>
                                     </tr>
                                 </thead>
                             </table>
                             <?php if(auth()->user()->role == 'admin'): ?>
-                                <a href="<?php echo e(route('admin.export', $data->id)); ?>" <?php if($data->keputusan == 0 || $data->keputusan == 2): ?> style="display:none"
+                                <a href="<?php echo e(route('admin.export', $data->id)); ?>" <?php if($data->keputusan_bank == 0 || $data->keputusan_bank == 2): ?>
+                                    style="display:none"
                             <?php endif; ?>>
                             <button class="btn btn-info mt-4">Generate PDF</button>
                             </a>
                         <?php else: ?>
-                            <?php if($data->keputusan == 1): ?>
-                                <a id="approve" href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
-                                    <button class="btn btn-dark me-3 mt-4" disabled>approve</button>
-                                </a>
-                                <a id="cancel" data-id="<?php echo e($data->id); ?>">
-                                    <button class="btn btn-danger mt-4">cancel</button>
-                                </a>
+                            <script type="text/javascript">
+                                function enable() {
+                                    document.getElementById("btnapprove").disabled = false;
+                                    document.getElementById("btnapprove").classList.add('btn-success');
+                                    document.getElementById("btnapprove").classList.remove('btn-dark');
+                                    document.getElementById("btncancel").disabled = false;
+                                    document.getElementById("btncancel").classList.add('btn-danger');
+                                    document.getElementById("btncancel").classList.remove('btn-dark');
+                                }
+                            </script>
 
-                                
-                            <?php elseif($data->keputusan == 2): ?>
-                                <a id="approve" data-id="<?php echo e($data->id); ?>">
-                                    <button class="btn btn-success me-3 mt-4 sweet-5">approve</button>
+                            <?php if($data->keputusan_bank == 1): ?>
+                                <a id="approve" data-id="<?php echo e($data->id); ?>"
+                                    href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                    <button class="btn btn-dark me-3 mt-4" id="btnapprove" disabled>approve</button>
                                 </a>
-                                <a id="cancel" href="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
-                                    <button class="btn btn-dark mt-4" disabled>cancel</button>
+                                <a id="cancel" data-id="<?php echo e($data->id); ?>"
+                                    data-id="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
+                                    <button class="btn btn-dark me-3 mt-4" id="btncancel" disabled>cancel</button>
                                 </a>
-                            <?php else: ?>
-                                <a id="approve" data-id="<?php echo e($data->id); ?>">
-                                    <button class="btn btn-success me-3 mt-4">approve</button>
-                                </a>
-                                <a id="cancel" data-id="<?php echo e($data->id); ?>">
-                                    <button class="btn btn-danger mt-4">cancel</button>
-                                </a>
+                                <a id="edit" onclick="enable()">
+                                    <button class="btn btn-warning mt-4" onclick="enable()">Edit</button>
+                                <?php elseif($data->keputusan_bank == 2): ?>
+                                    
+                                    <a id="approve" data-id="<?php echo e($data->id); ?>"
+                                        href="<?php echo e(route('user.newcustomer.acc', $data->id)); ?>">
+                                        <button class="btn btn-dark me-3 mt-4" id="btnapprove" disabled>approve</button>
+                                    </a>
+                                    <a id="cancel" data-id="<?php echo e($data->id); ?>"
+                                        data-id="<?php echo e(route('user.newcustomer.cancel', $data->id)); ?>">
+                                        <button class="btn btn-dark me-3 mt-4" id="btncancel" disabled>cancel</button>
+                                    </a>
+                                    <a id="edit" onclick="enable()">
+                                        <button class="btn btn-warning mt-4" onclick="enable()">Edit</button>
+                                    <?php else: ?>
+                                        <a id="approve" data-id="<?php echo e($data->id); ?>">
+                                            <button class="btn btn-success me-3 mt-4">approve</button>
+                                        </a>
+                                        <a id="cancel" data-id="<?php echo e($data->id); ?>">
+                                            <button class="btn btn-danger mt-4">cancel</button>
+                                        </a>
                             <?php endif; ?>
-                            <a href="<?php echo e(route('user.export', $data->id)); ?>" <?php if($data->keputusan == 0 || $data->keputusan == 2): ?> style="display:none"
+                            <a href="<?php echo e(route('user.export', $data->id)); ?>" <?php if($data->keputusan_bank == 0 || $data->keputusan_bank == 2): ?> style="display:none"
                                 <?php endif; ?>>
                                 <button class="btn btn-info ms-3 mt-4">Generate PDF</button>
                             </a>

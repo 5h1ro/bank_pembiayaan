@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('admin', [AdminController::class, 'index'])->name('admin');
         Route::get('admin/detaildata{id}', [AdminController::class, 'detail'])->name('admin.detaildata');
-        Route::get('admin/newcustomer{id}', [AdminController::class, 'create'])->name('admin.newcustomer.create');
+        Route::get('admin/newcustomer{nik}', [AdminController::class, 'create'])->name('admin.newcustomer.create');
 
         Route::get('admin/newcustomer', [NewCustomerController::class, 'index'])->name('admin.newcustomer');
         Route::get('admin/newcustomer/acc{id}', [NewCustomerController::class, 'acc'])->name('admin.newcustomer.acc');
@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::middleware(['user'])->group(function () {
         Route::get('user', [UserController::class, 'index'])->name('user');
-        Route::get('user/newcustomer{id}', [UserController::class, 'create'])->name('user.newcustomer.create');
+        Route::get('user/newcustomer{nik}', [UserController::class, 'create'])->name('user.newcustomer.create');
         Route::get('user/detaildata{id}', [UserController::class, 'detail'])->name('user.detaildata');
 
         Route::get('user/export={id}', [NewCustomerController::class, 'pdf'])->name('user.export');

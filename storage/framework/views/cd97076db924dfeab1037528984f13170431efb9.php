@@ -39,7 +39,8 @@
                                         <th>Nama</th>
                                         <th>Pembiayaan</th>
                                         <th>Tanggal Keputusan</th>
-                                        <th>Keputusan</th>
+                                        <th>Keputusan Bank</th>
+                                        <th>Keputusan Asuransi</th>
                                         <th>Url PDF</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -53,9 +54,18 @@
                                             <td><?php echo e($data->pembiayaan); ?></td>
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
                                             <td>
-                                                <?php if($data->keputusan == 0): ?>
+                                                <?php if($data->keputusan_bank == 0): ?>
                                                     Belum Ada Keputusan
-                                                <?php elseif($data->keputusan == 1): ?>
+                                                <?php elseif($data->keputusan_bank == 1): ?>
+                                                    Disetujui
+                                                <?php else: ?>
+                                                    Tidak Disetujui
+                                                <?php endif; ?>
+                                            </td>
+                                            <td>
+                                                <?php if($data->keputusan_asuransi == 0): ?>
+                                                    Belum Ada Keputusan
+                                                <?php elseif($data->keputusan_asuransi == 1): ?>
                                                     Disetujui
                                                 <?php else: ?>
                                                     Tidak Disetujui

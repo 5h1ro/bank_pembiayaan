@@ -55,9 +55,11 @@ class ArchieveController extends Controller
 
         $notification = count($customers);
         $archieve = Archieve::all();
+        Carbon::setLocale('id');
         foreach ($archieve as $data) {
             $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
             $data->tanggal_keputusan = Carbon::parse($data->tanggal_keputusan)->format('d-m-Y H:i:s');
+            $data->tanggal_lahir = Carbon::parse($data->tanggal_lahir)->isoFormat('d MMMM Y');
             $data->tanggal_archieve = Carbon::parse($data->tanggal_archieve)->format('d-m-Y H:i:s');
         };
         return view('admin.archieve', compact('archieve', 'notification'));
@@ -72,6 +74,7 @@ class ArchieveController extends Controller
         $newcustomer->nik = $data->nik;
         $newcustomer->nopen = $data->nopen;
         $newcustomer->nama = $data->nama;
+        $newcustomer->tanggal_lahir = $data->tanggal_lahir;
         $newcustomer->alamat_jalan = $data->alamat_jalan;
         $newcustomer->alamat_kec = $data->alamat_kec;
         $newcustomer->alamat_kotakab = $data->alamat_kotakab;
@@ -80,6 +83,7 @@ class ArchieveController extends Controller
         $newcustomer->pembiayaan = $data->pembiayaan;
         $newcustomer->tenor = $data->tenor;
         $newcustomer->cicilan = $data->cicilan;
+        $newcustomer->gaji_pokok = $data->gaji_pokok;
         $newcustomer->status = $data->status;
         $newcustomer->url_ktp = $data->url_ktp;
         $newcustomer->url_kk = $data->url_kk;

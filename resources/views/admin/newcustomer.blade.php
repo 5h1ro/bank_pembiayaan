@@ -115,7 +115,8 @@
                                         <th>Nama</th>
                                         <th>Pembiayaan</th>
                                         <th>Tanggal Keputusan</th>
-                                        <th>Keputusan</th>
+                                        <th>Keputusan Bank</th>
+                                        <th>Keputusan Asuransi</th>
                                         <th>Url PDF</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -129,9 +130,18 @@
                                             <td>{{ $data->pembiayaan }}</td>
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>
-                                                @if ($data->keputusan == 0)
+                                                @if ($data->keputusan_bank == 0)
                                                     Belum Ada Keputusan
-                                                @elseif ($data->keputusan == 1)
+                                                @elseif ($data->keputusan_bank == 1)
+                                                    Disetujui
+                                                @else
+                                                    Tidak Disetujui
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($data->keputusan_asuransi == 0)
+                                                    Belum Ada Keputusan
+                                                @elseif ($data->keputusan_asuransi == 1)
                                                     Disetujui
                                                 @else
                                                     Tidak Disetujui

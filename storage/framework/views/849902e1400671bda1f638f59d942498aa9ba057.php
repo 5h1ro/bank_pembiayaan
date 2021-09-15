@@ -13,7 +13,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
-    <li class="breadcrumb-item active">Data Archieve</li>
+    <li class="breadcrumb-item active">Data Arsip</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -22,36 +22,39 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data Archieve</h5>
+                        <h5>Data Arsip</h5>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>tanggal_input</th>
-                                        <th>nik</th>
-                                        <th>nopen</th>
-                                        <th>nama</th>
-                                        <th>alamat_jalan</th>
-                                        <th>alamat_kec</th>
-                                        <th>alamat_kotakab</th>
-                                        <th>alamat_propinsi</th>
-                                        <th>telepon</th>
-                                        <th>pembiayaan</th>
-                                        <th>tenor</th>
-                                        <th>cicilan</th>
-                                        <th>status</th>
-                                        <th>url_ktp</th>
-                                        <th>url_kk</th>
-                                        <th>url_karip</th>
-                                        <th>url_sk_pensiun</th>
-                                        <th>url_video_interview</th>
-                                        <th>url_video_kesehatan</th>
-                                        <th>tanggal_keputusan</th>
-                                        <th>keputusan</th>
-                                        <th>url_pdf</th>
-                                        <th>tanggal_archieve</th>
+                                        <th>Tanggan Input</th>
+                                        <th>NIK</th>
+                                        <th>Nopen</th>
+                                        <th>Nama</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Jalan</th>
+                                        <th>Kecamatan</th>
+                                        <th>Kota/Kabupaten</th>
+                                        <th>Provinsi</th>
+                                        <th>Telepon</th>
+                                        <th>Pembiayaan</th>
+                                        <th>Tenor</th>
+                                        <th>Cicilan</th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Status</th>
+                                        <th>Url KTP</th>
+                                        <th>Url KK</th>
+                                        <th>Url Karip</th>
+                                        <th>Url SK Pensiun</th>
+                                        <th>Url Video Interview</th>
+                                        <th>Url Video Kesehatan</th>
+                                        <th>Tanggal Keputusan</th>
+                                        <th>Keputusan Bank</th>
+                                        <th>Keputusan Asuransi</th>
+                                        <th>Url PDF</th>
+                                        <th>Tanggal Arsip</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,14 +64,16 @@
                                             <td><?php echo e($data->nik); ?></td>
                                             <td><?php echo e($data->nopen); ?></td>
                                             <td><?php echo e($data->nama); ?></td>
+                                            <td><?php echo e($data->tanggal_lahir); ?></td>
                                             <td><?php echo e($data->alamat_jalan); ?></td>
                                             <td><?php echo e($data->alamat_kec); ?></td>
                                             <td><?php echo e($data->alamat_kotakab); ?></td>
                                             <td><?php echo e($data->alamat_propinsi); ?></td>
                                             <td><?php echo e($data->telepon); ?></td>
-                                            <td><?php echo e($data->pembiayaan); ?></td>
-                                            <td><?php echo e($data->tenor); ?></td>
-                                            <td><?php echo e($data->cicilan); ?></td>
+                                            <td>Rp <?php echo e(number_format($data->pembiayaan, 0, ',', '.')); ?>,-</td>
+                                            <td><?php echo e($data->tenor); ?> Bulan</td>
+                                            <td>Rp <?php echo e(number_format($data->cicilan, 0, ',', '.')); ?>,-</td>
+                                            <td>Rp <?php echo e(number_format($data->gaji_pokok, 0, ',', '.')); ?>,-</td>
                                             <td><?php echo e($data->status); ?></td>
                                             <td><?php echo e($data->url_ktp); ?></td>
                                             <td><?php echo e($data->url_kk); ?></td>
@@ -77,7 +82,24 @@
                                             <td><?php echo e($data->url_video_interview); ?></td>
                                             <td><?php echo e($data->url_video_kesehatan); ?></td>
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
-                                            <td><?php echo e($data->keputusan); ?></td>
+                                            <td>
+                                                <?php if($data->keputusan_bank == 0): ?>
+                                                    Belum Ada Keputusan
+                                                <?php elseif($data->keputusan_bank == 1): ?>
+                                                    Disetujui
+                                                <?php else: ?>
+                                                    Tidak Disetujui
+                                                <?php endif; ?>
+                                            </td>
+                                            <td>
+                                                <?php if($data->keputusan_asuransi == 0): ?>
+                                                    Belum Ada Keputusan
+                                                <?php elseif($data->keputusan_asuransi == 1): ?>
+                                                    Disetujui
+                                                <?php else: ?>
+                                                    Tidak Disetujui
+                                                <?php endif; ?>
+                                            </td>
                                             <td><?php echo e($data->url_pdf); ?></td>
                                             <td><?php echo e($data->tanggal_archieve); ?></td>
                                         </tr>

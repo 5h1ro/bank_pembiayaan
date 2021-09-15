@@ -13,36 +13,36 @@ var SweetAlert_custom = {
         //         });
         // },
         document.getElementById('cancel').onclick = function () {
-                let id = document.getElementById('cancel').getAttribute('data-id');
-                swal({
-                        title: "Apakah anda yakin?",
-                        text: "Data tidak akan di setujui",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            swal("Data berhasil dirubah", {
-                                icon: "success"
-                            }).then(function () {
-                                window.location.href = "newcustomer/cancel" + id;
-                            });
-                        } else {
-                            swal("Data tidak dirubah");
-                        }
-                    });
-            },
+            let id = document.getElementById('cancel').getAttribute('data-id');
+            swal({
+                title: "Apakah anda yakin?",
+                text: "Data tidak akan di setujui",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Data berhasil dirubah", {
+                            icon: "success"
+                        }).then(function () {
+                            window.location.href = "newcustomer/cancel" + id;
+                        });
+                    } else {
+                        swal("Data tidak dirubah");
+                    }
+                });
+        },
 
             document.getElementById('approve').onclick = function () {
                 let id = document.getElementById('approve').getAttribute('data-id');
                 swal({
-                        title: "Apakah anda yakin?",
-                        text: "Data akan di setujui",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
+                    title: "Apakah anda yakin?",
+                    text: "Data akan di setujui",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
                     .then((willDelete) => {
                         if (willDelete) {
                             swal("Data berhasil dirubah", {
@@ -60,12 +60,12 @@ var SweetAlert_custom = {
                 let id = document.getElementById('archive').getAttribute('data-id');
                 console.log(id);
                 swal({
-                        title: "Apakah anda yakin?",
-                        text: "Anda akan mengarsipkan data",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
+                    title: "Apakah anda yakin?",
+                    text: "Anda akan mengarsipkan data",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
                     .then((willDelete) => {
                         if (willDelete) {
                             swal("Data berhasil diarsipkan", {

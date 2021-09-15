@@ -34,6 +34,7 @@
                                         <th>NIK</th>
                                         <th>Nopen</th>
                                         <th>Nama</th>
+                                        <th>Tanggal Lahir</th>
                                         <th>Jalan</th>
                                         <th>Kecamatan</th>
                                         <th>Kota/Kabupaten</th>
@@ -42,6 +43,7 @@
                                         <th>Pembiayaan</th>
                                         <th>Tenor</th>
                                         <th>Cicilan</th>
+                                        <th>Gaji Pokok</th>
                                         <th>Status</th>
                                         <th>Url KTP</th>
                                         <th>Url KK</th>
@@ -50,7 +52,8 @@
                                         <th>Url Video Interview</th>
                                         <th>Url Video Kesehatan</th>
                                         <th>Tanggal Keputusan</th>
-                                        <th>Keputusan</th>
+                                        <th>Keputusan Bank</th>
+                                        <th>Keputusan Asuransi</th>
                                         <th>Url PDF</th>
                                         <th>Tanggal Arsip</th>
                                     </tr>
@@ -62,14 +65,16 @@
                                             <td>{{ $data->nik }}</td>
                                             <td>{{ $data->nopen }}</td>
                                             <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->tanggal_lahir }}</td>
                                             <td>{{ $data->alamat_jalan }}</td>
                                             <td>{{ $data->alamat_kec }}</td>
                                             <td>{{ $data->alamat_kotakab }}</td>
                                             <td>{{ $data->alamat_propinsi }}</td>
                                             <td>{{ $data->telepon }}</td>
                                             <td>Rp {{ number_format($data->pembiayaan, 0, ',', '.') }},-</td>
-                                            <td>Rp {{ number_format($data->tenor, 0, ',', '.') }},-</td>
-                                            <td>{{ $data->cicilan }} Bulan</td>
+                                            <td>{{ $data->tenor }} Bulan</td>
+                                            <td>Rp {{ number_format($data->cicilan, 0, ',', '.') }},-</td>
+                                            <td>Rp {{ number_format($data->gaji_pokok, 0, ',', '.') }},-</td>
                                             <td>{{ $data->status }}</td>
                                             <td>{{ $data->url_ktp }}</td>
                                             <td>{{ $data->url_kk }}</td>
@@ -79,9 +84,18 @@
                                             <td>{{ $data->url_video_kesehatan }}</td>
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>
-                                                @if ($data->keputusan == 0)
+                                                @if ($data->keputusan_bank == 0)
                                                     Belum Ada Keputusan
-                                                @elseif ($data->keputusan == 1)
+                                                @elseif ($data->keputusan_bank == 1)
+                                                    Disetujui
+                                                @else
+                                                    Tidak Disetujui
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($data->keputusan_asuransi == 0)
+                                                    Belum Ada Keputusan
+                                                @elseif ($data->keputusan_asuransi == 1)
                                                     Disetujui
                                                 @else
                                                     Tidak Disetujui
