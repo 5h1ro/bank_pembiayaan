@@ -1,5 +1,5 @@
 var SweetAlert_custom = {
-    init: function() {
+    init: function () {
         // document.querySelector('.sweet-1').onclick = function() {
         //     swal("Hello world!");
         // }, document.querySelector('.sweet-2').onclick = function() {
@@ -11,12 +11,12 @@ var SweetAlert_custom = {
         //         .then((value) => {
         //             swal(`The returned value is: ${value}`);
         //         });
-        // }, 
-        document.getElementById('cancel').onclick = function() {
+        // },
+        document.getElementById('cancel').onclick = function () {
                 let id = document.getElementById('cancel').getAttribute('data-id');
                 swal({
-                        title: "Apakah kamu yakin?",
-                        text: "Kamu akan membatalkan approve data",
+                        title: "Apakah anda yakin?",
+                        text: "Data tidak akan di setujui",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
@@ -25,7 +25,7 @@ var SweetAlert_custom = {
                         if (willDelete) {
                             swal("Data berhasil dirubah", {
                                 icon: "success"
-                            }).then(function() {
+                            }).then(function () {
                                 window.location.href = "newcustomer/cancel" + id;
                             });
                         } else {
@@ -34,11 +34,11 @@ var SweetAlert_custom = {
                     });
             },
 
-            document.getElementById('approve').onclick = function() {
+            document.getElementById('approve').onclick = function () {
                 let id = document.getElementById('approve').getAttribute('data-id');
                 swal({
-                        title: "Apakah kamu yakin?",
-                        text: "Kamu akan mengapprove data",
+                        title: "Apakah anda yakin?",
+                        text: "Data akan di setujui",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
@@ -47,7 +47,7 @@ var SweetAlert_custom = {
                         if (willDelete) {
                             swal("Data berhasil dirubah", {
                                 icon: "success",
-                            }).then(function() {
+                            }).then(function () {
                                 window.location.href = "newcustomer/acc" + id;
                             });
                         } else {
@@ -56,25 +56,25 @@ var SweetAlert_custom = {
                     });
             },
 
-            document.getElementById('archive').onclick = function() {
+            document.getElementById('archive').onclick = function () {
                 let id = document.getElementById('archive').getAttribute('data-id');
                 console.log(id);
                 swal({
-                        title: "Apakah kamu yakin?",
-                        text: "Kamu akan mengarchive data",
+                        title: "Apakah anda yakin?",
+                        text: "Anda akan mengarsipkan data",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            swal("Data berhasil diarchive", {
+                            swal("Data berhasil diarsipkan", {
                                 icon: "success"
-                            }).then(function() {
+                            }).then(function () {
                                 window.location.href = "archieve" + id;
                             });
                         } else {
-                            swal("Data tidak diarchive");
+                            swal("Data tidak diarsipkan");
                         }
                     });
             };
@@ -127,6 +127,6 @@ var SweetAlert_custom = {
         // };
     }
 };
-(function($) {
+(function ($) {
     SweetAlert_custom.init()
 })(jQuery);

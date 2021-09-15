@@ -18,7 +18,7 @@
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item active">Detail Data</li>
+    <li class="breadcrumb-item active">Detail Data Peminjam</li>
 @endsection
 
 @section('content')
@@ -34,92 +34,112 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>tanggal_input</th>
+                                        <th>Tanggal Input</th>
                                         <th>{{ $data->tanggal_input }}</th>
                                     </tr>
                                     <tr>
-                                        <th>nik</th>
+                                        <th>NIK</th>
                                         <th>{{ $data->nik }}</th>
                                     </tr>
                                     <tr>
-                                        <th>nopen</th>
+                                        <th>Nopen</th>
                                         <th>{{ $data->nopen }}</th>
                                     </tr>
                                     <tr>
-                                        <th>nama</th>
+                                        <th>Nama</th>
                                         <th>{{ $data->nama }}</th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_jalan</th>
+                                        <th>Jalan</th>
                                         <th>{{ $data->alamat_jalan }}</th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_kec</th>
+                                        <th>Kecamatan</th>
                                         <th>{{ $data->alamat_kec }}</th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_kotakab</th>
+                                        <th>Kota/Kabupaten</th>
                                         <th>{{ $data->alamat_kotakab }}</th>
                                     </tr>
                                     <tr>
-                                        <th>alamat_propinsi</th>
+                                        <th>Provinsi</th>
                                         <th>{{ $data->alamat_propinsi }}</th>
                                     </tr>
                                     <tr>
-                                        <th>telepon</th>
+                                        <th>No Telepon</th>
                                         <th>{{ $data->telepon }}</th>
                                     </tr>
                                     <tr>
-                                        <th>pembiayaan</th>
-                                        <th>{{ $data->pembiayaan }}</th>
+                                        <th>Pembiayaan</th>
+                                        <th>Rp {{ number_format($data->pembiayaan, 0, ',', '.') }},-</th>
                                     </tr>
                                     <tr>
-                                        <th>tenor</th>
-                                        <th>{{ $data->tenor }}</th>
+                                        <th>Tenor</th>
+                                        <th>Rp {{ number_format($data->tenor, 0, ',', '.') }},-</th>
                                     </tr>
                                     <tr>
-                                        <th>cicilan</th>
-                                        <th>{{ $data->cicilan }}</th>
+                                        <th>Cicilan</th>
+                                        <th>{{ $data->cicilan }} Bulan</th>
                                     </tr>
                                     <tr>
-                                        <th>status</th>
-                                        <th>{{ $data->status }}</th>
+                                        <th>Status</th>
+                                        <th>
+                                            @if ($data->keputusan == 0)
+                                                Belum Ada Keputusan
+                                            @elseif ($data->keputusan == 1)
+                                                Disetujui
+                                            @else
+                                                Tidak Disetujui
+                                            @endif
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>url_ktp</th>
-                                        <th>{{ $data->url_ktp }}</th>
+                                        <th>Url KTP</th>
+                                        <th><a href="{{ $data->url_ktp }}"></a>{{ $data->url_ktp }}</th>
                                     </tr>
                                     <tr>
-                                        <th>url_kk</th>
-                                        <th>{{ $data->url_kk }}</th>
+                                        <th>Url KK</th>
+                                        <th><a href="{{ $data->url_kk }}"></a>{{ $data->url_kk }}</th>
                                     </tr>
                                     <tr>
-                                        <th>url_karip</th>
-                                        <th>{{ $data->url_karip }}</th>
+                                        <th>Url karip</th>
+                                        <th><a href="{{ $data->url_karip }}"></a>{{ $data->url_karip }}</th>
                                     </tr>
                                     <tr>
-                                        <th>url_sk_pensiun</th>
-                                        <th>{{ $data->url_sk_pensiun }}</th>
+                                        <th>Url SK Pensiun</th>
+                                        <th><a href="{{ $data->url_sk_pensiun }}"></a>{{ $data->url_sk_pensiun }}</th>
                                     </tr>
                                     <tr>
-                                        <th>url_video_interview</th>
-                                        <th>{{ $data->url_video_interview }}</th>
+                                        <th>Url Video Interview</th>
+                                        <th><a
+                                                href="{{ $data->url_video_interview }}"></a>{{ $data->url_video_interview }}
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>url_video_kesehatan</th>
-                                        <th>{{ $data->url_video_kesehatan }}</th>
+                                        <th>Url Video Kesehatan</th>
+                                        <th><a
+                                                href="{{ $data->url_video_kesehatan }}"></a>{{ $data->url_video_kesehatan }}
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>tanggal_keputusan</th>
+                                        <th>Tanggal Keputusan</th>
                                         <th>{{ $data->tanggal_keputusan }}</th>
                                     </tr>
                                     <tr>
-                                        <th>keputusan</th>
-                                        <th>{{ $data->keputusan }}</th>
+                                        <th>Keputusan</th>
+                                        <th>
+                                            @if ($data->keputusan == 0)
+                                                Belum Ada Keputusan
+                                            @elseif ($data->keputusan == 1)
+                                                Disetujui
+                                            @else
+                                                Tidak Disetujui
+                                            @endif
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th>url_pdf</th>
-                                        <th>{{ $data->url_pdf }}</th>
+                                        <th>Url PDF</th>
+                                        <th><a href="{{ $data->url_pdf }}"></a>{{ $data->url_pdf }}</th>
                                     </tr>
                                 </thead>
                             </table>

@@ -29,10 +29,10 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>tanggal_input</th>
-                                        <th>nik</th>
-                                        <th>nama</th>
-                                        <th>action</th>
+                                        <th>Tanggal Input</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

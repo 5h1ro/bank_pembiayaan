@@ -14,7 +14,7 @@
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item active">Data Archieve</li>
+    <li class="breadcrumb-item active">Data Arsip</li>
 @endsection
 
 @section('content')
@@ -23,36 +23,36 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data Archieve</h5>
+                        <h5>Data Arsip</h5>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>tanggal_input</th>
-                                        <th>nik</th>
-                                        <th>nopen</th>
-                                        <th>nama</th>
-                                        <th>alamat_jalan</th>
-                                        <th>alamat_kec</th>
-                                        <th>alamat_kotakab</th>
-                                        <th>alamat_propinsi</th>
-                                        <th>telepon</th>
-                                        <th>pembiayaan</th>
-                                        <th>tenor</th>
-                                        <th>cicilan</th>
-                                        <th>status</th>
-                                        <th>url_ktp</th>
-                                        <th>url_kk</th>
-                                        <th>url_karip</th>
-                                        <th>url_sk_pensiun</th>
-                                        <th>url_video_interview</th>
-                                        <th>url_video_kesehatan</th>
-                                        <th>tanggal_keputusan</th>
-                                        <th>keputusan</th>
-                                        <th>url_pdf</th>
-                                        <th>tanggal_archieve</th>
+                                        <th>Tanggan Input</th>
+                                        <th>NIK</th>
+                                        <th>Nopen</th>
+                                        <th>Nama</th>
+                                        <th>Jalan</th>
+                                        <th>Kecamatan</th>
+                                        <th>Kota/Kabupaten</th>
+                                        <th>Provinsi</th>
+                                        <th>Telepon</th>
+                                        <th>Pembiayaan</th>
+                                        <th>Tenor</th>
+                                        <th>Cicilan</th>
+                                        <th>Status</th>
+                                        <th>Url KTP</th>
+                                        <th>Url KK</th>
+                                        <th>Url Karip</th>
+                                        <th>Url SK Pensiun</th>
+                                        <th>Url Video Interview</th>
+                                        <th>Url Video Kesehatan</th>
+                                        <th>Tanggal Keputusan</th>
+                                        <th>Keputusan</th>
+                                        <th>Url PDF</th>
+                                        <th>Tanggal Arsip</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,9 +67,9 @@
                                             <td>{{ $data->alamat_kotakab }}</td>
                                             <td>{{ $data->alamat_propinsi }}</td>
                                             <td>{{ $data->telepon }}</td>
-                                            <td>{{ $data->pembiayaan }}</td>
-                                            <td>{{ $data->tenor }}</td>
-                                            <td>{{ $data->cicilan }}</td>
+                                            <td>Rp {{ number_format($data->pembiayaan, 0, ',', '.') }},-</td>
+                                            <td>Rp {{ number_format($data->tenor, 0, ',', '.') }},-</td>
+                                            <td>{{ $data->cicilan }} Bulan</td>
                                             <td>{{ $data->status }}</td>
                                             <td>{{ $data->url_ktp }}</td>
                                             <td>{{ $data->url_kk }}</td>
@@ -78,7 +78,15 @@
                                             <td>{{ $data->url_video_interview }}</td>
                                             <td>{{ $data->url_video_kesehatan }}</td>
                                             <td>{{ $data->tanggal_keputusan }}</td>
-                                            <td>{{ $data->keputusan }}</td>
+                                            <td>
+                                                @if ($data->keputusan == 0)
+                                                    Belum Ada Keputusan
+                                                @elseif ($data->keputusan == 1)
+                                                    Disetujui
+                                                @else
+                                                    Tidak Disetujui
+                                                @endif
+                                            </td>
                                             <td>{{ $data->url_pdf }}</td>
                                             <td>{{ $data->tanggal_archieve }}</td>
                                         </tr>

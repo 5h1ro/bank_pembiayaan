@@ -35,7 +35,7 @@
     ? 'active'
     : '' }}
                             href="{{ route('admin.newcustomer') }}">
-                            <i data-feather="server"></i><span>Data New Customer</span>
+                            <i data-feather="server"></i><span>Data Peminjam Baru</span>
                         </li>
                         <li class="">
                         <a class=" sidebar-link sidebar-title"
@@ -43,7 +43,7 @@
     ? 'active'
     : '' }}
                             href="{{ route('admin.archieve') }}">
-                            <i data-feather="server"></i><span>Data Archieve</span>
+                            <i data-feather="server"></i><span>Data Arsip</span>
                         </li>
                     @else
                         <li class="">
@@ -60,7 +60,7 @@
     ? 'active'
     : '' }}
                             href="{{ route('user.newcustomer') }}">
-                            <i data-feather="server"></i><span>Data New Customer</span>
+                            <i data-feather="server"></i><span>Data Peminjam Baru</span>
                         </li>
                         <li class="">
                     @endif

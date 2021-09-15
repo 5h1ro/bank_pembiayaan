@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archieve;
 use App\Models\NewCustomer;
+use App\Models\NewData;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -12,23 +13,28 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $client = new Client();
-        $url = "https://si-bima.com/api/customer";
+        $customers = NewData::all();
+        foreach ($customers as $data) {
+            $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
+        };
 
+        // $client = new Client();
+        // $url = "https://si-bima.com/api/customer";
 
-        $response = $client->request('GET', $url, [
-            'verify'  => false,
-        ]);
+        // $response = $client->request('GET', $url, [
+        //     'verify'  => false,
+        // ]);
 
-        $responseBody = json_decode($response->getBody());
-        $customer = $responseBody->data;
-        $customers = [];
-        foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
-            } else {
-                array_push($customers, $api);
-            }
-        }
+        // $responseBody = json_decode($response->getBody());
+        // $customer = $responseBody->data;
+        // $customers = [];
+        // foreach ($customer as $api) {
+        //     if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+        //     } else {
+        //         array_push($customers, $api);
+        //     }
+        // }
+
         $notification = count($customers);
         return view('admin.index', compact('customers', 'notification'));
     }
@@ -79,26 +85,33 @@ class AdminController extends Controller
 
     public function detail($id)
     {
-        $client = new Client();
-        $url = "https://si-bima.com/api/customer";
+        $customers = NewData::all();
+        foreach ($customers as $data) {
+            $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
+        };
 
+        // $client = new Client();
+        // $url = "https://si-bima.com/api/customer";
 
-        $response = $client->request('GET', $url, [
-            'verify'  => false,
-        ]);
+        // $response = $client->request('GET', $url, [
+        //     'verify'  => false,
+        // ]);
 
-        $responseBody = json_decode($response->getBody());
-        $customer = $responseBody->data;
-        $customers = [];
-        foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
-            } else {
-                array_push($customers, $api);
-            }
-        }
+        // $responseBody = json_decode($response->getBody());
+        // $customer = $responseBody->data;
+        // $customers = [];
+        // foreach ($customer as $api) {
+        //     if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+        //     } else {
+        //         array_push($customers, $api);
+        //     }
+        // }
+
         $notification = count($customers);
 
         $data = NewCustomer::where('id', $id)->first();
+        $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
+        $data->tanggal_keputusan = Carbon::parse($data->tanggal_keputusan)->format('d-m-Y H:i:s');
         return view('admin.detaildata', compact('data', 'notification'));
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Archieve;
 use App\Models\NewCustomer;
+use App\Models\NewData;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -43,5 +45,20 @@ class ApiController extends Controller
                 'data'      => json_decode($newcustomer)
             ));
         }
+    }
+
+
+    public function store(Request $request)
+    {
+        $date = Carbon::now()->locale('id');
+        $newcustomer = new NewData;
+        $newcustomer->tanggal_input = $date->toDateTimeString();
+        $newcustomer->nik = $request->nik;
+        $newcustomer->nama = $request->nama;
+        $newcustomer->save();
+        return Response::json(array(
+            'success'   => 1,
+            'message'   => 'Data berhasil di push'
+        ));
     }
 }

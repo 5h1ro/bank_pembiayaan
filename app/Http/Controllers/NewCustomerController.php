@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archieve;
 use App\Models\NewCustomer;
+use App\Models\NewData;
 // use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
@@ -18,25 +19,35 @@ class NewCustomerController extends Controller
 
     public function index()
     {
-        $client = new Client();
-        $url = "https://si-bima.com/api/customer";
+        // $client = new Client();
+        // $url = "https://si-bima.com/api/customer";
 
 
-        $response = $client->request('GET', $url, [
-            'verify'  => false,
-        ]);
+        // $response = $client->request('GET', $url, [
+        //     'verify'  => false,
+        // ]);
 
-        $responseBody = json_decode($response->getBody());
-        $customer = $responseBody->data;
-        $customers = [];
-        foreach ($customer as $api) {
-            if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
-            } else {
-                array_push($customers, $api);
-            }
-        }
+        // $responseBody = json_decode($response->getBody());
+        // $customer = $responseBody->data;
+        // $customers = [];
+        // foreach ($customer as $api) {
+        //     if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+        //     } else {
+        //         array_push($customers, $api);
+        //     }
+        // }
+        // $notification = count($customers);
+        $customers = NewData::all();
+        foreach ($customers as $data) {
+            $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
+        };
+
         $notification = count($customers);
         $newcustomer = NewCustomer::all();
+
+        foreach ($newcustomer as $data) {
+            $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
+        };
         return view('admin.newcustomer', compact('newcustomer', 'notification'));
     }
 
@@ -240,9 +251,9 @@ class NewCustomerController extends Controller
         $date = Carbon::now()->locale('id');
         $data = NewCustomer::where('id', $id)->first();
         $data->tanggal_keputusan = $date->toDateTimeString();
-        $data->keputusan = 1;
+        $data->keputusan_bank = 1;
         $data->save();
-        return redirect()->to('user/newcustomer');
+        return redirect()->back();
     }
 
     public function cancel($id)
@@ -250,8 +261,8 @@ class NewCustomerController extends Controller
         $date = Carbon::now()->locale('id');
         $data = NewCustomer::where('id', $id)->first();
         $data->tanggal_keputusan = $date->toDateTimeString();
-        $data->keputusan = 2;
+        $data->keputusan_bank = 2;
         $data->save();
-        return redirect()->to('user/newcustomer');
+        return redirect()->back();
     }
 }

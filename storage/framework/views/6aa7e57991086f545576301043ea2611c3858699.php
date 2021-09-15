@@ -37,7 +37,7 @@
     : ''); ?>
 
                             href="<?php echo e(route('admin.newcustomer')); ?>">
-                            <i data-feather="server"></i><span>Data New Customer</span>
+                            <i data-feather="server"></i><span>Data Peminjam Baru</span>
                         </li>
                         <li class="">
                         <a class=" sidebar-link sidebar-title"
@@ -46,7 +46,7 @@
     : ''); ?>
 
                             href="<?php echo e(route('admin.archieve')); ?>">
-                            <i data-feather="server"></i><span>Data Archieve</span>
+                            <i data-feather="server"></i><span>Data Arsip</span>
                         </li>
                     <?php else: ?>
                         <li class="">
@@ -65,7 +65,7 @@
     : ''); ?>
 
                             href="<?php echo e(route('user.newcustomer')); ?>">
-                            <i data-feather="server"></i><span>Data New Customer</span>
+                            <i data-feather="server"></i><span>Data Peminjam Baru</span>
                         </li>
                         <li class="">
                     <?php endif; ?>

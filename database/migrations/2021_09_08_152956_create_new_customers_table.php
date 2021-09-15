@@ -19,6 +19,7 @@ class CreateNewCustomersTable extends Migration
             $table->string('nik');
             $table->string('nopen');
             $table->string('nama');
+            $table->dateTime('tanggal_lahir');
             $table->string('alamat_jalan');
             $table->string('alamat_kec');
             $table->string('alamat_kotakab');
@@ -27,6 +28,7 @@ class CreateNewCustomersTable extends Migration
             $table->integer('pembiayaan');
             $table->integer('tenor');
             $table->integer('cicilan');
+            $table->integer('gaji_pokok');
             $table->boolean('status');
             $table->string('url_ktp')->nullable();
             $table->string('url_kk')->nullable();
@@ -35,7 +37,8 @@ class CreateNewCustomersTable extends Migration
             $table->string('url_video_interview')->nullable();
             $table->string('url_video_kesehatan')->nullable();
             $table->dateTime('tanggal_keputusan')->nullable();
-            $table->integer('keputusan')->default(0);
+            $table->integer('keputusan_bank')->default(0);
+            $table->integer('keputusan_asuransi')->default(0);
             $table->string('url_pdf')->nullable();
             $table->timestamps();
         });

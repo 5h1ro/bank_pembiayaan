@@ -13,11 +13,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
-    <h3>Data New Customer</h3>
+    <h3>Data Peminjam Baru</h3>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
-    <li class="breadcrumb-item active">Data New Customer</li>
+    <li class="breadcrumb-item active">Data Peminjam Baru</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -26,7 +26,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Data New Customer</h5>
+                        <h5>Data Peminjam Baru</h5>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
@@ -34,14 +34,14 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>tanggal_input</th>
-                                        <th>nik</th>
-                                        <th>nama</th>
-                                        <th>pembiayaan</th>
-                                        <th>tanggal_keputusan</th>
-                                        <th>keputusan</th>
-                                        <th>url_pdf</th>
-                                        <th>action</th>
+                                        <th>Tanggal Input</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Pembiayaan</th>
+                                        <th>Tanggal Keputusan</th>
+                                        <th>Keputusan</th>
+                                        <th>Url PDF</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +52,15 @@
                                             <td><?php echo e($data->nama); ?></td>
                                             <td><?php echo e($data->pembiayaan); ?></td>
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
-                                            <td><?php echo e($data->keputusan); ?></td>
+                                            <td>
+                                                <?php if($data->keputusan == 0): ?>
+                                                    Belum Ada Keputusan
+                                                <?php elseif($data->keputusan == 1): ?>
+                                                    Disetujui
+                                                <?php else: ?>
+                                                    Tidak Disetujui
+                                                <?php endif; ?>
+                                            </td>
                                             <td><a href="<?php echo e($data->url_pdf); ?>"><?php echo e($data->url_pdf); ?></a></td>
 
                                             <?php if(auth()->user()->role == 'admin'): ?>
@@ -132,21 +140,21 @@
                 document.getElementById('archive').onclick = function() {
                     let id = document.getElementById('archive').getAttribute('data-id');
                     swal({
-                            title: "Apakah kamu yakin?",
-                            text: "Kamu akan mengarchive data",
+                            title: "Apakah anda yakin?",
+                            text: "Anda akan mengarsipkan data",
                             icon: "warning",
                             buttons: true,
                             dangerMode: true,
                         })
                         .then((willDelete) => {
                             if (willDelete) {
-                                swal("Data berhasil diarchive", {
+                                swal("Data berhasil diarsipkan", {
                                     icon: "success"
                                 }).then(function() {
                                     window.location.href = "archieve" + id;
                                 });
                             } else {
-                                swal("Data tidak diarchive");
+                                swal("Data tidak diarsipkan");
                             }
                         });
                 };
