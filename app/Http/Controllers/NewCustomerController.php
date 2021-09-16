@@ -83,7 +83,7 @@ class NewCustomerController extends Controller
         $data->url_pdf = 'https://bank.seovdetech.com/pdf/' . $namedate . '.pdf';
         $data->save();
         $customer_data = $this->get_customer_data($id);
-        $pdf = PDF::loadView('suratpdf.surat-asuransi', $data)->save($my_pdf_path_for_example);
+        $pdf = PDF::loadView('suratpdf.surat-bank', $data)->save($my_pdf_path_for_example);
     }
 
     public function acc($id)
