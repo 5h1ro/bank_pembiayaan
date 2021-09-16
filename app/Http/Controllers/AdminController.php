@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Archieve;
 use App\Models\NewCustomer;
 use App\Models\NewData;
+use App\Models\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -147,5 +148,41 @@ class AdminController extends Controller
         $data->tanggal_keputusan = Carbon::parse($data->tanggal_keputusan)->format('d-m-Y H:i:s');
         $data->tanggal_lahir = Carbon::parse($data->tanggal_lahir)->isoFormat('d MMMM Y');
         return view('admin.detaildata', compact('data', 'notification'));
+    }
+
+    public function user()
+    {
+        $customers = NewData::all();
+        foreach ($customers as $data) {
+            $data->tanggal_input = Carbon::parse($data->tanggal_input)->format('d-m-Y H:i:s');
+        };
+
+        // $client = new Client();
+        // $url = "https://si-bima.com/api/customer";
+
+        // $response = $client->request('GET', $url, [
+        //     'verify'  => false,
+        // ]);
+
+        // $responseBody = json_decode($response->getBody());
+        // $customer = $responseBody->data;
+        // $customers = [];
+        // foreach ($customer as $api) {
+        //     if (NewCustomer::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists() || Archieve::where([['nik', '=', $api->nik], ['tanggal_input', '=', $api->tanggal_input]])->exists()) {
+        //     } else {
+        //         array_push($customers, $api);
+        //     }
+        // }
+
+        $notification = count($customers);
+        $user = User::all();
+        return view('admin.user', compact('customers', 'notification', 'user'));
+    }
+
+    public function delete($id)
+    {
+        $user = User::where('id', $id);
+        $user->delete();
+        return redirect()->back();
     }
 }

@@ -48,6 +48,15 @@
                             href="<?php echo e(route('admin.archieve')); ?>">
                             <i data-feather="server"></i><span>Data Arsip</span>
                         </li>
+                        <li class="">
+                        <a class=" sidebar-link sidebar-title"
+                            <?php echo e(request()->route()->getPrefix() == '/user'
+    ? 'active'
+    : ''); ?>
+
+                            href="<?php echo e(route('admin.user')); ?>">
+                            <i data-feather="server"></i><span>Data User</span>
+                        </li>
                     <?php else: ?>
                         <li class="">
                     <a class=" sidebar-link sidebar-title"

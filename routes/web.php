@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Session;
 
 Route::get('/', [LoginController::class, 'index'])->middleware('guest')->name('/');
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
+
+
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/loginpost', [LoginController::class, 'login'])->name('loginpost');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -34,6 +45,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/archieve{id}', [ArchieveController::class, 'create'])->name('admin.archieve.create');
         Route::get('admin/archieve/cancel={id}', [ArchieveController::class, 'cancel'])->name('admin.archieve.cancel');
         Route::get('admin/export={id}', [NewCustomerController::class, 'pdf'])->name('admin.export');
+
+
+        Route::get('admin/user', [AdminController::class, 'user'])->name('admin.user');
+        Route::get('admin/delete={id}', [AdminController::class, 'delete'])->name('admin.user.delete');
     });
     Route::middleware(['user'])->group(function () {
         Route::get('user', [UserController::class, 'index'])->name('user');

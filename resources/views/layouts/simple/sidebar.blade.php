@@ -45,6 +45,14 @@
                             href="{{ route('admin.archieve') }}">
                             <i data-feather="server"></i><span>Data Arsip</span>
                         </li>
+                        <li class="">
+                        <a class=" sidebar-link sidebar-title"
+                            {{ request()->route()->getPrefix() == '/user'
+    ? 'active'
+    : '' }}
+                            href="{{ route('admin.user') }}">
+                            <i data-feather="server"></i><span>Data User</span>
+                        </li>
                     @else
                         <li class="">
                     <a class=" sidebar-link sidebar-title"

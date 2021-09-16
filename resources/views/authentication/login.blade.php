@@ -20,22 +20,24 @@
                         <div class="login-main">
                             <form method="POST" action="{{ route('loginpost') }}" class="theme-form">
                                 {{ csrf_field() }}
-                                <h4>Sign in to account</h4>
-                                <p>Enter your email & password to login</p>
+                                <h4>Masuk Ke Akun Anda</h4>
+                                <p>Masukkan Email dan Sandi Anda</p>
                                 <div class="form-group">
-                                    <label class="col-form-label">Email Address</label>
+                                    <label class="col-form-label">Alamat Email</label>
                                     <input class="form-control" type="email" required="" name="email"
                                         placeholder="Test@gmail.com">
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-form-label">Password</label>
+                                    <label class="col-form-label">Kata Sandi</label>
                                     <input class="form-control" type="password" name="password" required=""
                                         placeholder="*********">
                                     <div class="mt-3 show-hide"><span class="show"></span></div>
                                 </div>
-                                <div class="form-group mb-0 d-flex justify-content-end mt-3">
+                                <div class="form-group mb-0 d-flex justify-content-start mt-3">
                                     <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                                 </div>
+                                <p class="mt-4 mb-0">Lupa Kata Sandi?<a class="ms-2"
+                                        href="{{ route('password.request') }}">Lupa Sandi</a></p>
 
                             </form>
                         </div>
