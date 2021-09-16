@@ -127,7 +127,7 @@
                                             <td>{{ $data->tanggal_input }}</td>
                                             <td>{{ $data->nik }}</td>
                                             <td>{{ $data->nama }}</td>
-                                            <td>{{ $data->pembiayaan }}</td>
+                                            <td>Rp {{ number_format($data->pembiayaan, 0, ',', '.') }},-</td>
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>
                                                 @if ($data->keputusan_bank == 0)
@@ -156,7 +156,8 @@
                                                             <i class="fa fa-info"></i><br>Detail
                                                         </button>
                                                     </a>
-                                                    <a id="archive" data-id="{{ $data->id }}">
+                                                    <a onclick="archieve({{ $data->id }})"
+                                                        data-id="{{ $data->id }}">
                                                         <button class="btn btn-primary w-100 mt-3">
                                                             <i class="fa fa-save"></i><br>Archieve
                                                         </button>
@@ -221,34 +222,25 @@
     <!-- Sweet alert jquery-->
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
     <script type="text/javascript">
-        var SweetAlert_custom = {
-            init: function() {
-                document.getElementById('archive').onclick = function() {
-                    let id = document.getElementById('archive').getAttribute('data-id');
-                    swal({
-                            title: "Apakah anda yakin?",
-                            text: "Anda akan mengarsipkan data",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                swal("Data berhasil diarsipkan", {
-                                    icon: "success"
-                                }).then(function() {
-                                    window.location.href = "archieve" + id;
-                                });
-                            } else {
-                                swal("Data tidak diarsipkan");
-                            }
-                        });
-                };
-            }
-        };
-        (function($) {
-            SweetAlert_custom.init()
-        })(jQuery);
+        function archieve(id) {
+            swal({
+                title: "Apakah anda yakin?",
+                text: "Anda akan mengarsipkan data",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    swal("Data berhasil diarsipkan", {
+                        icon: "success"
+                    }).then(function() {
+                        window.location.href = "archieve" + id;
+                    });
+                } else {
+                    swal("Data tidak diarsipkan");
+                }
+            });
+        }
     </script>
     <script src="{{ asset('assets/js') }}/tooltip-init.js"></script>
     <!-- Plugins JS Ends-->

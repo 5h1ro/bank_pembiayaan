@@ -185,4 +185,24 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->back();
     }
+    public function add(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+        $user->save();
+        return redirect()->back();
+    }
+    public function edit($id, Request $request)
+    {
+        $user = User::where('id', $id)->first();
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+        $user->save();
+        return redirect()->back();
+    }
 }

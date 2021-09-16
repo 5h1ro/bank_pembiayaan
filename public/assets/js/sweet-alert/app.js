@@ -54,29 +54,6 @@ var SweetAlert_custom = {
                             swal("Data tidak dirubah");
                         }
                     });
-            },
-
-            document.getElementById('archive').onclick = function () {
-                let id = document.getElementById('archive').getAttribute('data-id');
-                console.log(id);
-                swal({
-                    title: "Apakah anda yakin?",
-                    text: "Anda akan mengarsipkan data",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            swal("Data berhasil diarsipkan", {
-                                icon: "success"
-                            }).then(function () {
-                                window.location.href = "archieve" + id;
-                            });
-                        } else {
-                            swal("Data tidak diarsipkan");
-                        }
-                    });
             };
         // , document.querySelector('.sweet-6').onclick = function() {
         //     swal("Good job!", "You clicked the button!", "warning");
