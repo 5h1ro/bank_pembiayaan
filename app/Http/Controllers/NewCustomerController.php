@@ -80,169 +80,154 @@ class NewCustomerController extends Controller
         $my_pdf_path_for_example = public_path('pdf/' . $namedate . '.pdf');
         $data = NewCustomer::where('id', $id)->first();
         // $url = 'https://bank.si-bima.com/pdf/' . $namedate . '.pdf';
-        $data->url_pdf = $my_pdf_path_for_example;
+        $data->url_pdf = 'https://bank.seovdetech.com/pdf/' . $namedate . '.pdf';
         $data->save();
         $customer_data = $this->get_customer_data($id);
         PDF::loadHTML('
         <!DOCTYPE html>
         <html lang="en">
+            <head>
+                <title>contoh surat pengunguman</title>
+                <style type="text/css">
 
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
+                    table {
+                        border-style: double;
+                        border-width: 3px;
+                        border-color: white;
+                    }
+                    table tr .text2 {
+                        text-align: right;
+                        font-size: 14px;
+                        font-family: Arial, "Helvetica", sans-serif;
+                    }
+                    table tr .text {
+                        text-align: center;
+                        font-size: 14px;
+                        font-family: Arial, "Helvetica", sans-serif;
+                    }
+                    table tr td {
+                        font-size: 14px;
+                        font-family: Arial, "Helvetica", sans-serif;
+                    }
 
-        <body>
-            <div style="margin-left: 15pt; margin-right: 15pt;">
-                <div>
-                    <P style="text-align: center; padding-top: 20pt;">SURAT PERJANJIAN PINJAMAN UANG</P>
-                </div>
-                <div style="padding-top: 1.5pt;">
-                    <p style="text-align: justify; ">Pada hari ini ' . $date->isoFormat('dddd') . ' tanggal ' . $date->isoFormat('DD') . ' bulan ' . $date->isoFormat('MMMM') . ' tahun ' . $date->isoFormat('YYYY') . ', kami yang bertanda tangan di bawah ini: </p>
+                </style>
+            </head>
+            <body>
+                <center>
+                    <table width="625">
+                        <tr class="text2">
+                            <td><img src="logoAsuransi.jpeg" width="70" ></td>
+                            <td width="572"><b>PT. ASURANSI</b></td>
+                        </tr>
+                    </table>
                     <table>
                         <tr>
-                            <td style="width: 10px;">
-                                1.
-                            </td>
-                            <td style="width: 100px;">
-                                Nama
-                            </td>
                             <td>
-                                : ' . $customer_data->nama . '
+                            <center>
+                                <font size="4"><b>COVER NOTE PA PRIMA SIRAMA</b></font><br>
+                                <font size="4"><b>KOPERASI MANDIRI PRIMA</b></font><br>
+                                <font size="4"><b>NOMOR :001/PA PRIMA SIRAMA/V/2020/ABB-JKT 1</b></font><br>
+                            </center>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 10px;">
-
-                            </td>
-                            <td style="width: 100px;">
-                                nik
-                            </td>
-                            <td>
-                                : ' . $customer_data->nik . '
-                            </td>
+                            <td><hr width="625"></td>
                         </tr>
-                        <tr>
-                            <td style="width: 10px;">
-
-                            </td>
-                            <td style="width: 100px;">
-                                telepon
-                            </td>
+                    <table width="625">
+                        <tr class="text2" style="text-align: justify;">
                             <td>
-                                : ' . $customer_data->telepon . '
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 10px;">
-
-                            </td>
-                            <td style="width: 100px;">
-                                Alamat
-                            </td>
-                            <td>
-                                : Jln. ' . $customer_data->alamat_jalan . ', Kec. ' . $customer_data->alamat_kec . ' - ' . $customer_data->alamat_kotakab . '
+                                Kami yang bertandatangan dibawah ini PT. ASURANSI BHAKTI BAHAYANGKARA selanjutnya disebut
+                                sebagai Penanggung dengan ini memberikan Jaminan Asuransi PA PRIMA SIRMA kepada tertanggung
+                                yang disebut dibawah ini :
                             </td>
                         </tr>
                     </table>
-                </div>
-                <div style="padding-top: 1.5pt;">
-                    <p style="text-align: justify; ">Bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut PIHAK PERTAMA</p>
-                    <table>
-                        <tr>
-                            <td style="width: 10px;">
-                                2.
-                            </td>
-                            <td style="width: 100px;">
-                                Nama
-                            </td>
-                            <td>
-                                : Nurhakiki
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 10px;">
+                    </table>
 
-                            </td>
-                            <td style="width: 100px;">
-                                Umur
-                            </td>
-                            <td>
-                                : 20 Tahun
-                            </td>
+                    <table width="625">
+                        <tr class="text2">
+                            <td width="200"><b>TYPE OF INSURANCE</b></td>
+                            <td>:</td>
+                            <td><b> PA PRIMA SIRAMA REGULER + PLATINUM</b></td>
                         </tr>
                         <tr>
-                            <td style="width: 10px;">
+                            <td width="200"><b>PEMEGANG POLIS</b></td>
+                            <td>:</td>
+                            <td><b> KOPERASI MADNIRI PRIMA</b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>TERTANGGUNG</b></td>
+                            <td width="2">:</td>
+                            <td style="text-align: justify;" &nbsp;>1.' . $customer_data->nama . ' <br> 2.B</td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>JENIS KREDIT</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>JENIS RESIKO DICOVER</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>JENIS ASURANSI</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>MANFAAT ASURANSI</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>MASA ASURANSI</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>UANG PERTANGGUNGAN</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                        <tr>
+                            <td width="200"><b>SECURITY</b></td>
+                            <td width="2">:</td>
+                            <td><b></b></td>
+                        </tr>
+                    </table>
+                    <br>
 
-                            </td>
-                            <td style="width: 100px;">
-                                Pekerjaan
-                            </td>
-                            <td>
-                                : Backend Web Developer
-                            </td>
-                        </tr>
+                    <table width="625">
                         <tr>
-                            <td style="width: 10px;">
-
-                            </td>
-                            <td style="width: 100px;">
-                                Alamat
-                            </td>
-                            <td>
-                                : Madiun
+                        <td style="text-align:justify ;">
+                            <font size="2"> Pertanggungan ini berlakusesuai dengan syarat dan ketentuan yang tercantum dalam Polis
+                                Asuransi PA PRIMA SIRAMA. Cover Note ini merupakan satu kesatuan yang tidak dapat dipisahkan dengan
+                                Polis Asuransi PA PRIMA SIRAMA.
+                            </font>
+                        </td>
+                        </tr>
+                    </table>
+                    <table width="625">
+                        <tr>
+                        <td>
+                            <font size="2"> Cover Note ini berlaku sementara sampai dengan Polis Asli diterbitkan.
+                            </font>
+                        </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table width="625">
+                        <tr class="">
+                            <td width="250"><br><br><br><br></td>
+                            <td>Jakarta, Mei 11 2020<br>
+                                Signed for and on behalf of <br>
+                                <b>PT. ASURANSI BHAKTI BAHAYANGKARA</b>
                             </td>
                         </tr>
                     </table>
-                </div>
-                <div style="padding-top: 1.5pt">
-                    <p style="text-align: justify; ">Bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut PIHAK KEDUA</p>
-                    <table>
-                        <tr>
-                            <td style="width: 10px; vertical-align: top;">
-                                a.
-                            </td>
-                            <td style="width: 500pt; vertical-align: top;">
-                                Dengan ini menyatakan, bahwa PIHAK PERTAMA telah dengan sah dan benar mempunyai utang uang karena peminjaman kepada PIHAK KEDUA, sebesar []
-                            </td>
-                        </tr>
-                    </table>
-                    <table style="padding-top: 1pt;">
-                        <tr>
-                            <td style="width: 10px; vertical-align: top;">
-                                b.
-                            </td>
-                            <td style="width: 500pt; vertical-align: top;">
-                                PIHAK PERTAMA mengakui telah menerima jumlah uang tersebut secara lengkap dari PIHAK KEDUA sebelum penandatanganan Surat Perjanjian ini, sehingga Surat Perjanjian ini diakui oleh kedua belah pihak dan berlaku sebagai tanda penerimaan yang sah.
-                            </td>
-                        </tr>
-                    </table>
-                    <table style="padding-top: 1pt;">
-                        <tr>
-                            <td style="width: 10px; vertical-align: top;">
-                                c.
-                            </td>
-                            <td style="width: 500pt; vertical-align: top;">
-                                PIHAK KEDUA dengan ini menyatakan telah menerima pengakuan berhutang dari PIHAK PERTAMA tersebut di atas.
-                            </td>
-                        </tr>
-                    </table>
-                    <table style="padding-top: 1pt;">
-                        <tr>
-                            <td style="width: 10px; vertical-align: top;">
-                                d.
-                            </td>
-                            <td style="width: 500pt; vertical-align: top;">
-                                Kedua belah pihak telah bersepakat untuk mengadakan serta mengikatkan diri terhadap syarat-syarat serta ketetapan-ketetapan dalam perjanjian ini yang diatur dalam 8 (delapan) pasal
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </body>
-
+                </center>
+            </body>
         </html>')->save($my_pdf_path_for_example);
     }
 
