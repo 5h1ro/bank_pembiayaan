@@ -43,7 +43,7 @@ class AdminController extends Controller
 
     public function create($nik)
     {
-        $response = Http::withBasicAuth('mci_server', 'mc1_s3rv3r')->post('http://103.121.122.213:3000/get_data_customer', [
+        $response = Http::withBasicAuth('mci_server', 'mc1_s3rv3r')->post('http://103.121.122.213:80/get_data_customer', [
             "nik" => $nik
         ]);
         // $client = new Client();
