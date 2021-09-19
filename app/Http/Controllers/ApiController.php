@@ -11,39 +11,37 @@ use Illuminate\Support\Facades\Response;
 
 class ApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $archieve = Archieve::all();
+        $archieve = Archieve::where('nik', $request->nik)->first();
         if ($archieve->isEmpty()) {
             return Response::json(array(
-                'success'   => true,
-                'message'   => '',
-                'data'      => []
-            ), 404);
-        } else {
-            return Response::json(array(
-                'success'   => true,
-                'message'   => '',
+                'success'   => 1,
+                'message'   => 'Data Tidak Ada',
                 'data'      => json_decode($archieve)
             ));
+        } else {
+            return Response::json(array(
+                'success'   => 0,
+                'message'   => 'Data Tidak Ada'
+            ), 404);
         }
     }
 
-    public function newcustomer()
+    public function newcustomer(Request $request)
     {
-        $newcustomer = NewCustomer::where('keputusan', '!=', 0)->get();
-        if ($newcustomer->isEmpty()) {
+        $newcustomer = NewCustomer::where('nik', $request->nik)->first();
+        if ($newcustomer) {
             return Response::json(array(
-                'success'   => true,
-                'message'   => '',
-                'data'      => []
-            ), 404);
-        } else {
-            return Response::json(array(
-                'success'   => true,
-                'message'   => '',
+                'success'   => 1,
+                'message'   => 'Data Tersedia',
                 'data'      => json_decode($newcustomer)
             ));
+        } else {
+            return Response::json(array(
+                'success'   => 0,
+                'message'   => 'Data Tidak Ada'
+            ), 404);
         }
     }
 
