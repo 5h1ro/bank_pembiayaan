@@ -102,32 +102,36 @@
                                     </tr>
                                     <tr>
                                         <th>Url KTP</th>
-                                        <th><a href="<?php echo e($data->url_ktp); ?>"></a><?php echo e($data->url_ktp); ?></th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="<?php echo e($data->url_ktp); ?>">KTP</a></th>
                                     </tr>
                                     <tr>
                                         <th>Url KK</th>
-                                        <th><a href="<?php echo e($data->url_kk); ?>"></a><?php echo e($data->url_kk); ?></th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="<?php echo e($data->url_kk); ?>">KK</a></th>
                                     </tr>
                                     <tr>
                                         <th>Url karip</th>
-                                        <th><a href="<?php echo e($data->url_karip); ?>"></a><?php echo e($data->url_karip); ?></th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="<?php echo e($data->url_karip); ?>">Karip</a></th>
                                     </tr>
                                     <tr>
                                         <th>Url SK Pensiun</th>
-                                        <th><a href="<?php echo e($data->url_sk_pensiun); ?>"></a><?php echo e($data->url_sk_pensiun); ?></th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="<?php echo e($data->url_sk_pensiun); ?>">SK Pensiun</a>
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th>Url Video Interview</th>
-                                        <th><a
-                                                href="<?php echo e($data->url_video_interview); ?>"></a><?php echo e($data->url_video_interview); ?>
-
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="<?php echo e($data->url_video_interview); ?>">Video Interview</a>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th>Url Video Kesehatan</th>
-                                        <th><a
-                                                href="<?php echo e($data->url_video_kesehatan); ?>"></a><?php echo e($data->url_video_kesehatan); ?>
-
+                                        <th><a class="btn btn-outline-info" href="<?php echo e($data->url_video_kesehatan); ?>"
+                                                target=" _blank">Video
+                                                Kesehatan</a>
                                         </th>
                                     </tr>
                                     <tr>
@@ -160,7 +164,13 @@
                                     </tr>
                                     <tr>
                                         <th>Url PDF</th>
-                                        <th><a href="<?php echo e($data->url_pdf); ?>"></a><?php echo e($data->url_pdf); ?></th>
+                                        <?php if(isset($data->url_pdf)): ?>
+                                            <th><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_pdf); ?>">PDF</a></th>
+                                        <?php else: ?>
+                                            <th></th>
+                                        <?php endif; ?>
+
                                     </tr>
                                 </thead>
                             </table>

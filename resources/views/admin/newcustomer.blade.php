@@ -147,7 +147,12 @@
                                                     Tidak Disetujui
                                                 @endif
                                             </td>
-                                            <td><a href="{{ $data->url_pdf }}">{{ $data->url_pdf }}</a></td>
+                                            @if (isset($data->url_pdf))
+                                                <td><a class="btn btn-outline-info" target=" _blank"
+                                                        href="{{ $data->url_pdf }}">PDF</a></td>
+                                            @else
+                                                <td></td>
+                                            @endif
 
                                             @if (auth()->user()->role == 'admin')
                                                 <td class="col">

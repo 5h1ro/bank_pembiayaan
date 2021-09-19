@@ -71,7 +71,12 @@
                                                     Tidak Disetujui
                                                 <?php endif; ?>
                                             </td>
-                                            <td><a href="<?php echo e($data->url_pdf); ?>"><?php echo e($data->url_pdf); ?></a></td>
+                                            <?php if(isset($data->url_pdf)): ?>
+                                                <td><a class="btn btn-outline-info" target=" _blank"
+                                                        href="<?php echo e($data->url_pdf); ?>">PDF</a></td>
+                                            <?php else: ?>
+                                                <td></td>
+                                            <?php endif; ?>
 
                                             <?php if(auth()->user()->role == 'admin'): ?>
                                                 <td class="col">

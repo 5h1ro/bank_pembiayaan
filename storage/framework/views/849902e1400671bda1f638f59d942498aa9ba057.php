@@ -75,12 +75,18 @@
                                             <td>Rp <?php echo e(number_format($data->cicilan, 0, ',', '.')); ?>,-</td>
                                             <td>Rp <?php echo e(number_format($data->gaji_pokok, 0, ',', '.')); ?>,-</td>
                                             <td><?php echo e($data->status); ?></td>
-                                            <td><?php echo e($data->url_ktp); ?></td>
-                                            <td><?php echo e($data->url_kk); ?></td>
-                                            <td><?php echo e($data->url_karip); ?></td>
-                                            <td><?php echo e($data->url_sk_pensiun); ?></td>
-                                            <td><?php echo e($data->url_video_interview); ?></td>
-                                            <td><?php echo e($data->url_video_kesehatan); ?></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_ktp); ?>">KTP</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_kk); ?>">KK</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_karip); ?>">Karip</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_sk_pensiun); ?>">SK Pensiun</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_video_interview); ?>">Video Interview</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_video_kesehatan); ?>">Video Kesehatan</a></td>
                                             <td><?php echo e($data->tanggal_keputusan); ?></td>
                                             <td>
                                                 <?php if($data->keputusan_bank == 0): ?>
@@ -100,7 +106,8 @@
                                                     Tidak Disetujui
                                                 <?php endif; ?>
                                             </td>
-                                            <td><?php echo e($data->url_pdf); ?></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="<?php echo e($data->url_pdf); ?>">PDF</a></td>
                                             <td><?php echo e($data->tanggal_archieve); ?></td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

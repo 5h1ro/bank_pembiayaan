@@ -95,19 +95,19 @@ class NewCustomerController extends Controller
             /* to centre page on screen*/
             margin-left: auto;
             margin-right: auto;
-            
+
             @page Section1 {
-                size: 8.27in 11.69in; 
-                margin: .5in .5in .5in .5in; 
-                mso-header-margin: .5in; 
-                mso-footer-margin: .5in; 
+                size: 8.27in 11.69in;
+                margin: .5in .5in .5in .5in;
+                mso-header-margin: .5in;
+                mso-footer-margin: .5in;
                 mso-paper-source: 0;
             }
-            
+
             div.Section1 {
                 page: Section1;
-            } 
-            
+            }
+
             table {
                 border-style: double;
                 border-width: 3px;
@@ -126,12 +126,12 @@ class NewCustomerController extends Controller
             table tr td {
                 font-size: 12px;
                 font-family: Arial, "Helvetica", sans-serif;
-                vertical-align: top; 
+                vertical-align: top;
                 text-align: left;
                 text-align: justify;
-            
+
             }
-            
+
             .page-break {
                 page-break-after: always;
             }
@@ -144,18 +144,18 @@ class NewCustomerController extends Controller
                 border-color: black;
                 border: 2px;
                 padding: 10px;
-                
+
             }
-    
+
                 .grid-container > div {
                 width: 100%;
                 text-align: center;
                 padding: 10px 0;
                 font-size: 30px;
                 border-color: black;
-                
+
             }
-            
+
 
             </style>
         </head>
@@ -181,11 +181,11 @@ class NewCustomerController extends Controller
                             <tr class="text2">
                                 <td width="150">Plafond Pembiayaan</td>
                                 <td width="2">:</td>
-                                <td width="100" style="text-align: right;">150.0000</td>
+                                <td width="100" style="text-align: right;">' . $customer_data->pembiayaan . '</td>
                                 <td width="2"></td>
                                 <td width="100">Nama</td>
                                 <td width="2">:</td>
-                                <td width="200">MARIA</td>
+                                <td width="200">' . $customer_data->nama . '</td>
                             </tr>
                             <tr class="text2">
                                 <td width="150">Margin Efektif</td>
@@ -194,12 +194,12 @@ class NewCustomerController extends Controller
                                 <td width="2"></td>
                                 <td width="100">Nopen</td>
                                 <td width="2">:</td>
-                                <td width="200">12138748971</td>
+                                <td width="200">' . $customer_data->nopen . '</td>
                             </tr>
                             <tr class="text2">
                                 <td width="150">Jangka Waktu (bulan)</td>
                                 <td width="2">:</td>
-                                <td width="100" style="text-align: right;">81</td>
+                                <td width="100" style="text-align: right;">' . $customer_data->tenor . ' Bulan</td>
                                 <td width="2"></td>
                                 <td width="150">Kantor Bayar Tujuan</td>
                                 <td width="2">:</td>
@@ -208,7 +208,7 @@ class NewCustomerController extends Controller
                             <tr class="text2">
                                 <td width="150">Angsuran per-bulan</td>
                                 <td width="2">:</td>
-                                <td width="100" style="text-align: right;">4.000.000</td>
+                                <td width="100" style="text-align: right;">' . $customer_data->cicilan . '</td>
                                 <td width="2"></td>
                                 <td width="100">Area Pelayanan</td>
                                 <td width="2">:</td>
@@ -294,8 +294,8 @@ class NewCustomerController extends Controller
                         <tr class="text2" style="text-align: justify;">
                             <td>
                                 <font size="2">
-                                Yang bertanda tangan dibawah ini: MARIA ARLENTINA SUTINI beralamat di GADUNG RT 001 RW 003 NGOMPRO PANGKUR, NGAWI JAWA TIMUR 
-                                bertindak untuk dan atas nama diri sendiri selanjutnya disebut penjamin. Dengan ini memberi kuasa yang tidak dapat ditarik kembali 
+                                Yang bertanda tangan dibawah ini: ' . $customer_data->nama . ' beralamat di ' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '
+                                bertindak untuk dan atas nama diri sendiri selanjutnya disebut penjamin. Dengan ini memberi kuasa yang tidak dapat ditarik kembali
                                 meskipun dengan alasan yang tercantum dalam pasal 1813 KUH Perdata, kepada PT. BPRS Mitra Cahaya Indonesia (yang dalam surat kuasa
                                 ini disebut BANK) untuk menjual, menarik, mencairkan dan memindahkan tangan dengan harga dipandang patut oleh Bank, atas titipan berupa
                                 </font>
@@ -306,15 +306,15 @@ class NewCustomerController extends Controller
                     <table width="100%" style="margin-left: 30px;">
                         <tr style="font: size 2px;">
                             <td width="2">A.</td>
-                            <td widht="100">Anggunan antara lain :</td>  
+                            <td widht="100">Anggunan antara lain :</td>
                         </tr>
                         <tr style="font: size 2px;">
                             <td></td>
-                            <td> -  Surat Keputusan Pensiun Asli Nomer :09090290139</td>
+                            <td> -  Surat Keputusan Pensiun Asli Nomer :' . $customer_data->nopen . '</td>
                         </tr>
                         <tr style="font: size 2px;">
                             <td width="2">B.</td>
-                            <td widht="100">Titipan berupa :</td>  
+                            <td widht="100">Titipan berupa :</td>
                         </tr>
                         <tr style="font: size 2px;">
                             <td></td>
@@ -322,7 +322,7 @@ class NewCustomerController extends Controller
                         </tr>
                         <tr style="font: size 2px;">
                             <td width="2">C.</td>
-                            <td widht="100">Hal - hal sesuai kesepakatan bersama antara lain :</td>  
+                            <td widht="100">Hal - hal sesuai kesepakatan bersama antara lain :</td>
                         </tr>
                         <tr style="font: size 2px;">
                             <td></td>
@@ -337,20 +337,20 @@ class NewCustomerController extends Controller
                         <table width="100%">
                             <tr>
                             <td style="text-align:justify ;">
-                                <font size="2"> Yang diserahkan kepada BANK sebagai titipan dari pembiayaan berdasarkan perjanjian pembiayaan MBAK.. ./V1102021 tanggal 30-08-2021 dan atau berdasarkan apapun, 
+                                <font size="2"> Yang diserahkan kepada BANK sebagai titipan dari pembiayaan berdasarkan perjanjian pembiayaan MBAK.. ./V1102021 tanggal 30-08-2021 dan atau berdasarkan apapun,
                                     apabila BANK menganggap NASABAH tersebut diatas, termasuk pembayaran profit dan ongkos ongkos lainnya akan ditentukan BANK
                                 </font>
                                 <br><br>
                                 <font size="2"> Semua hasil-hasil penjualan menarik, mencairkan barang-barang tersebut setelah dikurangi ongkosongkos supaya diperhitungkan untuk melunasi pembiayaan
                                 </font>
                                 <br>
-                                <font size="2"> Sdr. MARIA ARLENTINA SUTINI kepada BANK
+                                <font size="2"> Sdr. ' . $customer_data->nama . ' kepada BANK
                                 </font>
                                 <br><br>
                                 <font size="2"> Khusus apabila yang kami serahkan tersebut diatas merupakan rumah bangunan, maka kami harus mengkosongkan selambat-lambatnya 1 (satu) bulan setelah pemberitahuan pertama dan BANK dengan tidak perlu dibuktikan untuk itu.
                                 </font>
                                 <br><br>
-                                <font size="2"> Terhitung semenjak Surat Kuasa ini BANK berhak dan berwenang untuk mengurus, menandatangani surat-surat sehubungan dengan titipan titipan tersebut 
+                                <font size="2"> Terhitung semenjak Surat Kuasa ini BANK berhak dan berwenang untuk mengurus, menandatangani surat-surat sehubungan dengan titipan titipan tersebut
                                     baik terhadap yang berwajib maupun terhadap pihak lain, selanjutnya kepada BANK dikuasakan untuk membuat dan menandatangani surat jual bell proses verbal lelang umum, memberi kwitansi untuk semua tindakan yang berhubungan dengan pemindahan hak / penjualan barang tersebut. Dengan ini pula yang bertanda tangan dibawah ini mengikat diri untuk mematuhi / memenuhi segala keputusan BANK mengenai barang barang tersebut
                                 </font>
                                 <br><br>
@@ -376,7 +376,7 @@ class NewCustomerController extends Controller
                             <td></td>
                             <td style="text-align: center;"> Pemohon,
                                 <br><br><br><br><br><br><br><br><br><br>
-                                MARIA
+                                ' . $customer_data->nama . '
                                 <hr></td>
                             <td></td>
                             <td style="text-align: center;"> Suami/Isteri*,
@@ -406,29 +406,29 @@ class NewCustomerController extends Controller
                         <tr class="text2">
                             <td width="100">NASABAH</td>
                             <td width="10">:</td>
-                            <td widht="200">Maria</td>  
+                            <td widht="200">' . $customer_data->nama . '</td>
                         </tr>
                         <tr class="text2">
                             <td width="100">ALAMAT</td>
                             <td width="10">:</td>
-                            <td widht="200">Maria</td>  
+                            <td widht="200">' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                         </tr>
                         <tr class="text2">
                             <td width="100">PLAFON</td>
                             <td width="10">:</td>
-                            <td widht="200">Maria</td>  
+                            <td widht="200">Maria</td>
                         </tr>
                         <tr class="text2">
                             <td width="100">TANGGAL</td>
                             <td width="10">:</td>
-                            <td widht="200">Maria</td>  
+                            <td widht="200">' . $customer_data->tanggal_keputusan . '</td>
                         </tr>
                     </table>
                     <br>
                     <table width="100%">
                         <tr class="text2">
                             <td width="2">1.</td>
-                            <td width="250">MARIA</td>
+                            <td width="250">' . $customer_data->nama . '</td>
                             <td>Ttd.</td>
                         </tr>
                         <tr><td><br></td></tr>
@@ -493,7 +493,7 @@ class NewCustomerController extends Controller
                     </tr>
                     <table width="80%">
                         <tr>
-                            <td>MARIA</td>
+                            <td>' . $customer_data->nama . '</td>
                         </tr>
                         <tr>
                             <td>GEDUNG</td>
@@ -577,7 +577,7 @@ class NewCustomerController extends Controller
                             <td>:</td>
                             <td></td>
                         </tr>
-                    </table> 
+                    </table>
                 </table>
                 <table width="100%">
                     <tr>
@@ -763,8 +763,8 @@ class NewCustomerController extends Controller
                 <table width="100%" >
                     <tr>
                         <td style="text-align: justify;">
-                            <font size="2">Demikian sebagai persetujuan saudara atas syarat-syarat dan kondisi diatas Kiranya salinan surat dapat ditandatangani dan 
-                                dikembalikan pada kami selambat lambatnya 3 (tiga) hari setelah tanggal surat ini. Surat persetujuan ini merupakan bagian yang tidak 
+                            <font size="2">Demikian sebagai persetujuan saudara atas syarat-syarat dan kondisi diatas Kiranya salinan surat dapat ditandatangani dan
+                                dikembalikan pada kami selambat lambatnya 3 (tiga) hari setelah tanggal surat ini. Surat persetujuan ini merupakan bagian yang tidak
                                 terpisahkan dari akad pembiayaan Murabahah yang ditandatangani.
                             </font>
                             <br><br>
@@ -788,15 +788,15 @@ class NewCustomerController extends Controller
                         </td>
                         <td></td>
                         <td width="30%" style="text-align: center;">
-                            
+
                             <br><br><br><br><br><br><br><br><br><br>
-                            MARIA
+                            ' . $customer_data->nama . '
                             <hr>
                             Nasabah
                         </td>
                         <td></td>
                         <td width="30%" style="text-align: center;">
-                        
+
                             <br><br><br><br><br><br><br><br><br><br>
                         SUDJITO
                             <hr>
@@ -826,27 +826,27 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td width="150">Nama</td>
                         <td width="10">:</td>
-                        <td widht="200">Maria</td>  
+                        <td widht="200">' . $customer_data->nama . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="150">Tempat, Tgl. Lahir</td>
                         <td width="10">:</td>
-                        <td widht="200">Maria</td>  
+                        <td widht="200">' . $customer_data->tanggal_lahir . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="150">No. KTP</td>
                         <td width="10">:</td>
-                        <td widht="200">Maria</td>  
+                        <td widht="200">' . $customer_data->nik . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="150">Pekerjaan</td>
                         <td width="10">:</td>
-                        <td widht="200">Maria</td>  
+                        <td widht="200">Maria</td>
                     </tr>
                     <tr class="text2">
                         <td width="150">Alamt</td>
                         <td width="10">:</td>
-                        <td widht="200">Maria</td>  
+                        <td widht="200">' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                 </table>
                 <br>
@@ -854,7 +854,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td style="text-align: justify;">
                             <font size="2">Dengan ini memberi kuasa kepada PT BPRS Mitra Cahaya Indonesia Jl. Kaliurang km 10 Ngaglik Yogyakarta, untuk melakukan pendebetan/ Auto Debet Rekening Tabungan
-                                ___________________________Atas nama MARIA ARLENTINA SUTINI pada PT BPRS Mitra Cahaya Indonesia guna: </font>
+                                ___________________________Atas nama ' . $customer_data->nama . ' pada PT BPRS Mitra Cahaya Indonesia guna: </font>
                         </td>
                     </tr>
                 </table>
@@ -881,7 +881,7 @@ class NewCustomerController extends Controller
                         <td width="50%" style="text-align: center;">
                             Yang Memberi Kuasa,
                             <br><br><br><br><br><br><br><br><br><br>
-                            MARIA
+                            ' . $customer_data->nama . '
                             <hr width="200">
                             Nasabah
                         </td>
@@ -945,10 +945,10 @@ class NewCustomerController extends Controller
                     <tr>
                         <td style="text-align: justify;">
                             <font>
-                                Dalam hal ini bertindak dalam jabatannya tersebut untuk dan atas nama PT. Bank Pembiayaan Rakyat Syariah Mitra Cahaya Indonesia berkedudukan di JL Kaliurang Km 10 No 28 Kecamatan Ngaglik Sleman, 
-                                Propinsi Daerah Istimewa Yogyakarta, berdasarkan Anggaran Dasarnya dimuat dalam Akta Pendirian Nomor 17 tertanggal 11 januari 2008 (11-01-2008) dihadapan notaris Wahyu Wiryono, SH dan telah mendapat 
-                                pengesahan dari Menteri Hukum dan Hak Asasi Manusia Republik Indonesia dengan Surat Keputusannya tertanggal 18 Maret 2008 (18-02-2008) Nomor AHU-13544.AH.01.01 tahun 2008. Dan telah mengalami perubahan 
-                                terakhir dengan akta Nomor 06 tanggal 5 Agustus 2020 di hadapan notaris Moh Djaelani Asad, Sh dengan bukti Penerimaan Pemberitahuan Perubahan Data Perseroan Menteri Hukum dan Hak Asasi Kemanusiaan Republik 
+                                Dalam hal ini bertindak dalam jabatannya tersebut untuk dan atas nama PT. Bank Pembiayaan Rakyat Syariah Mitra Cahaya Indonesia berkedudukan di JL Kaliurang Km 10 No 28 Kecamatan Ngaglik Sleman,
+                                Propinsi Daerah Istimewa Yogyakarta, berdasarkan Anggaran Dasarnya dimuat dalam Akta Pendirian Nomor 17 tertanggal 11 januari 2008 (11-01-2008) dihadapan notaris Wahyu Wiryono, SH dan telah mendapat
+                                pengesahan dari Menteri Hukum dan Hak Asasi Manusia Republik Indonesia dengan Surat Keputusannya tertanggal 18 Maret 2008 (18-02-2008) Nomor AHU-13544.AH.01.01 tahun 2008. Dan telah mengalami perubahan
+                                terakhir dengan akta Nomor 06 tanggal 5 Agustus 2020 di hadapan notaris Moh Djaelani Asad, Sh dengan bukti Penerimaan Pemberitahuan Perubahan Data Perseroan Menteri Hukum dan Hak Asasi Kemanusiaan Republik
                                 Indonesia Nomor AHU-AH.01.03-0330862 tanggal 6 Agustus 2020, (selanjutnya disebut Bank)
                             </font>
                         </td>
@@ -959,13 +959,13 @@ class NewCustomerController extends Controller
                         <td width="20">II.</td>
                         <td width="200">Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
                         <td width="200">Tempat, Tgl. Lahir</td>
                         <td width="20">:</td>
-                        <td>NGAWI</td>
+                        <td>' . $customer_data->tanggal_lahir . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
@@ -983,7 +983,7 @@ class NewCustomerController extends Controller
                         <td width="20"></td>
                         <td width="200">Alamat</td>
                         <td width="20">:</td>
-                        <td>GADUNG RT 001</td>
+                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                 </table>
                 <table width="100%" style="margin-left: 30px;">
@@ -998,19 +998,19 @@ class NewCustomerController extends Controller
                         <td width="20"></td>
                         <td width="200">Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
                         <td width="200">Tempat, Tgl. Lahir</td>
                         <td width="20">:</td>
-                        <td>NGAWI</td>
+                        <td>' . $customer_data->tanggal_lahir . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
                         <td width="200">No. KTP</td>
                         <td width="20">:</td>
-                        <td>012389203489</td>
+                        <td>' . $customer_data->nik . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
@@ -1022,7 +1022,7 @@ class NewCustomerController extends Controller
                         <td width="20"></td>
                         <td width="200">Alamat</td>
                         <td width="20">:</td>
-                        <td>GADUNG RT 001</td>
+                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                 </table>
                 <table width="100%" style="margin-left: 30px;">
@@ -1063,7 +1063,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr style="vertical-align: top; text-align: left;">
                         <td width="20">1.</td>
-                        <td style="text-align: justify;">Fasilitas Piutang Murabahah ini diberikan untuk jangka waktu 81 (Detapan Puluh Satu) bulan, terhitung sejak tanggal 30-08-2021 sampai dengan tanggal 30-05-2028 NASABAH sepakat bahwa angsuran didebet langsung pada bulan saat NASABAH menandatangani perjanjian ini dari rekening tabungan NASABAH NASABAH wajib melakukan pembayaran kembas kepada BANK secara angsuran dengan tertib dan teratur mulai tanggal 30-09-2021 dan terakhir tanggal 30-05-2028 dan harus lunas.</td>
+                        <td style="text-align: justify;">Fasilitas Piutang Murabahah ini diberikan untuk jangka waktu ' . $customer_data->tenor . ' bulan, terhitung sejak tanggal 30-08-2021 sampai dengan tanggal 30-05-2028 NASABAH sepakat bahwa angsuran didebet langsung pada bulan saat NASABAH menandatangani perjanjian ini dari rekening tabungan NASABAH NASABAH wajib melakukan pembayaran kembas kepada BANK secara angsuran dengan tertib dan teratur mulai tanggal 30-09-2021 dan terakhir tanggal 30-05-2028 dan harus lunas.</td>
                     </tr>
                     <tr style="vertical-align: top; text-align: left;">
                         <td width="20">2.</td>
@@ -1112,7 +1112,7 @@ class NewCustomerController extends Controller
                         </tr>
                         <tr>
                             <td></td>
-                            <td>- Surat Keputusan Penisun Asli Nomor. 00096/KEP/CV/2008</td>
+                            <td>- Surat Keputusan Penisun Asli Nomor. ' . $customer_data->nopen . '</td>
                         </tr>
                         <tr>
                             <td width="20">B.</td>
@@ -1151,12 +1151,12 @@ class NewCustomerController extends Controller
                     <tr style="vertical-align: top; text-align: left;">
                         <td width="20">2.</td>
                         <td style="text-align: justify;">NASABAH setuju bahwa apabila dianggap perlu oleh BANK berdasar pertimbangannya sendiri BANK mempunyai hak untuk
-                            mengalihkan, baik seluruh atau sebagian hak-hak yang timbulsehubungan dengan pelaksanaan Akad tersebut (berikut setiap perubahan, penambahan atau perpanjangannya) 
+                            mengalihkan, baik seluruh atau sebagian hak-hak yang timbul sehubungan dengan pelaksanaan Akad tersebut (berikut setiap perubahan, penambahan atau perpanjangannya)
                             kepada pihak lainnya dan NASABAH setuju bahwa penerima pengalihan hak yang bersangkutan akan mendapat manfaat yang sama dengan yang diberikan kepada BANK berdasarkan akad ini.</td>
                     </tr>
                     <tr style="vertical-align: top; text-align: left;">
                         <td width="20">3.</td>
-                        <td style="text-align: justify;">Dalam hal BANK mengalihkan hak dan kewajibannya baik sebagian atau seluruhnya, NASABAH tetap terikat dan tunduk pada syaratsyarat dan ketentuan-ketentuan dalam Akad tersebut (berikut setiap perubahan, penambahan atau 
+                        <td style="text-align: justify;">Dalam hal BANK mengalihkan hak dan kewajibannya baik sebagian atau seluruhnya, NASABAH tetap terikat dan tunduk pada syaratsyarat dan ketentuan-ketentuan dalam Akad tersebut (berikut setiap perubahan, penambahan atau
                             perpanjangannya) serta perjanjianperjanjian/akad-akad lainnya yang berhubungan dengan pelaksanaan Akad ini.</td>
                     </tr>
                 </table>
@@ -1168,7 +1168,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr>
                         <td>
-                            Apabila terjadi hal-hal di bawah ini, setiap kejadian demikian, sebelum dan sesudah ini masing-masing secara tersendiri atau secara bersamasama disebut sebagai Peristiwa Cidera Janji" yaitu: 
+                            Apabila terjadi hal-hal di bawah ini, setiap kejadian demikian, sebelum dan sesudah ini masing-masing secara tersendiri atau secara bersamasama disebut sebagai Peristiwa Cidera Janji" yaitu:
                         </td>
                     </tr>
                 </table>
@@ -1203,13 +1203,13 @@ class NewCustomerController extends Controller
                     </tr>
                     <tr style="vertical-align: top; text-align: left;">
                         <td width="20">4.</td>
-                        <td style="text-align: justify;">Jikalau kekayaan NASABAH serta nilai barang-barang dan lain-lain yang menjadi tanggungan nanti menurut penilaian BANK secara seketika 
+                        <td style="text-align: justify;">Jikalau kekayaan NASABAH serta nilai barang-barang dan lain-lain yang menjadi tanggungan nanti menurut penilaian BANK secara seketika
                             dan sekaligus dan BANK tindakan apapun yang dianggapnya perlu sehubungan dengan perjanjian ini untuk menjamin pelunasan kembali pembiayaan.</td>
                     </tr>
                     <tr style="vertical-align: top; text-align: left;">
                         <td width="20">5.</td>
-                        <td style="text-align: justify;">Bahwa apabila dalam periode masa pinjaman, NASABAH meninggal dunia ataupun oleh sebab apapun yang mengakibatkan NASABAH tidak lagi bekerja lagi 
-                            dan / atau wanprestasi, maka semua kewajiban Nasabah pada PT. BPRS Mitra Cahaya Indonesia akan didahulukan pembayarannya, dari dana luang Nasabah yang bersumber dari : uang pesangon, 
+                        <td style="text-align: justify;">Bahwa apabila dalam periode masa pinjaman, NASABAH meninggal dunia ataupun oleh sebab apapun yang mengakibatkan NASABAH tidak lagi bekerja lagi
+                            dan / atau wanprestasi, maka semua kewajiban Nasabah pada PT. BPRS Mitra Cahaya Indonesia akan didahulukan pembayarannya, dari dana luang Nasabah yang bersumber dari : uang pesangon,
                             dana asuransi jiwa, penjualan sumber-sumber lainnya dan sisa kewajiban sepenuhnya menjadi tanggung jawab NASABAH dan / atau ahli waris NASABAH untuk melunasi / menyelesaikan pada BANK</td>
                     </tr>
                 </table>
@@ -1221,7 +1221,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr>
                         <td style="text-align: justify;">
-                            NASABAH berjanji dengan ini mengikatkan diri untuk atas bebannya menutup asuransi berdasar syariah terhadap jiwa nasabah selama perjanjian ini dibuat dan berlaku, pada perusahaan asuransi 
+                            NASABAH berjanji dengan ini mengikatkan diri untuk atas bebannya menutup asuransi berdasar syariah terhadap jiwa nasabah selama perjanjian ini dibuat dan berlaku, pada perusahaan asuransi
                             yang ditunjuk oleh BANK, dan dengan serta merta menunjuk dan menetapkan BANK sebagai pihak yang berhak menerima pembayaran klaim atas asuransi tersebut (banker&#39;s clause).
                         </td>
                     </tr>
@@ -1246,7 +1246,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr>
                         <td style="text-align: justify;">
-                            Sesuatu sengketa yang timbul dari dan atau dengan cara apapun yang ada hubungannya dengan perjanjian ini yang tidak dapat diselesaikan secara musyarakah, akan diselesaikan melalui Pengadilan Agama. Putusan Pengadilan Agama adalah bersifat final dan mengikat dan dapat diberlakukan di Pengadilan yang mempunyai wewenang hukum atasnya. 
+                            Sesuatu sengketa yang timbul dari dan atau dengan cara apapun yang ada hubungannya dengan perjanjian ini yang tidak dapat diselesaikan secara musyarakah, akan diselesaikan melalui Pengadilan Agama. Putusan Pengadilan Agama adalah bersifat final dan mengikat dan dapat diberlakukan di Pengadilan yang mempunyai wewenang hukum atasnya.
                         </td>
                     </tr>
                     <tr>
@@ -1281,7 +1281,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr style="text-align: center;">
                         <td width="40%"></td>
-                        <td>Yogyakarta, 30-06-2021 <br> NASABAH</td>
+                        <td>Yogyakarta, ' . $customer_data->tanggal_keputusan . ' <br> ' . $customer_data->nama . '</td>
                     </tr>
                 </table>
                 <table width="100%">
@@ -1294,7 +1294,7 @@ class NewCustomerController extends Controller
                         <td width="5%"></td>
                         <td width="30%" style="text-align: center;">Pemohon
                             <br><br><br><br><br><br><br>
-                            MARIA ARELANTA SUTINI
+                            ' . $customer_data->nama . '
                             <hr>
                         </td>
                         <td width="5%"></td>
@@ -1349,7 +1349,7 @@ class NewCustomerController extends Controller
                     <tr class="text2" style="text-align: justify;">
                         <td>
                             <font size="2">
-                            Perjanjian Murabahah ini dibuat dan ditanda-tangani pada hari <b>Senin</b> tanggal <b>30-08-2021</b> oleh dan antara:
+                            Perjanjian Murabahah ini dibuat dan ditanda-tangani pada hari <b>Senin</b> tanggal <b>' . $customer_data->tanggal_keputusan . '</b> oleh dan antara:
                             </font>
                         </td>
                     </tr>
@@ -1372,10 +1372,10 @@ class NewCustomerController extends Controller
                     <tr>
                         <td style="text-align: justify;">
                             <font>
-                                Dalam hal ini bertindak dalam jabatannya tersebut untuk dan atas nama PT. Bank Pembiayaan Rakyat Syariah Mitra Cahaya Indonesia berkedudukan di JL Kaliurang Km 10 No 28 Kecamatan Ngaglik Sleman, 
-                                Propinsi Daerah Istimewa Yogyakarta, berdasarkan Anggaran Dasarnya dimuat dalam Akta Pendirian Nomor 17 tertanggal 11 januari 2008 (11-01-2008) dihadapan notaris Wahyu Wiryono, SH dan telah mendapat 
-                                pengesahan dari Menteri Hukum dan Hak Asasi Manusia Republik Indonesia dengan Surat Keputusannya tertanggal 18 Maret 2008 (18-02-2008) Nomor AHU-13544.AH.01.01 tahun 2008. Dan telah mengalami perubahan 
-                                terakhir dengan akta Nomor 06 tanggal 5 Agustus 2020 di hadapan notaris Moh Djaelani Asad, Sh dengan bukti Penerimaan Pemberitahuan Perubahan Data Perseroan Menteri Hukum dan Hak Asasi Kemanusiaan Republik 
+                                Dalam hal ini bertindak dalam jabatannya tersebut untuk dan atas nama PT. Bank Pembiayaan Rakyat Syariah Mitra Cahaya Indonesia berkedudukan di JL Kaliurang Km 10 No 28 Kecamatan Ngaglik Sleman,
+                                Propinsi Daerah Istimewa Yogyakarta, berdasarkan Anggaran Dasarnya dimuat dalam Akta Pendirian Nomor 17 tertanggal 11 januari 2008 (11-01-2008) dihadapan notaris Wahyu Wiryono, SH dan telah mendapat
+                                pengesahan dari Menteri Hukum dan Hak Asasi Manusia Republik Indonesia dengan Surat Keputusannya tertanggal 18 Maret 2008 (18-02-2008) Nomor AHU-13544.AH.01.01 tahun 2008. Dan telah mengalami perubahan
+                                terakhir dengan akta Nomor 06 tanggal 5 Agustus 2020 di hadapan notaris Moh Djaelani Asad, Sh dengan bukti Penerimaan Pemberitahuan Perubahan Data Perseroan Menteri Hukum dan Hak Asasi Kemanusiaan Republik
                                 Indonesia Nomor AHU-AH.01.03-0330862 tanggal 6 Agustus 2020, (selanjutnya disebut Bank)
                             </font>
                         </td>
@@ -1386,19 +1386,19 @@ class NewCustomerController extends Controller
                         <td width="20">II.</td>
                         <td width="200">Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
                         <td width="200">Tempat, Tgl. Lahir</td>
                         <td width="20">:</td>
-                        <td>NGAWI</td>
+                        <td>' . $customer_data->tanggal_lahir . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
                         <td width="200">No. KTP</td>
                         <td width="20">:</td>
-                        <td>012389203489</td>
+                        <td>' . $customer_data->nik . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="20"></td>
@@ -1410,7 +1410,7 @@ class NewCustomerController extends Controller
                         <td width="20"></td>
                         <td width="200">Alamat</td>
                         <td width="20">:</td>
-                        <td>GADUNG RT 001</td>
+                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                 </table>
                 <table width="100%" style="margin-left: 30px;">
@@ -1429,23 +1429,23 @@ class NewCustomerController extends Controller
                 </table>
                 <table width="100%" style="margin-left: 20px;">
                     <tr>
-                      
+
                         <td>1.</td>
                         <td>BANK secara prinsip membeli dari Penjual berdasarkan Pesanan NASABAH.</td>
                     </tr>
                     <tr>
-                       
+
                         <td>2.</td>
                         <td>BANK dengan Akad ini memberi kuasa kepada NASABAH untuk membeli dan menerima Pembelian -</td>
                     </tr>
                     <tr style="vertical-align: top; text-align: left;">
-                       
+
                         <td>3.</td>
                         <td style="text-align: justify;">NASABAH dengan Akad ini menyerahkan barang berikut Dokumen-dokumen terkait kepada BANK dan BANK secara Prinsip
                             menerima barang berikut dokumen-dokumen dimaksud.</td>
                     </tr>
                     <tr style="vertical-align: top; text-align: left;">
-                      
+
                         <td style="text-align: justify;">4.</td>
                         <td>Akad ini sebagai bukti BANK secara Prinsip telah menerima Barang berikut dokumen-dokumen yang terkait dari NASABAH.</td>
                     </tr>
@@ -1575,7 +1575,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr style="text-align: center;">
                         <td width="40%"></td>
-                        <td>Yogyakarta, 30-06-2021 <br> NASABAH</td>
+                        <td>Yogyakarta, ' . $customer_data->tanggal_keputusan . ' <br> NASABAH</td>
                     </tr>
                 </table>
                 <table width="100%">
@@ -1588,7 +1588,7 @@ class NewCustomerController extends Controller
                         <td width="10"></td>
                         <td style="text-align: center;">Pemohon
                             <br><br><br><br><br><br><br>
-                            MARIA ARELANTA SUTINI
+                            ' . $customer_data->nama . '
                             <hr>
                         </td>
                         <td width="10"></td>
@@ -1625,7 +1625,7 @@ class NewCustomerController extends Controller
             <table width="100%">
                 <tr class="text2">
                     <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%" ></td>
-                   
+
                 </tr>
             </table>
             <table  width="100%">
@@ -1647,12 +1647,12 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td>Nama</td>
                         <td>:</td>
-                        <td>Maria</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr class="text2">
                         <td >NIP / Nopen</td>
                         <td >:</td>
-                        <td>213242342</td>
+                        <td>' . $customer_data->nopen . '</td>
                     </tr>
                     <tr class="text2">
                         <td>Instansi</td>
@@ -1667,7 +1667,7 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td>Alamat</td>
                         <td>:</td>
-                        <td>GEDUNG</td>
+                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                 </tbody>
             </table>
@@ -1678,7 +1678,7 @@ class NewCustomerController extends Controller
                         0096/KEP/CV/6523/2008<br>
                         Tertanggal, 2008-04-04<br>
                         Atas nama :<br>
-                        MARIA AREL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        ' . $customer_data->nama . ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 </tr>
                 </tbody>
             </table>
@@ -1693,7 +1693,7 @@ class NewCustomerController extends Controller
                 <tr>
                     <td style="text-align: center;" width="250">DEBITUR
                         <br><br><br><br><br>
-                        MARIA ARNE</td>
+                        ' . $customer_data->nama . '</td>
                     <td style="text-align: center;" width="250">MARKETING
                         <br><br><br><br><br>
                     </td>
@@ -1711,7 +1711,7 @@ class NewCustomerController extends Controller
                 <tr>
                     <td style="text-align: center;" width="250">DEBITUR
                         <br><br><br><br><br>
-                        MARIA ARNE</td>
+                        ' . $customer_data->nama . '</td>
                     <td style="text-align: center;" width="250">MARKETING
                         <br><br><br><br><br>
                     </td>
@@ -1725,7 +1725,7 @@ class NewCustomerController extends Controller
                 <table  width="100%">
                     <tr class="text2">
                         <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%" ></td>
-                    
+
                     </tr>
                 </table>
                 <table  width="100%">
@@ -1748,12 +1748,12 @@ class NewCustomerController extends Controller
                             <tr class="text2">
                                 <td width="100">Nama</td>
                                 <td width="10">:</td>
-                                <td>Maria</td>
+                                <td>' . $customer_data->nama . '</td>
                             </tr>
                             <tr class="text2">
                                 <td width="100">NIP / Nopen</td>
                                 <td width="10">:</td>
-                                <td>213242342</td>
+                                <td>' . $customer_data->nopen . '</td>
                             </tr>
                             <tr class="text2">
                                 <td width="100">Instansi</td>
@@ -1782,13 +1782,13 @@ class NewCustomerController extends Controller
                                 0096/KEP/CV/6523/2008<br>
                                 Tertanggal, 2008-04-04<br>
                                 Atas nama :<br>
-                                MARIA AREL</td>
+                                ' . $customer_data->nama . '</td>
                             </tr>
                         </table>
 
                     </div>
                 </div>
-            
+
                 <table width="100%">
                     <tr>
                         <td>Diserahkan Tanggal,</td>
@@ -1799,7 +1799,7 @@ class NewCustomerController extends Controller
                 <tr>
                     <td style="text-align: center;" width="250">DEBITUR
                         <br><br><br><br><br>
-                        MARIA ARNE</td>
+                        ' . $customer_data->nama . '</td>
                     <td style="text-align: center;" width="250">MARKETING
                         <br><br><br><br><br>
                     </td>
@@ -1809,7 +1809,7 @@ class NewCustomerController extends Controller
             <center>
                 <table width="100%">
                     <tr>
-                        <td>Diserahkan Tanggal,</td>
+                        <td>Diserahkan Tanggal, ' . $customer_data->tanggal_keputusan . '</td>
                     </tr>
                 </table>
             </center>
@@ -1817,7 +1817,7 @@ class NewCustomerController extends Controller
                 <tr>
                     <td style="text-align: center;" width="250">DEBITUR
                         <br><br><br><br><br>
-                        MARIA ARNE</td>
+                        ' . $customer_data->nama . '</td>
                     <td style="text-align: center;" width="250">MARKETING
                         <br><br><br><br><br>
                     </td>
@@ -1843,7 +1843,7 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td width="100">Tanggal</td>
                         <td width="10">:</td>
-                        <td>30-08-2021</td>
+                        <td>' . $customer_data->tanggal_keputusan . '</td>
                     </tr>
                     <tr class="text2">
                         <td width="100">Kepada</td>
@@ -1853,7 +1853,7 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td width="100">Dari</td>
                         <td width="10">:</td>
-                        <td>MARIA AT</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                 </table>
                 <br>
@@ -1929,55 +1929,55 @@ class NewCustomerController extends Controller
                         <td width="10">a.</td>
                         <td width="200">Nama PNS/ Pensiun</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="10">b.</td>
                         <td width="200">TUK/NRP/NIP/NOTAS</td>
                         <td width="10">:</td>
-                        <td>123456789</td>
+                        <td>' . $customer_data->nopen . '</td>
                     </tr>
                     <tr>
                         <td width="10">c.</td>
                         <td width="200">Tempat dan Tanggal Lahir</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->tanggal_lahir . '</td>
                     </tr>
                     <tr>
                         <td width="10">d.</td>
                         <td width="200">Alamat Lengkap</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                     <tr>
                         <td width="10"></td>
                         <td width="200">Kelurahan</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->alamat_jalan . '</td>
                     </tr>
                     <tr>
                         <td width="10"></td>
                         <td width="200">Kecamatan</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->alamat_kec . '</td>
                     </tr>
                     <tr>
                         <td width="10"></td>
                         <td width="200">Kabupaten/Kota</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->alamat_kotakab . '</td>
                     </tr>
                     <tr>
                         <td width="10"></td>
                         <td width="200">Propinsi</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                     <tr>
                         <td width="10">e.</td>
                         <td width="200">No. Telepon</td>
                         <td width="10">:</td>
-                        <td>MARIA</td>
+                        <td>' . $customer_data->telepon . '</td>
                     </tr>
                 </table>
                 <br>
@@ -1993,8 +1993,7 @@ class NewCustomerController extends Controller
                         <td width="20">1.</td>
                         <td style="text-align: justify;">
                             Pada saat penerimaan pembayaran Manfaat Tabungan Hari Tua (THT) dan/atau Pensiun saya setiap bulan dari PT TASPEN
-                            (PERSEROYPT ASABRI (PERSERO), agar dibayarkan melalui rekening saya nomor 7102864268 atas Nama: MARIA ARLENTINA
-                            SUTINI Pada PT POS INDONESIA (PERSERO), Kantor POS BRPS MCI sampai dengan kredit saya lunas.
+                            (PERSEROYPT ASABRI (PERSERO), agar dibayarkan melalui rekening saya nomor 7102864268 atas Nama: ' . $customer_data->nama . ' Pada PT POS INDONESIA (PERSERO), Kantor POS BRPS MCI sampai dengan kredit saya lunas.
                         </td>
                     </tr>
                     <tr>
@@ -2025,9 +2024,9 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr>
                         <td width="65%"></td>
-                        <td style="text-align: center;">NGAWI, 30-08-2021<br> Yang Menyatakan
+                        <td style="text-align: center;">NGAWI, ' . $customer_data->tanggal_keputusan . '<br> Yang Menyatakan
                         <br><br><br><br><br><br>
-                        MARIA   </td>
+                        ' . $customer_data->nama . '   </td>
                     </tr>
                 </table>
                 <br><br><br>
@@ -2074,8 +2073,8 @@ class NewCustomerController extends Controller
                     <tr class="text2" style="text-align: justify;">
                         <td>
                             <font size="2">
-                                Sehubungan dengan telah direalisasikannya Akad Pembiayaan Murabahah PT BPRS Mitra Cahaya Indonesia 
-                                pada tanggal 30-08-2021 dengan ini saya/NASABAH MARIA ARLENTINA SUTINI yang beralamat di GADUNG RT 001 RW 003 NGOMPRO, PANGKUR, NGAWI JAWA TIMUR bertindak untuk dan atas nama pribadi, menyatakan hal-hal sebagai berikut:
+                                Sehubungan dengan telah direalisasikannya Akad Pembiayaan Murabahah PT BPRS Mitra Cahaya Indonesia
+                                pada tanggal ' . $customer_data->tanggal_keputusan . ' dengan ini saya/NASABAH ' . $customer_data->nama . ' yang beralamat di ' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . ' bertindak untuk dan atas nama pribadi, menyatakan hal-hal sebagai berikut:
                             </font>
                         </td>
                     </tr>
@@ -2086,34 +2085,34 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td width="20">1.</td>
                         <td widht="100" style="text-align: justify;">Menyetujui untuk menggunakan fasilitas pembiayaan yang disediakan oleh PT BPRS Mitra Cahaya Indonesia sesuai ketentuan yang
-                            berlaku.</td>  
+                            berlaku.</td>
                     </tr>
                     <tr class="text2">
                         <td width="20">2.</td>
                         <td widht="100" style="text-align: justify;">Menjamin bahwa pembiayaan yang diperoleh dari PT BPRS Mitra Cahaya Indonesia akan benar-benar disalurkan seluruhnya dalam
-                            usaha prinsip syariah yaitu untuk Pembelian -.</td>  
+                            usaha prinsip syariah yaitu untuk Pembelian -.</td>
                     </tr>
                     <tr class="text2">
                         <td width="20" >3.</td>
                         <td widht="100" style="text-align: justify;">Melakukan pembayaran atas seluruh kewajiban yang timbul akibat pembiayaan dari PT BPRS Mitra Cahaya Indonesia, sampai dengan
-                            pembiayaan tersebut lunas. </td>  
+                            pembiayaan tersebut lunas. </td>
                     </tr>
                     <tr class="text2">
                         <td width="20">4.</td>
                         <td widht="100" style="text-align: justify;">Menjamin kelancaran pembayaran kewajiban atas fasilitas pembiayaan yang diterima oleh saya/NASABAH sampai dengan
-                            pembiayaan/hutang tersebut dinyatakan lunas/selesai oleh BPRS Mitra Cahaya Indonesia.</td>  
+                            pembiayaan/hutang tersebut dinyatakan lunas/selesai oleh BPRS Mitra Cahaya Indonesia.</td>
                     </tr>
                     <tr class="text2">
                         <td width="20">5.</td>
-                        <td widht="100" style="text-align: justify;">Melakukan segala sesuatu yang dianggap perlu guna menjaga kepentingan BPRS Mitra Cahaya Indonesia. </td>  
+                        <td widht="100" style="text-align: justify;">Melakukan segala sesuatu yang dianggap perlu guna menjaga kepentingan BPRS Mitra Cahaya Indonesia. </td>
                     </tr>
                     <tr class="text2">
                         <td width="20">6.</td>
                         <td widht="100" style="text-align: justify;">
                             Memerintahkan dan memberi kuasa kepada PT BPRS Mitra Cahaya Indonesia untuk mendebat rekening tabungan di PT. BPRS Mitra
-                            Cahaya Indoneisa, Atas Nama MARIA ARTLSAKADSDLA, sejumlah yang diperlukan untuk kepentingan pembayaran pokok, marjin, serta kewajiban
+                            Cahaya Indoneisa, Atas Nama ' . $customer_data->nama . ', sejumlah yang diperlukan untuk kepentingan pembayaran pokok, marjin, serta kewajiban
                             lainnya yang terikat dengan pembiayaan
-                        </td>  
+                        </td>
                     </tr>
                 </table>
                 <table width="100%" style="margin-left:30px;">
@@ -2125,7 +2124,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="100">Atas Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA ATSDHAJ</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="100">Pada Bank</td>
@@ -2159,7 +2158,7 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr>
                         <td width="65%"></td>
-                        <td style="text-align: center;">Yogyakarta, 30-08-2021<br>NASABAH
+                        <td style="text-align: center;">Yogyakarta, ' . $customer_data->tanggal_keputusan . '<br>NASABAH
                         <br><br><br><br><br><br><br><br><br><br>
                         <u>MARIASD ASDASKDAKSMDKA</u></td>
                     </tr>
@@ -2184,12 +2183,11 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td style="text-align: justify;">
                             <font size="2">
-                                Dengan ini Dewan Pengawas Syariah PT. BPR Syariah MITRA CAHAYA INDONESIA 
-                                beropini penggunaan akad Murabahah MBAK............/VI/2021 kepada nasabah 
-                                atas nama MARIA ARLENTINA SUTINI di GADUNG RT 001 RW 003. NGOMPRO, PANGKUR. 
-                                NGAWI JAWA TIMUR Hal ini berdasarkan pada data yang diterima oleh bagian 
-                                pembiayaan yang kemudian dilakukan pengecekan ke lapangan oleh M. Mufid 
-                                Faturahman sebagai account officer dan kemudian disampaikan oleh Direksi 
+                                Dengan ini Dewan Pengawas Syariah PT. BPR Syariah MITRA CAHAYA INDONESIA
+                                beropini penggunaan akad Murabahah MBAK............/VI/2021 kepada nasabah
+                                atas nama ' . $customer_data->nama . ' di ' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . ' Hal ini berdasarkan pada data yang diterima oleh bagian
+                                pembiayaan yang kemudian dilakukan pengecekan ke lapangan oleh M. Mufid
+                                Faturahman sebagai account officer dan kemudian disampaikan oleh Direksi
                                 kepada Dewan Pengawas Syariah, bahwa dana pembiayaan tersebut akan digunakan
                                 untuk:
                             </font><br>
@@ -2245,12 +2243,12 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA SDAAS</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="300">No. Pensiun</td>
                         <td width="20">:</td>
-                        <td>182902944959</td>
+                        <td>' . $customer_data->nopen . '</td>
                     </tr>
                     <tr>
                         <td width="300">Kantor Bayar Pensiun</td>
@@ -2270,7 +2268,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Pokok Pembiayaan</td>
                         <td width="20">:</td>
-                        <td>MARIA SDAAS</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="300">Biaya Administrasi</td>
@@ -2315,12 +2313,12 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Jangka Waktu Pembiayaan</td>
                         <td width="20">:</td>
-                        <td>BPRS MCI</td>
+                        <td>' . $customer_data->tenor . ' Bulan</td>
                     </tr>
                     <tr>
                         <td width="300">Total Angsuran</td>
                         <td width="20">:</td>
-                        <td>BPRS MCI</td>
+                        <td>' . $customer_data->cicilan . '</td>
                     </tr>
                 </table>
                 <br>
@@ -2340,7 +2338,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="100">Tanggal</td>
                         <td width="20">:</td>
-                        <td>30-08-2021</td>
+                        <td>' . $customer_data->tanggal_keputusan . '</td>
                     </tr>
                 </table>
                 <br>
@@ -2348,7 +2346,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td>Diterima oleh,
                             <br><br><br><br><br><br>
-                            <u><b>MARIA AREL</b></u>
+                            <u><b>' . $customer_data->nama . '</b></u>
                             <br>
                             Debitur
                         </td>
@@ -2360,7 +2358,7 @@ class NewCustomerController extends Controller
                         <td width="30%">Diproses Oleh,
                             <br><br><br><br><br><br>
                             <hr size="2">
-                            Marketing  
+                            Marketing
                         </td>
                         <td width="10%"></td>
                         <td width="30%">Diperiksa Oleh,
@@ -2399,12 +2397,12 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA SDAAS</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="300">No. Pensiun</td>
                         <td width="20">:</td>
-                        <td>182902944959</td>
+                        <td>' . $customer_data->nopen . '</td>
                     </tr>
                     <tr>
                         <td width="300">Kantor Bayar Pensiun</td>
@@ -2424,7 +2422,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Pokok Pembiayaan</td>
                         <td width="20">:</td>
-                        <td>MARIA SDAAS</td>
+                        <td>' . $customer_data->pembiayaan . '</td>
                     </tr>
                     <tr>
                         <td width="300">Biaya Administrasi</td>
@@ -2469,12 +2467,12 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Jangka Waktu Pembiayaan</td>
                         <td width="20">:</td>
-                        <td>BPRS MCI</td>
+                        <td>' . $customer_data->tenor . ' Bulan</td>
                     </tr>
                     <tr>
                         <td width="300">Total Angsuran</td>
                         <td width="20">:</td>
-                        <td>BPRS MCI</td>
+                        <td>' . $customer_data->cicilan . '</td>
                     </tr>
                 </table>
                 <br>
@@ -2494,7 +2492,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="100">Tanggal</td>
                         <td width="20">:</td>
-                        <td>30-08-2021</td>
+                        <td>' . $customer_data->tanggal_keputusan . '</td>
                     </tr>
                 </table>
                 <br>
@@ -2502,7 +2500,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td>Diterima oleh,
                             <br><br><br><br><br><br>
-                            <u><b>MARIA AREL</b></u>
+                            <u><b>' . $customer_data->nama . '</b></u>
                             <br>
                             Debitur
                         </td>
@@ -2514,7 +2512,7 @@ class NewCustomerController extends Controller
                         <td width="30%">Diproses Oleh,
                             <br><br><br><br><br><br>
                             <hr size="2">
-                            Marketing  
+                            Marketing
                         </td>
                         <td width="10%"></td>
                         <td width="30%">Diperiksa Oleh,
@@ -2551,22 +2549,22 @@ class NewCustomerController extends Controller
                     <tr>
                         <td width="300">Nama</td>
                         <td width="20">:</td>
-                        <td>MARIA SDAAS</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="300">Nopen</td>
                         <td width="20">:</td>
-                        <td>182902944959</td>
+                        <td>' . $customer_data->nopen . '</td>
                     </tr>
                     <tr>
                         <td width="300">No. KTP</td>
                         <td width="20">:</td>
-                        <td>BPRS MCI</td>
+                        <td>' . $customer_data->nik . '</td>
                     </tr>
                     <tr>
                         <td width="300">Alamat</td>
                         <td width="20">:</td>
-                        <td>BPRS MCI</td>
+                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
                     </tr>
                 </table>
                 <br>
@@ -2614,7 +2612,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td>NGAWI, 27-08-2021
                             <br><br><br><br><br><br>
-                            <u><b>MARIA AREL</b></u>
+                            <u><b>' . $customer_data->nama . '</b></u>
                             <br>
                         Yang membuat pernyataan
                         </td>
@@ -2644,11 +2642,11 @@ class NewCustomerController extends Controller
                     </tr>
                     <tr>
                     <td>Nama Debiutur</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                     <td>NO. SK PENSIUN</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->nopen . '</td>
                 </tr>
                 <tr>
                     <td>PEMBIAYAAN</td>
@@ -2903,23 +2901,23 @@ class NewCustomerController extends Controller
                     </tr>
                     <tr>
                     <td>Nama Debiutur</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                     <td>NO. SK PENSIUN</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->nopen . '</td>
                 </tr>
                 <tr>
                     <td>PEMBIAYAAN</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->pembiayaan . '</td>
                 </tr>
                 <tr>
                     <td>ANGSURAN</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->cicilan . '</td>
                 </tr>
                 <tr>
                     <td>JANGKA WAKTU</td>
-                    <td>MARIA</td>
+                    <td>' . $customer_data->tenor . ' Bulan</td>
                 </tr>
                 <tr>
                     <td>STATUS PEMBIAYAAN</td>
@@ -3044,7 +3042,7 @@ class NewCustomerController extends Controller
                     </tr>
                 </table>
                 <br><br>
-                <table border="1" width="100%"> 
+                <table border="1" width="100%">
                     <tr>
                     <td colspan="6" style="text-align: center;">SEKAT 1</td>
                     </tr>
@@ -3114,7 +3112,7 @@ class NewCustomerController extends Controller
                 </table>
                 <br>
                 <br>
-                <table border="1" width="100%"> 
+                <table border="1" width="100%">
                     <tr>
                     <td colspan="6" style="text-align: center;">SEKAT 2</td>
                     </tr>
@@ -3198,7 +3196,7 @@ class NewCustomerController extends Controller
                     Yang menerima dan mmeriksa
                     <br><br><br><br><br><br><br><br><br>
                     <hr><br>
-                    ADM FILLING 
+                    ADM FILLING
                     </td>
                     </tr>
                 </table>
@@ -3252,7 +3250,7 @@ class NewCustomerController extends Controller
                         <td width="20">1.</td>
                         <td width="200">Nama Debitur</td>
                         <td>:</td>
-                        <td>MARIA ARELAN</td>
+                        <td>' . $customer_data->nama . '</td>
                     </tr>
                     <tr>
                         <td width="20">2.</td>
@@ -3285,21 +3283,21 @@ class NewCustomerController extends Controller
                 <br><br>
                 <table width="100%">
                 <tr>
-                    <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>, 
+                    <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
                         30-08-2021<br>
                         CENTRAL GLOBAL SOLUTION<br>
                         <br><br><br><br><br><br><br>
                         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><br>
                         Direktur Utama</td>
-    
+
                 </tr>
                 </table>
             </center>
             </div>
 
-                
-        
-            
+
+
+
         </body>
 
         </html>
