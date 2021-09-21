@@ -109,24 +109,33 @@ class NewCustomerController extends Controller
             }
 
             table {
-                border-style: double;
-                border-width: 3px;
-                border-color: white;
+                 border-collapse: collapse;
+            
+            
             }
             table tr .text2 {
                 text-align: right;
                 font-size: 12px;
-                font-family: Arial, "Helvetica", sans-serif;
+                font-family: "Arial";
             }
+
+            table tr .text3 {
+                font-size: 10px;
+                font-family: "Arial";
+            }
+
+
             table tr .text {
                 text-align: center;
                 font-size: 12px;
-                font-family: Arial, "Helvetica", sans-serif;
+                font-family: "Arial";
             }
             table tr td {
                 font-size: 12px;
-                font-family: Arial, "Helvetica", sans-serif;
-                vertical-align: top;
+
+                font-family: "Arial";
+                vertical-align: top; 
+
                 text-align: left;
                 text-align: justify;
 
@@ -134,27 +143,8 @@ class NewCustomerController extends Controller
 
             .page-break {
                 page-break-after: always;
-            }
 
-            .grid-container {
-                display: grid;
-                width: 100%;
-                grid-template-columns: auto auto auto auto;
-                grid-gap: 10px;
-                border-color: black;
-                border: 2px;
-                padding: 10px;
-
-            }
-
-                .grid-container > div {
-                width: 100%;
-                text-align: center;
-                padding: 10px 0;
-                font-size: 30px;
-                border-color: black;
-
-            }
+            }            
 
 
             </style>
@@ -162,120 +152,180 @@ class NewCustomerController extends Controller
 
         <body>
             <div>
-                <center>
-                    <table width="100%">
-                        <tr class="text2">
-                            <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%"></td>
-                        </tr>
-                    </table>
-                    <table width="90%">
-                        <tr>
-                            <td>
-                                <center>
-                                    <font size="4"><b>JADWAL ANGSURAN</b></font><br>
-                                    <font size="3">RINCIAN DATA PEMBIAYAAN DEBITUR</font><br>
-                                </center>
-                            </td>
-                        </tr>
-                        <table width="90%">
-                            <tr class="text2">
-                                <td width="150">Plafond Pembiayaan</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">' . $customer_data->pembiayaan . '</td>
-                                <td width="2"></td>
-                                <td width="100">Nama</td>
-                                <td width="2">:</td>
-                                <td width="200">' . $customer_data->nama . '</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="150">Margin Efektif</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">1.17%</td>
-                                <td width="2"></td>
-                                <td width="100">Nopen</td>
-                                <td width="2">:</td>
-                                <td width="200">' . $customer_data->nopen . '</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="150">Jangka Waktu (bulan)</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">' . $customer_data->tenor . ' Bulan</td>
-                                <td width="2"></td>
-                                <td width="150">Kantor Bayar Tujuan</td>
-                                <td width="2">:</td>
-                                <td width="200">BPRS MCI</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="150">Angsuran per-bulan</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">' . $customer_data->cicilan . '</td>
-                                <td width="2"></td>
-                                <td width="100">Area Pelayanan</td>
-                                <td width="2">:</td>
-                                <td width="200">Ngawi</td>
-                            </tr>
-                        </table>
-                    </table>
-                </center>
+            <center>
+                <table width="100%">
+                    <tr class="text2">
+                        <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%" ></td>
+                    </tr>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td>
+                        <center>
+                            <font size="4"><b>JADWAL ANGSURAN</b></font><br>
+                            <font size="2">RINCIAN DATA PEMBIAYAAN DEBITUR</font><br>
+                        </center>
+                        </td>
+                    </tr>
+                </table>
+                <table align="right" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <td>
+                            <b>DEBITUR</b>
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
+                <table width="30%"  align="left"  cellpadding="1" cellspacing="0">
+                <tr class="text2">
+                    <td width="25%%">Plafond Pembiayaan</td>
+                    <td width="1%%">:</td>
+                    <td width="15%%" style="text-align: right;">150.0000</td>   
+                </tr>
+                <tr class="text2">
+                    <td width="25%%">Margin Efektif</td>
+                    <td width="1%%">:</td>
+                    <td width="15%%" style="text-align: right;">1.17%</td>   
+                </tr>
+                <tr class="text2">
+                    <td width="25%">Jangka Waktu (bulan)</td>
+                    <td width="1%">:</td>
+                    <td width="15%">81</td>
+                </tr>
+                <tr class="text2">
+                    <td width="25%">Angsuran per-bulan</td>
+                    <td width="1%">:</td>
+                    <td width="15%">3.601.852</td>
+                </tr>
+                </table>
+                <table style="margin-left:30%;"width="70%"  align="left"  cellpadding="1" cellspacing="0">
+                    <tr class="text2">
+                        <td width="25%">Nama</td>
+                        <td width="1%">:</td>
+                        <td width="15%">MARIA ARTSH</td>
+                    </tr>
+                    <tr class="text2">
+                        <td width="25%">Nopen</td>
+                        <td width="1%">:</td>
+                        <td width="15%">1234567890</td>
+                    </tr>
+                    <tr class="text2">
+                        <td width="25%">Kantor Bayar Tujuan</td>
+                        <td width="1%">:</td>
+                        <td width="15%">BPRS MCI</td>
+                    </tr>
+                    <tr class="text2">
+                        <td width="25%">Area Pelayanan</td>
+                        <td width="1%">:</td>
+                        <td width="15%">NGAWI</td>
+                    </tr>
+                </table>
+                <table width="30%" align="right"  cellpadding="1" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td><img align="right" width="80%" src="' . public_path('assets/images/pdf/kotak.png') . '"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br><br><br>
+                <table width="100%">
+                    <tr>
+                        <td style="text-align: right;">
+                            Tanda Tangan Debitur
+                        </td>
+                    </tr>
+                </table>
+            </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div>
-                <center>
-                    <table width="90%">
-                        <tr class="text2">
-                            <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%"></td>
-                        </tr>
-                    </table>
-                    <table width="90%">
-                        <tr>
-                            <td>
-                                <center>
-                                    <font size="4"><b>JADWAL ANGSURAN</b></font><br>
-                                    <font size="3">RINCIAN DATA PEMBIAYAAN DEBITUR</font><br>
-                                </center>
-                            </td>
-                        </tr>
-                        <table width="90%">
-                            <tr class="text2">
-                                <td width="150">Plafond Pembiayaan</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">150.0000</td>
-                                <td width="2"></td>
-                                <td width="100">Nama</td>
-                                <td width="2">:</td>
-                                <td width="200">' . $customer_data->nama . '</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="150">Margin Efektif</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">1.17%</td>
-                                <td width="2"></td>
-                                <td width="100">Nopen</td>
-                                <td width="2">:</td>
-                                <td width="200">' . $customer_data->nopen . '</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="150">Jangka Waktu (bulan)</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">' . $customer_data->tenor . ' Bulan</td>
-                                <td width="2"></td>
-                                <td width="150">Kantor Bayar Tujuan</td>
-                                <td width="2">:</td>
-                                <td width="200">BPRS MCI</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="150">Angsuran per-bulan</td>
-                                <td width="2">:</td>
-                                <td width="100" style="text-align: right;">' . $customer_data->cicilan . '</td>
-                                <td width="2"></td>
-                                <td width="100">Area Pelayanan</td>
-                                <td width="2">:</td>
-                                <td width="200">Ngawi</td>
-                            </tr>
-                        </table>
-                    </table>
-                </center>
+            <center>
+                <table width="100%">
+                    <tr class="text2">
+                        <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%" ></td>
+                    </tr>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td>
+                        <center>
+                            <font size="4"><b>JADWAL ANGSURAN</b></font><br>
+                            <font size="2">RINCIAN DATA PEMBIAYAAN DEBITUR</font><br>
+                        </center>
+                        </td>
+                    </tr>
+                </table>
+                <table align="right" cellpadding="1" cellspacing="0">
+                    <tr>
+                        <td>
+                            <b>BPRS</b>
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
+                <table width="30%"  align="left"  cellpadding="1" cellspacing="0">
+                <tr class="text2">
+                    <td width="25%%">Plafond Pembiayaan</td>
+                    <td width="1%%">:</td>
+                    <td width="15%%" style="text-align: right;">150.0000</td>   
+                </tr>
+                <tr class="text2">
+                    <td width="25%%">Margin Efektif</td>
+                    <td width="1%%">:</td>
+                    <td width="15%%" style="text-align: right;">1.17%</td>   
+                </tr>
+                <tr class="text2">
+                    <td width="25%">Jangka Waktu (bulan)</td>
+                    <td width="1%">:</td>
+                    <td width="15%">81</td>
+                </tr>
+                <tr class="text2">
+                    <td width="25%">Angsuran per-bulan</td>
+                    <td width="1%">:</td>
+                    <td width="15%">3.601.852</td>
+                </tr>
+                </table>
+                <table style="margin-left:30%;"width="70%"  align="left"  cellpadding="1" cellspacing="0">
+                    <tr class="text2">
+                        <td width="25%">Nama</td>
+                        <td width="1%">:</td>
+                        <td width="15%">MARIA ARTSH</td>
+                    </tr>
+                    <tr class="text2">
+                        <td width="25%">Nopen</td>
+                        <td width="1%">:</td>
+                        <td width="15%">1234567890</td>
+                    </tr>
+                    <tr class="text2">
+                        <td width="25%">Kantor Bayar Tujuan</td>
+                        <td width="1%">:</td>
+                        <td width="15%">BPRS MCI</td>
+                    </tr>
+                    <tr class="text2">
+                        <td width="25%">Area Pelayanan</td>
+                        <td width="1%">:</td>
+                        <td width="15%">NGAWI</td>
+                    </tr>
+                </table>
+                <table width="30%" align="right"  cellpadding="1" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td><img align="right" width="80%" src="' . public_path('assets/images/pdf/kotak.png') . '"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br><br><br>
+                <table width="100%">
+                    <tr>
+                        <td style="text-align: right;">
+                            Tanda Tangan Debitur
+                        </td>
+                    </tr>
+                </table>
+            </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div>
                 <center>
@@ -293,64 +343,69 @@ class NewCustomerController extends Controller
                     <table width="100%">
                         <tr class="text2" style="text-align: justify;">
                             <td>
-                                <font size="2">
-                                Yang bertanda tangan dibawah ini: ' . $customer_data->nama . ' beralamat di ' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '
-                                bertindak untuk dan atas nama diri sendiri selanjutnya disebut penjamin. Dengan ini memberi kuasa yang tidak dapat ditarik kembali
+
+                                Yang bertanda tangan dibawah ini: MARIA ARLENTINA SUTINI beralamat di GADUNG RT 001 RW 003 NGOMPRO PANGKUR, NGAWI JAWA TIMUR 
+                                bertindak untuk dan atas nama diri sendiri selanjutnya disebut penjamin. Dengan ini memberi kuasa yang tidak dapat ditarik kembali 
                                 meskipun dengan alasan yang tercantum dalam pasal 1813 KUH Perdata, kepada PT. BPRS Mitra Cahaya Indonesia (yang dalam surat kuasa
                                 ini disebut BANK) untuk menjual, menarik, mencairkan dan memindahkan tangan dengan harga dipandang patut oleh Bank, atas titipan berupa
-                                </font>
                             </td>
                         </tr>
                     </table>
                     </table>
                     <table width="100%" style="margin-left: 30px;">
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td width="2">A.</td>
                             <td widht="100">Anggunan antara lain :</td>
                         </tr>
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td></td>
                             <td> -  Surat Keputusan Pensiun Asli Nomer :' . $customer_data->nopen . '</td>
                         </tr>
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td width="2">B.</td>
                             <td widht="100">Titipan berupa :</td>
                         </tr>
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td></td>
                             <td> - </td>
                         </tr>
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td width="2">C.</td>
                             <td widht="100">Hal - hal sesuai kesepakatan bersama antara lain :</td>
                         </tr>
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td></td>
                             <td>- Sesaui bunyi pasal 3 ayat 4 dan</td>
                         </tr>
-                        <tr style="font: size 2px;">
+                        <tr class="text2">
                             <td></td>
                             <td>- Sesaui bunyi pasal 4 ayat 6</td>
                         </tr>
                     </table>
                     <br>
                         <table width="100%">
-                            <tr>
+                            <tr class="text2">
                             <td style="text-align:justify ;">
-                                <font size="2"> Yang diserahkan kepada BANK sebagai titipan dari pembiayaan berdasarkan perjanjian pembiayaan MBAK.. ./V1102021 tanggal 30-08-2021 dan atau berdasarkan apapun,
+
+                                <font> Yang diserahkan kepada BANK sebagai titipan dari pembiayaan berdasarkan perjanjian pembiayaan MBAK.. ./V1102021 tanggal 30-08-2021 dan atau berdasarkan apapun, 
+
                                     apabila BANK menganggap NASABAH tersebut diatas, termasuk pembayaran profit dan ongkos ongkos lainnya akan ditentukan BANK
                                 </font>
                                 <br><br>
-                                <font size="2"> Semua hasil-hasil penjualan menarik, mencairkan barang-barang tersebut setelah dikurangi ongkosongkos supaya diperhitungkan untuk melunasi pembiayaan
+                                <font> Semua hasil-hasil penjualan menarik, mencairkan barang-barang tersebut setelah dikurangi ongkosongkos supaya diperhitungkan untuk melunasi pembiayaan
                                 </font>
                                 <br>
-                                <font size="2"> Sdr. ' . $customer_data->nama . ' kepada BANK
+
+                                <font> Sdr. ' . $customer_data->nama . ' kepada BANK
+
                                 </font>
                                 <br><br>
-                                <font size="2"> Khusus apabila yang kami serahkan tersebut diatas merupakan rumah bangunan, maka kami harus mengkosongkan selambat-lambatnya 1 (satu) bulan setelah pemberitahuan pertama dan BANK dengan tidak perlu dibuktikan untuk itu.
+                                <font> Khusus apabila yang kami serahkan tersebut diatas merupakan rumah bangunan, maka kami harus mengkosongkan selambat-lambatnya 1 (satu) bulan setelah pemberitahuan pertama dan BANK dengan tidak perlu dibuktikan untuk itu.
                                 </font>
                                 <br><br>
-                                <font size="2"> Terhitung semenjak Surat Kuasa ini BANK berhak dan berwenang untuk mengurus, menandatangani surat-surat sehubungan dengan titipan titipan tersebut
+
+                                <font> Terhitung semenjak Surat Kuasa ini BANK berhak dan berwenang untuk mengurus, menandatangani surat-surat sehubungan dengan titipan titipan tersebut 
+
                                     baik terhadap yang berwajib maupun terhadap pihak lain, selanjutnya kepada BANK dikuasakan untuk membuat dan menandatangani surat jual bell proses verbal lelang umum, memberi kwitansi untuk semua tindakan yang berhubungan dengan pemindahan hak / penjualan barang tersebut. Dengan ini pula yang bertanda tangan dibawah ini mengikat diri untuk mematuhi / memenuhi segala keputusan BANK mengenai barang barang tersebut
                                 </font>
                                 <br><br>
@@ -362,12 +417,12 @@ class NewCustomerController extends Controller
                     </table>
                     <br>
                     <table width="100%">
-                        <tr>
+                        <tr class="text2">
                             <td width="30%"></td>
                             <td></td>
                             <td colspan="3" style="text-align: center;">Yogyakarta, 30-08-2020<br>NASABAH</td>
                         </tr>
-                        <tr>
+                        <tr class="text2">
                             <td>PT. BPRS Mitra Cahaya Indoneisa<br>
                                 Direktur Utama,<br>
                                 <br><br><br><br><br><br><br><br>
@@ -387,6 +442,7 @@ class NewCustomerController extends Controller
                     </table>
                 </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div>
                 <center>
@@ -458,6 +514,7 @@ class NewCustomerController extends Controller
                     </table>
                 </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -644,6 +701,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -806,6 +864,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -880,8 +939,10 @@ class NewCustomerController extends Controller
                     <tr class="text2">
                         <td width="50%" style="text-align: center;">
                             Yang Memberi Kuasa,
-                            <br><br><br><br><br><br><br><br><br><br>
+
+                            <br><br><br><br><br><br><br><br><br><br><br>
                             ' . $customer_data->nama . '
+
                             <hr width="200">
                             Nasabah
                         </td>
@@ -897,6 +958,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -1055,6 +1117,7 @@ class NewCustomerController extends Controller
                         <td style="text-align: justify;">Piutang Murabahah ini semata-mata akan dipergunakan oleh NASABAH hanya untuk pembelian barang berupa Pembelian dari sumber yang telah dipilih dan ditunjuk oleh NASABAH, dan BANK dengan ini memberi kuasa kepada NASABAH untuk membeli barang-barang tersebut untuk kepentingan dan atas nama BANK Barang-barang tersebut untuk saat yang sama dibeli oleh NASABAH dan BANK karenanya NASABAH dengan ini menyatakan secara sah memperoleh pembiayaan dan BANK, sejumlah yang terdiri dan jumlah pokok plutang Murabahan yang diterima, ditambah margin keuntungan jual beli yang ditetapkan oleh BANK.</td>
                     </tr>
                 </table>
+                <div style="page-break-after: always;"></div>
                 <table  width="100%">
                     <tr style="text-align: center;">
                         <td style="text-align: center;"><b><i>Pasal 2</i><br> JANGKA WAKTU, ANGSURAN DAN BIAYA ADMINISTRASI</b></td>
@@ -1322,6 +1385,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -1481,6 +1545,7 @@ class NewCustomerController extends Controller
                         <td style="text-align: justify;">Wakalah adalah Pemberian Kuasa oleh BANK kepada NASABAH untuk membeli dan menerima barang dari Penjual.</td>
                     </tr>
                 </table>
+                <div style="page-break-after: always;"></div>
                 <table width="100%">
                     <tr style="text-align: center;">
                         <td style="text-align: center;"><b><i>Pasal 2</i> <br> OBYEK WAKALH</b></td>
@@ -1616,86 +1681,87 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
-
-
-
+            
+            <!-- Tanda Terima Penyerahan Jaminan -->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
-            <table width="100%">
-                <tr class="text2">
-                    <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%" ></td>
 
-                </tr>
-            </table>
-            <table  width="100%">
-                <tr>
-                    <td>
-                    <center>
-                        <font size="4"><b>TANDA TERIMA PENYERAHAN JAMINAN</b></font><br>
-                    </center>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">
-                        <font size="4"><b>DEBITUR</b></font><br>
-                    </td>
-                </tr>
-            </table>
-            <table align="left"  cellpadding="1" cellspacing="0">
-                <tbody>
+                <table width="100%">
                     <tr class="text2">
-                        <td>Nama</td>
-                        <td>:</td>
-                        <td>' . $customer_data->nama . '</td>
+                        <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="20%" ></td>
+                    
                     </tr>
-                    <tr class="text2">
-                        <td >NIP / Nopen</td>
-                        <td >:</td>
-                        <td>' . $customer_data->nopen . '</td>
+                </table>
+                <table  width="100%">
+                    <tr>
+                        <td>
+                        <center>
+                            <font size="3"><b>TANDA TERIMA PENYERAHAN JAMINAN</b></font><br>
+                        </center>
+                        </td>
+
                     </tr>
-                    <tr class="text2">
-                        <td>Instansi</td>
-                        <td>:</td>
-                        <td>TASPEN</td>
+                    <tr>
+                        <td style="text-align: right;">
+                            <font size="2"><b>DEBITUR</b></font><br>
+                        </td>
                     </tr>
-                    <tr class="text2">
-                        <td>Loket Bayar</td>
-                        <td>:</td>
-                        <td>BRPS MCI</td>
+                </table>
+                <table align="left"  cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr class="text2">
+                            <td>Nama</td>
+                            <td>:</td>
+                            <td>Maria</td>
+                        </tr>
+                        <tr class="text2">
+                            <td >NIP / Nopen</td>
+                            <td >:</td>
+                            <td>213242342</td>
+                        </tr>
+                        <tr class="text2">
+                            <td>Instansi</td>
+                            <td>:</td>
+                            <td>TASPEN</td>
+                        </tr>
+                        <tr class="text2">
+                            <td>Loket Bayar</td>
+                            <td>:</td>
+                            <td>BRPS MCI</td>
+                        </tr>
+                        <tr class="text2">
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td>GEDUNG</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table align="right" border="1" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td>Surat Keputusan Pensiun Asli&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                            0096/KEP/CV/6523/2008<br>
+                            Tertanggal, 2008-04-04<br>
+                            Atas nama :<br>
+                            MARIA AREL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
-                    <tr class="text2">
-                        <td>Alamat</td>
-                        <td>:</td>
-                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
+                    </tbody>
+                </table>
+                <br><br><br><br><br>
+                <table width="100%">
+                    <tr>
+                        <td>Diserahkan Tanggal,</td>
                     </tr>
-                </tbody>
-            </table>
-            <table align="right" border="1" cellpadding="1" cellspacing="0">
-                <tbody>
+                </table>
+            </center>
+            <table border="1" width=60% style="margin-left: 10%;">
                 <tr>
-                    <td>Surat Keputusan Pensiun Asli&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                        0096/KEP/CV/6523/2008<br>
-                        Tertanggal, 2008-04-04<br>
-                        Atas nama :<br>
-                        ' . $customer_data->nama . ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                </tr>
-                </tbody>
-            </table>
-            <br>
-            <table width="100%">
-                <tr>
-                    <td>Diserahkan Tanggal,</td>
-                </tr>
-            </table>
-        </center>
-            <table border="1" width=30% style="margin-left: 5%;">
-                <tr>
-                    <td style="text-align: center;" width="250">DEBITUR
-                        <br><br><br><br><br>
-                        ' . $customer_data->nama . '</td>
-                    <td style="text-align: center;" width="250">MARKETING
-                        <br><br><br><br><br>
+                    <td style="text-align: center;" width="30%">DEBITUR
+                        <br><br><br>
+                        MARIA ARNE</td>
+                    <td style="text-align: center;" width="30%%">MARKETING
+                        <br><br><br>
                     </td>
                 </tr>
             </table>
@@ -1707,13 +1773,13 @@ class NewCustomerController extends Controller
                     </tr>
                 </table>
             </center>
-            <table border="1" width=60% style="margin-left: 5%;">
+            <table border="1" width=60% style="margin-left: 10%;">
                 <tr>
-                    <td style="text-align: center;" width="250">DEBITUR
-                        <br><br><br><br><br>
-                        ' . $customer_data->nama . '</td>
-                    <td style="text-align: center;" width="250">MARKETING
-                        <br><br><br><br><br>
+                    <td style="text-align: center;" width="30%">DEBITUR
+                        <br><br><br>
+                        MARIA ARNE</td>
+                    <td style="text-align: center;" width="30%">MARKETING
+                        <br><br><br>
                     </td>
                 </tr>
             </table>
@@ -1722,86 +1788,83 @@ class NewCustomerController extends Controller
                 <img src="' . public_path('assets/images/pdf/cut.png') . '" width="150" height="40">
             </center>
             <center>
-                <table  width="100%">
+                <table width="100%">
                     <tr class="text2">
-                        <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="30%" ></td>
 
+                        <td><img src="' . public_path('assets/images/pdf/logoMCI.png') . '" width="20%" ></td>
+                    
                     </tr>
                 </table>
                 <table  width="100%">
                     <tr>
                         <td>
                         <center>
-                            <font size="4"><b>TANDA TERIMA PENYERAHAN JAMINAN</b></font><br>
+                            <font size="3"><b>TANDA TERIMA PENYERAHAN JAMINAN</b></font><br>
                         </center>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">
-                            <font size="4"><b>DEBITUR</b></font><br>
+                            <font size="2"><b>AMPLOP JAMINAN</b></font><br>
                         </td>
                     </tr>
                 </table>
-                <div class="grid-container">
-                    <div>
-                        <table width="100%">
-                            <tr class="text2">
-                                <td width="100">Nama</td>
-                                <td width="10">:</td>
-                                <td>' . $customer_data->nama . '</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="100">NIP / Nopen</td>
-                                <td width="10">:</td>
-                                <td>' . $customer_data->nopen . '</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="100">Instansi</td>
-                                <td width="10">:</td>
-                                <td>TASPEN</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="100">Loket Bayar</td>
-                                <td width="10">:</td>
-                                <td>BRPS MCI</td>
-                            </tr>
-                            <tr class="text2">
-                                <td width="100">Alamat</td>
-                                <td width="10">:</td>
-                                <td>GEDUNG</td>
-                            </tr>
-                        </table>
 
-                    </div>
-                    <a></a>
-                    <a></a>
-                    <div>
-                        <table border="3"  >
-                            <tr>
-                                <td>Surat Keputusan Pensiun Asli<br>
-                                0096/KEP/CV/6523/2008<br>
-                                Tertanggal, 2008-04-04<br>
-                                Atas nama :<br>
-                                ' . $customer_data->nama . '</td>
-                            </tr>
-                        </table>
-
-                    </div>
-                </div>
-
+                <table align="left"  cellpadding="1" cellspacing="0">
+                    <tbody>
+                        <tr class="text2">
+                            <td>Nama</td>
+                            <td>:</td>
+                            <td>Maria</td>
+                        </tr>
+                        <tr class="text2">
+                            <td >NIP / Nopen</td>
+                            <td >:</td>
+                            <td>213242342</td>
+                        </tr>
+                        <tr class="text2">
+                            <td>Instansi</td>
+                            <td>:</td>
+                            <td>TASPEN</td>
+                        </tr>
+                        <tr class="text2">
+                            <td>Loket Bayar</td>
+                            <td>:</td>
+                            <td>BRPS MCI</td>
+                        </tr>
+                        <tr class="text2">
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td>GEDUNG</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table align="right" border="1" cellpadding="1" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td>Surat Keputusan Pensiun Asli&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                            0096/KEP/CV/6523/2008<br>
+                            Tertanggal, 2008-04-04<br>
+                            Atas nama :<br>
+                            MARIA AREL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br><br><br><br>
                 <table width="100%">
                     <tr>
                         <td>Diserahkan Tanggal,</td>
                     </tr>
                 </table>
             </center>
-            <table border="1" width=60% style="margin-left: 5%;">
+            <table border="1" width=60% style="margin-left: 10%;">
                 <tr>
-                    <td style="text-align: center;" width="250">DEBITUR
-                        <br><br><br><br><br>
-                        ' . $customer_data->nama . '</td>
-                    <td style="text-align: center;" width="250">MARKETING
-                        <br><br><br><br><br>
+                    <td style="text-align: center;" width="30%">DEBITUR
+                        <br><br><br>
+                        MARIA ARNE</td>
+                    <td style="text-align: center;" width="30%%">MARKETING
+                        <br><br><br>
+
                     </td>
                 </tr>
             </table>
@@ -1813,26 +1876,28 @@ class NewCustomerController extends Controller
                     </tr>
                 </table>
             </center>
-            <table border="1" width=60% style="margin-left: 5%;">
+            <table border="1" width=60% style="margin-left: 10%;">
                 <tr>
-                    <td style="text-align: center;" width="250">DEBITUR
-                        <br><br><br><br><br>
-                        ' . $customer_data->nama . '</td>
-                    <td style="text-align: center;" width="250">MARKETING
-                        <br><br><br><br><br>
+
+                    <td style="text-align: center;" width="30%">DEBITUR
+                        <br><br><br>
+                         ' . $customer_data->nama . '</td>
+                    <td style="text-align: center;" width="30%">MARKETING
+                        <br><br><br>
+
                     </td>
                 </tr>
             </table>
             </div>
 
-
+            <!--SURAT PERMOHONAN REALISASI PIUTANG MURABAHAH-->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
                 <table width="100%">
                     <tr>
                         <td style="text-align: center;">
-                            <font size="4">
+                            <font size="3">
                                 <b>SURAT PERMOHONAN<br>REALISASI PIUTANG MURABAHAH</b>
                             </font>
                         </td>
@@ -1858,7 +1923,7 @@ class NewCustomerController extends Controller
                 </table>
                 <br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td>
                             Bismillahirahmaanirrahiim<br>Assalaamu&#39;alaikum Warohmatullahi Wabarokatuh
                         </td>
@@ -1867,7 +1932,7 @@ class NewCustomerController extends Controller
                 <br>
                 <br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td style="text-align: justify;">
                             Sehubungan dengan penunjukkan Saya sebagai kuasa dari dan oleh karena itu bertindak untuk dan atas nama BPRS MCI YOGYAKARTA (selanjutnya disebut BANK) untuk melakukan pembelian barang sebagaimana tercantum dalam Perjanjian Piutang Murabahah No: MBAK..............M14/2021 pasal 1 ayat 2, agar BANK membayar kepada Saya uang sejumlah Rp.150.000.000,00 (Seratus Lima Puluh Juta Rupiah) Pada saat yang sama, barang tersebut dijual oleh BANK kepada Saya dengan harga jual sejumlah Rp.291.749.985,00 (Dua Ratus Sembilan Puluh Satu Juta Tujuh Ratus Empat Puluh Sembilan Ribu Sembilan Ratus Delapan Puluh Lima Rupiah). Saya membayar uang muka (urbun) atas pembelian barang tersebut sebesar Rp. ----) sehingga Sisa Harga Jual menjadi Rp.291.749.985,00 (Dua Ratus Sembilan Puluh Satu Juta Tujuh Ratus Empat Puluh Sembilan Ribu Sembilan Ratus Delapan Puluh Lima Rupiah) dengan demikian Saya menyatakan bahwa:
                         </td>
@@ -1875,13 +1940,13 @@ class NewCustomerController extends Controller
                 </table>
                 <br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td width="20">1.</td>
                         <td style="text-align: justify;"">
                             Membebaskan BANK dari segala tuntutan pihak ketiga manapun yang dirugikan baik secara langsung sehubungan dengan keberadaan barang
                             barang tersebut. </td>
                     </tr>
-                    <tr>
+                    <tr class="text2">
                         <td width="20">2.</td>
                         <td style="text-align: justify;">
                             Saya bertanggung jawab untuk membayar harga pembelian barang kepada BANK sekalipun jual beli antara Saya dengan Supplier/Dealer tidak
@@ -1890,14 +1955,14 @@ class NewCustomerController extends Controller
                 </table>
                 <br><br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td>Wassalamu&#39;alaikum Warohmatullahi Wabarokatuh</td>
                     </tr>
                 </table>
                 <br><br>
 
                 <table width="100%">
-                    <tr class="">
+                    <tr class="text2">
                         <td><b>Penerima Pembiayaan Murabahah</b><br>
                             <br><br><br><br><br><br><br>
                             <b><u>MARIA TH</u></b>
@@ -1906,6 +1971,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -1913,7 +1979,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td>
                         <center>
-                            <font size="4"><b>SURAT PERNYATAAN DEBITUR</b></font><br>
+                            <font size="3"><b>SURAT PERNYATAAN DEBITUR</b></font><br>
                         </center>
                         </td>
                     </tr>
@@ -2055,6 +2121,8 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+            
+            <!--PERNYATAAN DAN KUASA-->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2072,9 +2140,11 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr class="text2" style="text-align: justify;">
                         <td>
-                            <font size="2">
-                                Sehubungan dengan telah direalisasikannya Akad Pembiayaan Murabahah PT BPRS Mitra Cahaya Indonesia
-                                pada tanggal ' . $customer_data->tanggal_keputusan . ' dengan ini saya/NASABAH ' . $customer_data->nama . ' yang beralamat di ' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . ' bertindak untuk dan atas nama pribadi, menyatakan hal-hal sebagai berikut:
+
+                            <font>
+                                Sehubungan dengan telah direalisasikannya Akad Pembiayaan Murabahah PT BPRS Mitra Cahaya Indonesia 
+                                pada tanggal 30-08-2021 dengan ini saya/NASABAH MARIA ARLENTINA SUTINI yang beralamat di GADUNG RT 001 RW 003 NGOMPRO, PANGKUR, NGAWI JAWA TIMUR bertindak untuk dan atas nama pribadi, menyatakan hal-hal sebagai berikut:
+
                             </font>
                         </td>
                     </tr>
@@ -2116,35 +2186,35 @@ class NewCustomerController extends Controller
                     </tr>
                 </table>
                 <table width="100%" style="margin-left:30px;">
-                    <tr>
+                    <tr class="text2">
                         <td width="100">Nomor</td>
                         <td width="20">:</td>
                         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
                     </tr>
-                    <tr>
+                    <tr class="text2">
                         <td width="100">Atas Nama</td>
                         <td width="20">:</td>
                         <td>' . $customer_data->nama . '</td>
                     </tr>
-                    <tr>
+                    <tr class="text2">
                         <td width="100">Pada Bank</td>
                         <td width="20">:</td>
                         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
                     </tr>
                 </table>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td width="20"></td>
                         <td style="text-align: justify;">Sejumlah yang diperlukan untuk kepentingan biaya prarealisasi, pembayaran pokok pembiayaan dan pembayaran Marjin serta kewajiban
                             lain yang terkait dengan pembiayaan yang telah kami terima. </td>
                     </tr>
-                    <tr>
+                    <tr class="text2">
                         <td width="20">7.</td>
                         <td style="text-align: justify;">Tidak akan memberikan hadiah langsung / tidak langsung kepada Direksi dan Karyawan PT BPRS Mitra Cahaya Indonesia.  </td>
                     </tr>
                 </table>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                     <td style="text-align:justify ;">
                         <font size="2">
                             Demikian pernyataan dan kuasa ini dibuat dengan kesadaran tanpa paksaan serta untuk digunakan sebagaimana mestinya
@@ -2156,7 +2226,7 @@ class NewCustomerController extends Controller
                 <br>
                 <br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td width="65%"></td>
                         <td style="text-align: center;">Yogyakarta, ' . $customer_data->tanggal_keputusan . '<br>NASABAH
                         <br><br><br><br><br><br><br><br><br><br>
@@ -2165,6 +2235,8 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+            
+            <!--OPINI DEWAN PENGAWAS-->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2182,20 +2254,22 @@ class NewCustomerController extends Controller
                 <table width="100%">
                     <tr class="text2">
                         <td style="text-align: justify;">
-                            <font size="2">
-                                Dengan ini Dewan Pengawas Syariah PT. BPR Syariah MITRA CAHAYA INDONESIA
-                                beropini penggunaan akad Murabahah MBAK............/VI/2021 kepada nasabah
-                                atas nama ' . $customer_data->nama . ' di ' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . ' Hal ini berdasarkan pada data yang diterima oleh bagian
-                                pembiayaan yang kemudian dilakukan pengecekan ke lapangan oleh M. Mufid
-                                Faturahman sebagai account officer dan kemudian disampaikan oleh Direksi
+
+                            <font>
+                                Dengan ini Dewan Pengawas Syariah PT. BPR Syariah MITRA CAHAYA INDONESIA 
+                                beropini penggunaan akad Murabahah MBAK............/VI/2021 kepada nasabah 
+                                atas nama MARIA ARLENTINA SUTINI di GADUNG RT 001 RW 003. NGOMPRO, PANGKUR. 
+                                NGAWI JAWA TIMUR Hal ini berdasarkan pada data yang diterima oleh bagian 
+                                pembiayaan yang kemudian dilakukan pengecekan ke lapangan oleh M. Mufid 
+                                Faturahman sebagai account officer dan kemudian disampaikan oleh Direksi 
                                 kepada Dewan Pengawas Syariah, bahwa dana pembiayaan tersebut akan digunakan
                                 untuk:
                             </font><br>
-                            <font size="2">- (sesuai dengan Surat Permohonan Murabahah).</font><br><br>
-                            <font size="2">
+                            <font>- (sesuai dengan Surat Permohonan Murabahah).</font><br><br>
+                            <font>
                                 Sehingga Dewan Pengawas Syariah menyampaikan bahwa penggunaan akad Murabahah dalam membiayai kebutuhan nasabah seperti dijelaskan pada rencana penggunaan dana.
                             </font><br><br>
-                            <font size="2">
+                            <font>
                                 Demikian opini ini kami buat dan kami sampaikan kepada Direksi PT. BPR Syariah MITRA CAHAYA INDONESIA agar supaya dipergunakan sebagaimana mestinya.
                             </font>
                         </td>
@@ -2206,7 +2280,7 @@ class NewCustomerController extends Controller
                 <br>
                 <br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                         <td width="65%"></td>
                         <td>Sleman, 30-08-2021<br>Dewan Pengawas Syariah<br>
                         PT. BPRS MITRA CAHAYA INDONESIA
@@ -2217,6 +2291,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2229,7 +2304,7 @@ class NewCustomerController extends Controller
                     <tr>
                         <td>
                         <center>
-                            <font size="4"><b>BUKTI PENCAIRAN PEMBAYARAN</b></font><br>
+                            <font size="3"><b>BUKTI PENCAIRAN PEMBAYARAN</b></font><br>
                         </center>
                         </td>
                     </tr>
@@ -2371,6 +2446,8 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
+            <!--Bukti Pencairan Pembayaran-->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2525,6 +2602,8 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
+            <!--Bukti Pencairan Pembayaran-->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2547,24 +2626,24 @@ class NewCustomerController extends Controller
                 </table>
                 <table width="100%">
                     <tr>
-                        <td width="300">Nama</td>
-                        <td width="20">:</td>
-                        <td>' . $customer_data->nama . '</td>
+                        <td width="50%">Nama</td>
+                        <td width="5%">:</td>
+                        <td>MARIA SDAAS</td>
                     </tr>
                     <tr>
-                        <td width="300">Nopen</td>
-                        <td width="20">:</td>
-                        <td>' . $customer_data->nopen . '</td>
+                        <td width="50%">Nopen</td>
+                        <td width="5%">:</td>
+                        <td>182902944959</td>
                     </tr>
                     <tr>
-                        <td width="300">No. KTP</td>
-                        <td width="20">:</td>
-                        <td>' . $customer_data->nik . '</td>
+                        <td width="50%">No. KTP</td>
+                        <td width="5%">:</td>
+                        <td>BPRS MCI</td>
                     </tr>
                     <tr>
-                        <td width="300">Alamat</td>
-                        <td width="20">:</td>
-                        <td>' . $customer_data->alamat_jalan . ' ' . $customer_data->alamat_kec . ', ' . $customer_data->alamat_kotakab . ' ' . $customer_data->alamat_propinsi . '</td>
+                        <td width="50%">Alamat</td>
+                        <td width="5%">:</td>
+                        <td>BPRS MCI</td>
                     </tr>
                 </table>
                 <br>
@@ -2621,6 +2700,8 @@ class NewCustomerController extends Controller
                 <br>
             </center>
             </div>
+
+            <!-- Hal 21 -->
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2635,7 +2716,7 @@ class NewCustomerController extends Controller
                     </tr>
                 </table>
             </center>
-                <table border="2" style="margin-left: 5%;" width="50%">
+                <table border="1" style="margin-left: 5%;" width="50%">
                     <tr>
                         <td width="180" style="text-align: center;"><b>NGAWI</b></td>
                         <td style="text-align: center;"><b>PLATINUM</b></td>
@@ -2675,190 +2756,191 @@ class NewCustomerController extends Controller
                     </td>
                 </tr>
                 </table>
-                <table border="4" style="border-style: solid;" width="100%">
-                    <tr style="text-align: center;">
-                    <td width="25"><b>No.</b></td>
-                    <td width="300"><b>DOKUMEN PERSYARATAN PEMBIAYAAN</b></td>
-                    <td width="100"><b>CHECK <br> MARKETING</b></td>
-                    <td width="20"><b>Lbr</b></td>
-                    <td width="100"><b>CHECK <br> MITRA PUSAT</b></td>
-                    <td width="20"><b>Lbr</b></td>
-                    <td width="100"><b>CHECK <BR> BPRS</b></td>
-                    <td width="20"><b>Lbr</b></td>
+                <table border="1" width="100%">
+                    <tr class="kecil" style="text-align: center;">
+                        <td style="font-size: 10px; text-align: center;" width="5%"><b>No.</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="41%"><b>DOKUMEN PERSYARATAN PEMBIAYAAN</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="15%"><b>CHECK <br> MARKETING</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="3%"><b>Lbr</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="15%"><b>CHECK <br> MITRA PUSAT</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="3%"><b>Lbr</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="15%"><b>CHECK <BR> BPRS</b></td>
+                        <td style="font-size: 10px; text-align: center;" width="3%"><b>Lbr</b></td>
                     </tr>
                 </table>
                 <table width="100%">
-                    <tr style="text-align: center;">
-                        <td width="25"><b></b></td>
-                        <td width="300"><b></b></td>
-                        <td width="50">Asli</td>
-                        <td width="50">Fc</td>
-                        <td width="20"><b></b></td>
-                        <td width="50">Asli</td>
-                        <td width="50">Fc</td>
-                        <td width="20"><b></b></td>
-                        <td width="50">Asli</td>
-                        <td width="50">Fc</td>
-                        <td width="20"><b></b></td>
+                    <tr class="kecil" style="text-align: center;">
+                        <td style="font-size: 10px; text-align: center;" width="5%"><b></b></td>
+                        <td style="font-size: 10px; text-align: center;" width="41%"><b></b></td>
+                        <td style="font-size: 10px; text-align: center;" width="7%">Asli</td>
+                        <td style="font-size: 10px; text-align: center;" width="7%">Fc</td>
+                        <td style="font-size: 10px; text-align: center;" width="3%"><b></b></td>
+                        <td style="font-size: 10px; text-align: center;" width="7%">Asli</td>
+                        <td style="font-size: 10px; text-align: center;" width="7%">Fc</td>
+                        <td style="font-size: 10px; text-align: center;" width="3%"><b></b></td>
+                        <td style="font-size: 10px; text-align: center;" width="7%">Asli</td>
+                        <td style="font-size: 10px; text-align: center;" width="7%">Fc</td>
+                        <td style="font-size: 10px; text-align: center;" width="3%"><b></b></td>
                     </tr>
                 </table>
                 <table border="1" width="100%">
-                    <tr >
-                        <td width="25">1.</td>
-                        <td width="300">KTP Pemohon</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">1.</td>
+                        <td width="41%">KTP Pemohon</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">2.</td>
-                        <td width="300">KTP Suami/Isteri*</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">2.</td>
+                        <td width="41%">KTP Suami/Isteri*</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">3.</td>
-                        <td width="300">Kartu Keluarga Pemohon</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">3.</td>
+                        <td width="41%">Kartu Keluarga Pemohon</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">4.</td>
-                        <td width="300">NPWP (untuk pembiayaan > Rp. 50 Jt)</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">4.</td>
+                        <td width="41%">NPWP (untuk pembiayaan > Rp. 50 Jt)</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">5.</td>
-                        <td width="300">KARIP/Buku ASABRI</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">5.</td>
+                        <td width="41%">KARIP/Buku ASABRI</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">6.</td>
-                        <td width="300">Slip Gaji/Rekening Bank 3 Bln Terakhir</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">6.</td>
+                        <td width="41%">Slip Gaji/Rekening Bank 3 Bln Terakhir</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">7.</td>
-                        <td width="300">Analisa Pembiayaan</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%"  style="text-align:center;">7.</td>
+                        <td width="41%">Analisa Pembiayaan</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">8.</td>
-                        <td width="300">Formulir Permohonan Pembiayaan Pensiun</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%"  style="text-align:center;">8.</td>
+                        <td width="41%">Formulir Pemohon Pembiayaan Pensiun</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">9.</td>
-                        <td width="300">Surat Keterangan Sisa Uang Pensiun</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">9.</td>
+                        <td width="41%">Surat Keterangan Sisa Uang Pensiun</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr style="vertical-align: top; text-align: left;">
-                        <td width="25">10.</td>
-                        <td width="300">Surat Keterangan dan Pernyataan Kesehatan dan Domisili Pemohon</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">10.</td>
+                        <td width="41%">Surat Keterangan dan Pernyataan Kesehatan dan Domisili Pemohon</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">11.</td>
-                        <td width="300">Surat Keterangan / Pernyataan Lainnya</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">11.</td>
+                        <td width="41%">Surat Keterangan / Pernyataan Lainnya</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
-                    <tr >
-                        <td width="25">12.</td>
-                        <td width="300">Kwitansi Pembayaran</td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
-                        <td width="50"></td>
-                        <td width="50"></td>
-                        <td width="20"></td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align:center;">12.</td>
+                        <td width="41%">Kwitansi Pembayaran</td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
+                        <td width="7.5%"></td>
+                        <td width="7.5%"></td>
+                        <td width="3%"></td>
                     </tr>
+                   
                 </table>
                 <br>
                 <table width=100%>
@@ -2880,6 +2962,7 @@ class NewCustomerController extends Controller
                 </table>
             </center>
             </div>
+
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
@@ -2894,34 +2977,34 @@ class NewCustomerController extends Controller
                     </tr>
                 </table>
             </center>
-                <table border="2" style="margin-left: 5%;" width="50%">
+                <table border="1" width="50%">
                     <tr>
-                        <td width="180" style="text-align: center;"><b>NGAWI</b></td>
-                        <td style="text-align: center;"><b>PLATINUM</b></td>
+                        <td width="180" style="text-align: center; font-size: 10px;"><b>NGAWI</b></td>
+                        <td style="text-align: center; font-size: 10px;"><b>PLATINUM</b></td>
                     </tr>
                     <tr>
-                    <td>Nama Debiutur</td>
-                    <td>' . $customer_data->nama . '</td>
+                        <td style="font-size: 10px;">NAMA DEBITURr</td>
+                        <td style="font-size: 10px;">MARIA</td>
                     </tr>
                     <tr>
-                    <td>NO. SK PENSIUN</td>
-                    <td>' . $customer_data->nopen . '</td>
+                        <td style="font-size: 10px;">NO. SK PENSIUN</td>
+                        <td style="font-size: 10px;">MARIA</td>
                 </tr>
                 <tr>
-                    <td>PEMBIAYAAN</td>
-                    <td>' . $customer_data->pembiayaan . '</td>
+                    <td style="font-size: 10px;">PEMBIAYAAN</td>
+                    <td style="font-size: 10px;">MARIA</td>
                 </tr>
                 <tr>
-                    <td>ANGSURAN</td>
-                    <td>' . $customer_data->cicilan . '</td>
+                    <td style="font-size: 10px;">ANGSURAN</td>
+                    <td style="font-size: 10px;">MARIA</td>
                 </tr>
                 <tr>
-                    <td>JANGKA WAKTU</td>
-                    <td>' . $customer_data->tenor . ' Bulan</td>
+                    <td style="font-size: 10px;">JANGKA WAKTU</td>
+                    <td style="font-size: 10px;">MARIA</td>
                 </tr>
                 <tr>
-                    <td>STATUS PEMBIAYAAN</td>
-                    <td>MARIA</td>
+                    <td style="font-size: 10px;">STATUS PEMBIAYAAN</td>
+                    <td style="font-size: 10px;">MARIA</td>
                 </tr>
                 </table>
                 <br>
@@ -2934,109 +3017,105 @@ class NewCustomerController extends Controller
                     </td>
                 </tr>
                 </table>
-                <table border="4" style="border-style: solid;" width="100%">
-                    <tr style="text-align: center;">
-                    <td width="25" style="text-align: center;" ><b>No.</b></td>
-                    <td width="300" style="text-align: center;"><b>DISKRIPSI DOKUMEN</b></td>
-                    <td width="50" style="text-align: center;"><b>Asli/copy</b></td>
-                    <td width="350" style="text-align: center;"><b>CHECKLIST</b></td>
+                <table border="1"  width="100%">
+                    <tr class="text3" style="text-align: center;">
+                        <td width="5%" style="text-align: center; font-size: 10px;" ><b>No.</b></td>
+                        <td width="35%" style="text-align: center; font-size: 10px;"><b>DISKRIPSI DOKUMEN</b></td>
+                        <td width="10%" style="text-align: center; font-size: 10px;"><b>Asli/copy</b></td>
+                        <td width="50%" style="text-align: center; font-size: 10px;" colspan="3"><b>CHECKLIST</b></td>
                     </tr>
-                </table>
-                <table border="4" style="border-style: solid;" width="100%">
-                <tr style="text-align: center;">
-                    <td width="25"><b></b></td>
-                    <td width="300"><b></b></td>
-                    <td width="60"><b></b></td>
-                    <td width="110" style="text-align: center;"><b>MARKETING</b></td>
-                    <td width="110" style="text-align: center;"><b>MITRA PUSAT</b></td>
-                    <td width="115" style="text-align: center;"><b>BPRS</b></td>
-                </tr>
-            </table>
-            <table border="4" style="border-style: solid;" width="100%">
-                <tr>
-                <td width="25">1.</td>
-                <td width="300">SURAT KEPUTUSAN PENSIUN</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">2.</td>
-                <td width="300">AKAD MURABAHAH</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">3.</td>
-                <td width="300">AKAD WAKALAH</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">4.</td>
-                <td width="300">SURAT PERMOHONAN REALISASI PIUTANG MURABAHAH</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">5.</td>
-                <td width="300">DATA PEMBELIAN BARANG</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">6.</td>
-                <td width="300">JADWAL ANGSURAN (REPAYMENT SCHEDULE)</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">7.</td>
-                <td width="300">BUKTI PENCAIRAN PEMBIAYAAN</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">8.</td>
-                <td width="300">TANDA TERIMA PENYERAHAN JAMINAN</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-                <tr>
-                <td width="25">9.</td>
-                <td width="300">SURAT PERNYATAAN PEMOTONG GAJI > 70%</td>
-                <td width="60" style="text-align: center;">asli</td>
-                <td width="110"></td>
-                <td width="110"></td>
-                <td width="115"></td>
-                </tr>
-            </table>
+                    <tr class="text3" style="text-align: center;">
+                        <td width="5%"><b></b></td>
+                        <td width="35%"><b></b></td>
+                        <td width="10%"><b></b></td>
+                        <td width="20%" style="text-align: center; font-size: 10px;"><b>MARKETING</b>
+                        </td>
+                        <td width="20%" style="text-align: center; font-size: 10px;"><b>MITRA PUSAT</b>
+                        </td>
+                        <td width="10%" style="text-align: center; font-size: 10px;"><b>BPRS</b></td>
+                    </tr>
+                    <tr class="text3" >
+                        <td width="5%" style="text-align: center;font-size: 10px;">1.</td>
+                        <td width="35%"  style="font-size: 10px;">SURAT KEPUTUSAN PENSIUN</td>
+                        <td width="10%" style="text-align: center; font-size;10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">2.</td>
+                        <td width="35%" style="font-size: 10px;">AKAD MURABAHAH</td>
+                        <td width="10%" style="text-align: center; font-size;10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">3.</td>
+                        <td width="35%" style="font-size: 10px;">AKAD WAKALAH</td>
+                        <td width="10%" style="text-align: center; font-size;10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">4.</td>
+                        <td width="35%" style="font-size: 10px;">SURAT PERMOHONAN REALISASI PIUTANG MURABAHAH</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">5.</td>
+                        <td width="35%" style="font-size: 10px;">DATA PEMBELIAN BARANG</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">6.</td>
+                        <td width="35%" style="font-size: 10px;">JADWAL ANGSURAN (REPAYMENT SCHEDULE)</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">7.</td>
+                        <td width="35%" style="font-size: 10px;">BUKTI PENCAIRAN PEMBIAYAAN</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">8.</td>
+                        <td width="35%" style="font-size: 10px;">TANDA TERIMA PENYERAHAN JAMINAN</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">9.</td>
+                        <td width="35%" style="font-size: 10px;">SURAT PERNYATAAN PEMOTONG GAJI > 70%</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                 </table>
             </center>
             </div>
-
-
 
             <div style="page-break-after: always;"></div>
             <div class="section1">
             <center>
                 <table width="100%">
                     <tr>
-                        <td class="text3">
+                        <td style="font-size:14px;">
                         <b>Dokumen Checklist</b>
                         </td>
                     </tr>
@@ -3046,68 +3125,69 @@ class NewCustomerController extends Controller
                     <tr>
                     <td colspan="6" style="text-align: center;">SEKAT 1</td>
                     </tr>
-                    <tr>
-                    <td style="text-align: center;" width="30">No.</td>
-                    <td style="text-align: center;" width="300">DESKRIPSI DOKUMEN</td>
-                    <td style="text-align: center;" width="60">Asli/copy</td>
-                    <td style="text-align: center;" width="200" colspan="3">CHECKLIST</td>
+                    <tr class="text3" style="text-align: center;">
+                        <td width="5%" style="text-align: center; font-size: 10px;" ><b>No.</b></td>
+                        <td width="35%" style="text-align: center; font-size: 10px;"><b>DISKRIPSI DOKUMEN</b></td>
+                        <td width="10%" style="text-align: center; font-size: 10px;"><b>Asli/copy</b></td>
+                        <td width="50%" style="text-align: center; font-size: 10px;" colspan="3"><b>CHECKLIST</b></td>
                     </tr>
-                    <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td style="text-align: center;">MARKETING</td>
-                    <td style="text-align: center;">MITRA PUSAT</td>
-                    <td style="text-align: center;" width="100">BPRS</td>
+                    <tr class="text3" style="text-align: center;">
+                        <td width="5%"><b></b></td>
+                        <td width="35%"><b></b></td>
+                        <td width="10%"><b></b></td>
+                        <td width="20%" style="text-align: center; font-size: 10px;"><b>MARKETING</b>
+                        </td>
+                        <td width="20%" style="text-align: center; font-size: 10px;"><b>MITRA PUSAT</b>
+                        </td>
+                        <td width="10%" style="text-align: center; font-size: 10px;"><b>BPRS</b></td>
                     </tr>
-                    <tr>
-                    <td>1.</td>
-                    <td>KTP PEMOHON</td>
-                    <td style="text-align: center;">copy</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3" >
+                        <td width="5%" style="text-align: center;font-size: 10px;">1.</td>
+                        <td width="35%"  style="font-size: 10px;">KTP PEMOHON</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Copy</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>2.</td>
-                    <td>KTP SUAMI/ISTERI*</td>
-                    <td style="text-align: center;">copy</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">2.</td>
+                        <td width="35%" style="font-size: 10px;">KTP SUAMI / ISTRI*</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Copy</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-
-                    <tr>
-                    <td>3.</td>
-                    <td>KARTU KELUARGA PEMOHON</td>
-                    <td style="text-align: center;">copy</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">3.</td>
+                        <td width="35%" style="font-size: 10px;">KARTU KELUARGA PEMOHON</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Copy</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>4.</td>
-                    <td>NPWP</td>
-                    <td style="text-align: center;">copy</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">4.</td>
+                        <td width="35%" style="font-size: 10px;">NPWP</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Copy</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>5.</td>
-                    <td>KARIP / BUKU ASABRI</td>
-                    <td style="text-align: center;">copy</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">5.</td>
+                        <td width="35%" style="font-size: 10px;">KARIP / BUKU ASABRI</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Copy</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>6.</td>
-                    <td>SLIP GAJI / REKENING BANK 3 BLN TERAKHIR</td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">6.</td>
+                        <td width="35%" style="font-size: 10px;">SLIP GAJI / REKENING BANK 3 BLN TERAKHIR</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
                 </table>
                 <br>
@@ -3116,73 +3196,74 @@ class NewCustomerController extends Controller
                     <tr>
                     <td colspan="6" style="text-align: center;">SEKAT 2</td>
                     </tr>
-                    <tr>
-                    <td style="text-align: center;" width="30">No.</td>
-                    <td style="text-align: center;" width="300">DESKRIPSI DOKUMEN</td>
-                    <td style="text-align: center;" width="60">Asli/copy</td>
-                    <td style="text-align: center;" width="200" colspan="3">CHECKLIST</td>
+                    <tr class="text3" style="text-align: center;">
+                        <td width="5%" style="text-align: center; font-size: 10px;" ><b>No.</b></td>
+                        <td width="35%" style="text-align: center; font-size: 10px;"><b>DISKRIPSI DOKUMEN</b></td>
+                        <td width="10%" style="text-align: center; font-size: 10px;"><b>Asli/copy</b></td>
+                        <td width="50%" style="text-align: center; font-size: 10px;" colspan="3"><b>CHECKLIST</b></td>
                     </tr>
-                    <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td style="text-align: center;">MARKETING</td>
-                    <td style="text-align: center;">MITRA PUSAT</td>
-                    <td style="text-align: center;" width="100">BPRS</td>
+                    <tr class="text3" style="text-align: center;">
+                        <td width="5%"><b></b></td>
+                        <td width="35%"><b></b></td>
+                        <td width="10%"><b></b></td>
+                        <td width="20%" style="text-align: center; font-size: 10px;"><b>MARKETING</b>
+                        </td>
+                        <td width="20%" style="text-align: center; font-size: 10px;"><b>MITRA PUSAT</b>
+                        </td>
+                        <td width="10%" style="text-align: center; font-size: 10px;"><b>BPRS</b></td>
                     </tr>
-                    <tr>
-                    <td>1.</td>
-                    <td>ANALISA PEMBIAYAAN</td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3" >
+                        <td width="5%" style="text-align: center;font-size: 10px;">1.</td>
+                        <td width="35%"  style="font-size: 10px;">ANALISA PEMBAYARAN</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>2.</td>
-                    <td>FORM PERMOHONAN PEMBIAYAAN PENSIUN</td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">2.</td>
+                        <td width="35%" style="font-size: 10px;">FORM PERMOHONAN PEMBIAYAAN PENSIUN</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-
-                    <tr>
-                    <td>3.</td>
-                    <td>SURAT KETERANGAN SISA UANG PENSIUN</td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">3.</td>
+                        <td width="35%" style="font-size: 10px;">SURAT KETERANGAN SISA UANG PENSIUN</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>4.</td>
-                    <td>SURAT PERNYATAAN DAN KETERANGAN KESEHATAN DAN DOMISILI PEMOHON</td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">4.</td>
+                        <td width="35%" style="font-size: 10px;">SURAT PERNYATAAN DAN KETERANGAN KESEHATAN DAN DOMISILI PEMOHON</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>5.</td>
-                    <td>SURAT KETERANGAN / PERNYATAAN LAINNYA</td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">5.</td>
+                        <td width="35%" style="font-size: 10px;">SURAT KETERANGAN / PERNYATAAN LAINNYA</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
-                    <tr>
-                    <td>6.</td>
-                    <td>KWITANSI PEMBAYARAN </td>
-                    <td style="text-align: center;">Asli</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <tr class="text3">
+                        <td width="5%" style="text-align: center; font-size: 10px;">6.</td>
+                        <td width="35%" style="font-size: 10px;">kWITANSI PEMBAYARAN</td>
+                        <td width="10%" style="text-align: center; font-size:10px;">Asli</td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
                     </tr>
                 </table>
                 <br><br>
                 <table width="100%">
-                    <tr>
+                    <tr class="text2">
                     <td width="40%">
                         Telah diperiksa Lengkap/ Tidak*<br>
                     Yang menyerahkan,
@@ -3207,13 +3288,13 @@ class NewCustomerController extends Controller
             <div class="section1">
             <center>
                 <table width="100%">
-                <tr>
+                <tr class="text2">
                     <td width="100">No.</td>
                     <td width="20">:</td>
-                    <td width="200">&nbsp<hr></td>
+                    <td width="200">&nbsp;<hr></td>
                     <td></td>
                 </tr>
-                <tr>
+                <tr class="text2">
                     <td width="100">Perihal</td>
                     <td width="20">:</td>
                     <td width="200"><b>Permohonan Pencairan
@@ -3223,7 +3304,7 @@ class NewCustomerController extends Controller
                 </table>
                 <br>
                 <table width="100%">
-                <tr>
+                <tr class="text2">
                     <td>
                         Kepada Yth <br>
                         <b>Direktur utama<br>
@@ -3236,44 +3317,44 @@ class NewCustomerController extends Controller
                 <br>
                 <br>
                 <table width="100%">
-                <tr>
+                <tr class="text2">
                     <td><i>Assalamu&#39;alaikum Wr. Wb</i><br>
                         Dengan Hormat,</td>
                 </tr>
-                <tr>
+                <tr class="text2">
                     <td style="text-align: justify;">
                         Bersama surat ini kami ajukan permohonan pencairan dan pemindahbukuan atas pengajuan yang sudah disetujui oleh komite Bank, dengan data sebagai berikut,
                     </td>
                 </tr>
                 <table width="100%" style="margin-left: 50px;">
-                    <tr>
-                        <td width="20">1.</td>
-                        <td width="200">Nama Debitur</td>
-                        <td>:</td>
-                        <td>' . $customer_data->nama . '</td>
+                    <tr class="text2">
+                        <td width="3%">1.</td>
+                        <td width="40%">Nama Debitur</td>
+                        <td width="3%">:</td>
+                        <td width="50%">' . $customer_data->nama . '</td>
                     </tr>
-                    <tr>
-                        <td width="20">2.</td>
-                        <td width="200">Plafon pembiayaan</td>
-                        <td>:</td>
-                        <td>MARIA ARELAN</td>
+                    <tr class="text2">
+                        <td width="3%">2.</td>
+                        <td width="40%">Plafon pembiayaan</td>
+                        <td width="3%">:</td>
+                        <td width="50%">MARIA ARELAN</td>
                     </tr>
-                    <tr>
-                        <td width="20">3.</td>
-                        <td width="200">No. Rek. Debitur</td>
-                        <td>:</td>
-                        <td>MARIA ARELAN</td>
+                    <tr class="text2">
+                        <td width="3%">3.</td>
+                        <td width="40%">No. Rek. Debitur</td>
+                        <td width="3%">:</td>
+                        <td width="50%">MARIA ARELAN</td>
                     </tr>
-                    <tr>
-                        <td width="20">4.</td>
-                        <td width="200">Nama Bank</td>
-                        <td>:</td>
-                        <td>BSI</td>
+                    <tr  class="text2">
+                        <td width="3%">4.</td>
+                        <td width="40%">Nama Bank</td>
+                        <td width="3%">:</td>
+                        <td width="50%">BSI</td>
                     </tr>
                 </table>
                 </table>
                 <table width="100%">
-                <tr>
+                <tr class="text2">
                     <td style="text-align: justify;">
                         Demikian disampaikan dan atas perhatian serta kerjasamanya kamu ucapkan terima kasih<br>
                         <i>Wassalamu&#39;alaikum Wr. Wb.</i>
@@ -3282,14 +3363,14 @@ class NewCustomerController extends Controller
                 </table>
                 <br><br>
                 <table width="100%">
-                <tr>
-                    <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
+
+                <tr class="text2">
+                    <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>, 
                         30-08-2021<br>
                         CENTRAL GLOBAL SOLUTION<br>
                         <br><br><br><br><br><br><br>
                         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><br>
                         Direktur Utama</td>
-
                 </tr>
                 </table>
             </center>
