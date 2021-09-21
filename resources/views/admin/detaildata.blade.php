@@ -103,30 +103,36 @@
                                     </tr>
                                     <tr>
                                         <th>Url KTP</th>
-                                        <th><a href="{{ $data->url_ktp }}"></a>{{ $data->url_ktp }}</th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="{{ $data->url_ktp }}">KTP</a></th>
                                     </tr>
                                     <tr>
                                         <th>Url KK</th>
-                                        <th><a href="{{ $data->url_kk }}"></a>{{ $data->url_kk }}</th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="{{ $data->url_kk }}">KK</a></th>
                                     </tr>
                                     <tr>
                                         <th>Url karip</th>
-                                        <th><a href="{{ $data->url_karip }}"></a>{{ $data->url_karip }}</th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="{{ $data->url_karip }}">Karip</a></th>
                                     </tr>
                                     <tr>
                                         <th>Url SK Pensiun</th>
-                                        <th><a href="{{ $data->url_sk_pensiun }}"></a>{{ $data->url_sk_pensiun }}</th>
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="{{ $data->url_sk_pensiun }}">SK Pensiun</a>
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th>Url Video Interview</th>
-                                        <th><a
-                                                href="{{ $data->url_video_interview }}"></a>{{ $data->url_video_interview }}
+                                        <th><a class="btn btn-outline-info" target=" _blank"
+                                                href="{{ $data->url_video_interview }}">Video Interview</a>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th>Url Video Kesehatan</th>
-                                        <th><a
-                                                href="{{ $data->url_video_kesehatan }}"></a>{{ $data->url_video_kesehatan }}
+                                        <th><a class="btn btn-outline-info" href="{{ $data->url_video_kesehatan }}"
+                                                target=" _blank">Video
+                                                Kesehatan</a>
                                         </th>
                                     </tr>
                                     <tr>
@@ -159,7 +165,13 @@
                                     </tr>
                                     <tr>
                                         <th>Url PDF</th>
-                                        <th><a href="{{ $data->url_pdf }}"></a>{{ $data->url_pdf }}</th>
+                                        @if (isset($data->url_pdf))
+                                            <th><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_pdf }}">PDF</a></th>
+                                        @else
+                                            <th></th>
+                                        @endif
+
                                     </tr>
                                 </thead>
                             </table>

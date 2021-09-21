@@ -76,12 +76,18 @@
                                             <td>Rp {{ number_format($data->cicilan, 0, ',', '.') }},-</td>
                                             <td>Rp {{ number_format($data->gaji_pokok, 0, ',', '.') }},-</td>
                                             <td>{{ $data->status }}</td>
-                                            <td>{{ $data->url_ktp }}</td>
-                                            <td>{{ $data->url_kk }}</td>
-                                            <td>{{ $data->url_karip }}</td>
-                                            <td>{{ $data->url_sk_pensiun }}</td>
-                                            <td>{{ $data->url_video_interview }}</td>
-                                            <td>{{ $data->url_video_kesehatan }}</td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_ktp }}">KTP</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_kk }}">KK</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_karip }}">Karip</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_sk_pensiun }}">SK Pensiun</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_video_interview }}">Video Interview</a></td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_video_kesehatan }}">Video Kesehatan</a></td>
                                             <td>{{ $data->tanggal_keputusan }}</td>
                                             <td>
                                                 @if ($data->keputusan_bank == 0)
@@ -101,7 +107,8 @@
                                                     Tidak Disetujui
                                                 @endif
                                             </td>
-                                            <td>{{ $data->url_pdf }}</td>
+                                            <td><a class="btn btn-outline-info" target=" _blank"
+                                                    href="{{ $data->url_pdf }}">PDF</a></td>
                                             <td>{{ $data->tanggal_archieve }}</td>
                                         </tr>
                                     @endforeach
