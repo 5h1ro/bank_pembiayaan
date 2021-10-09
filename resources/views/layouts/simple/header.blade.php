@@ -37,7 +37,7 @@
                                 baru
                             </p>
                         </li>
-                        <li><a class="btn btn-primary" href="{{ route('home') }}">Cek Data Baru</a></li>
+                        <li><a class="btn btn-primary" href="https://seovdetech.com">Cek Info Terbaru</a></li>
                     </ul>
                 </li>
                 <li>
@@ -49,7 +49,7 @@
                     <div class="media profile-media">
                         <img class="b-r-10" src="{{ asset('assets/images/dashboard/profile.jpg') }}" alt="">
                         <div class="media-body">
-                            <span>{{ Auth::user()->name }}</span>
+                            <span>{{ Auth::user()->nickname }}</span>
                             <p class="mb-0 font-roboto">{{ Auth::user()->role }} <i
                                     class="middle fa fa-angle-down"></i>
                             </p>

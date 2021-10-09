@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,5 +35,23 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
         return redirect('/');
+    }
+
+    public function register()
+    {
+        return view('authentication.register');
+    }
+
+
+    public function post(Request $request)
+    {
+        $user = new User;
+        $user->nickname = $request->nickname;
+        $user->name     = $request->name;
+        $user->email    = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect(route('/'));
     }
 }

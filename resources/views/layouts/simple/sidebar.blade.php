@@ -31,22 +31,6 @@
                         </li>
                         <li class="">
                         <a class=" sidebar-link sidebar-title"
-                            {{ request()->route()->getPrefix() == '/newcustomer'
-    ? 'active'
-    : '' }}
-                            href="{{ route('admin.newcustomer') }}">
-                            <i data-feather="server"></i><span>Data Peminjam Baru</span>
-                        </li>
-                        <li class="">
-                        <a class=" sidebar-link sidebar-title"
-                            {{ request()->route()->getPrefix() == '/archieve'
-    ? 'active'
-    : '' }}
-                            href="{{ route('admin.archieve') }}">
-                            <i data-feather="server"></i><span>Data Arsip</span>
-                        </li>
-                        <li class="">
-                        <a class=" sidebar-link sidebar-title"
                             {{ request()->route()->getPrefix() == '/user'
     ? 'active'
     : '' }}
@@ -56,21 +40,12 @@
                     @else
                         <li class="">
                     <a class=" sidebar-link sidebar-title"
-                            {{ request()->route()->getPrefix() == '/admin'
+                            {{ request()->route()->getPrefix() == '/user'
     ? 'active'
     : '' }}
                             href="{{ route('user') }}">
-                            <i data-feather="server"></i><span>Data Baru</span>
+                            <i data-feather="server"></i><span>Daftar</span>
                         </li>
-                        <li class="">
-                    <a class=" sidebar-link sidebar-title"
-                            {{ request()->route()->getPrefix() == '/newcustomer'
-    ? 'active'
-    : '' }}
-                            href="{{ route('user.newcustomer') }}">
-                            <i data-feather="server"></i><span>Data Peminjam Baru</span>
-                        </li>
-                        <li class="">
                     @endif
                 </ul>
             </div>

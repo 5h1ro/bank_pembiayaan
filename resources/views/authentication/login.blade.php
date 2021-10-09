@@ -13,7 +13,7 @@
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo" href="{{ route('index') }}"><img class="img-fluid for-light"
+                        <div><a class="logo" href="{{ route('login') }}"><img class="img-fluid for-light"
                                     src="{{ asset('assets/images/logo/login.png') }}" alt="looginpage"><img
                                     class="img-fluid for-dark" src="{{ asset('assets/images/logo/logo_dark.png') }}"
                                     alt="looginpage"></a></div>
@@ -38,6 +38,8 @@
                                 </div>
                                 <p class="mt-4 mb-0">Lupa Kata Sandi?<a class="ms-2"
                                         href="{{ route('password.request') }}">Lupa Sandi</a></p>
+                                <p class="mt-2 mb-0">Belum Punya Akun?<a class="ms-2"
+                                        href="{{ route('register') }}">Daftar</a></p>
 
                             </form>
                         </div>

@@ -26,13 +26,35 @@ var SweetAlert_custom = {
                         swal("Data berhasil dirubah", {
                             icon: "success"
                         }).then(function () {
-                            window.location.href = "newcustomer/cancel" + id;
+                            window.location.href = "newstudent/cancel" + id;
                         });
                     } else {
                         swal("Data tidak dirubah");
                     }
                 });
         },
+
+            document.getElementById('cadangan').onclick = function () {
+                let id = document.getElementById('cadangan').getAttribute('data-id');
+                swal({
+                    title: "Apakah anda yakin?",
+                    text: "Data tidak akan di buat cadangan",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Data berhasil dirubah", {
+                                icon: "success"
+                            }).then(function () {
+                                window.location.href = "newstudent/cadangan" + id;
+                            });
+                        } else {
+                            swal("Data tidak dirubah");
+                        }
+                    });
+            },
 
             document.getElementById('approve').onclick = function () {
                 let id = document.getElementById('approve').getAttribute('data-id');
@@ -48,7 +70,7 @@ var SweetAlert_custom = {
                             swal("Data berhasil dirubah", {
                                 icon: "success",
                             }).then(function () {
-                                window.location.href = "newcustomer/acc" + id;
+                                window.location.href = "newstudent/acc" + id;
                             });
                         } else {
                             swal("Data tidak dirubah");

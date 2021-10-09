@@ -2,6 +2,9 @@
 @section('title', 'Data Peminjam')
 
 @section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/chartist.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
 @endsection
@@ -10,65 +13,289 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Data Baru</h3>
+    @if ($user->role == 'admin')
+        <h3>Data Pendaftar</h3>
+    @else
+        <h3>Daftar</h3>
+    @endif
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item active">Data Baru</li>
+    @if ($user->role == 'admin')
+        <li class="breadcrumb-item active">Data Pendaftar</li>
+    @else
+        <li class="breadcrumb-item active">Daftar</li>
+    @endif
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Data Baru</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="dt-ext table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Tanggal Input</th>
-                                        <th>NIK</th>
-                                        <th>Nama</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($customers as $data)
+    @if ($user->role == 'admin')
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Data Pendaftar</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="dt-ext table-responsive">
+                                <table class="table">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $data->tanggal_input }}</td>
-                                            <td>{{ $data->nik }}</td>
-                                            <td>{{ $data->nama }}</td>
-                                            @if (auth()->user()->role == 'admin')
-                                                <td>
-                                                    <a href="{{ route('admin.newcustomer.create', $data->nik) }}">
-                                                        <button class="btn btn-primary ">
-                                                            <i class="fa fa-download"></i><br>Ambil Data
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            @else
-                                                <td>
-                                                    <a href="{{ route('user.newcustomer.create', $data->nik) }}">
-                                                        <button class="btn btn-primary ">
-                                                            <i class="fa fa-download"></i><br>Ambil Data
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            @endif
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Asal Sekolah</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($student as $data)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $data->name }}</td>
+                                                <td>{{ $data->school }}</td>
+                                                <td>{{ $data->status }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.detaildata', $data->id) }}">
+                                                        <button class="btn btn-primary ">
+                                                            <i class="fa fa-info"></i><br>Detail Data
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @else
+        @if (!isset($student))
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Daftar</h5>
+                            </div>
+
+                            <form class="form theme-form" enctype="multipart/form-data" method="POST"
+                                action="{{ route('user.add') }}">
+                                @csrf
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3 row">
+                                                <div class="col-4 col-sm-3 col-xl-2">
+                                                    <h4>Data Diri</h4>
+                                                </div>
+                                                <div class="col-8 col-sm-9 col-xl-10">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Nama</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="text" id="name" name="name"
+                                                        value="{{ $user->name }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                                <div class="col">
+                                                    <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                                        <div class="form-check form-check-inline radio radio-primary">
+                                                            <input class="form-check-input" id="radioinline1" type="radio"
+                                                                name="gender" value="Laki-Laki">
+                                                            <label class="form-check-label mb-0"
+                                                                for="radioinline1">Laki-Laki</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline radio radio-primary">
+                                                            <input class="form-check-input" id="radioinline2" type="radio"
+                                                                name="gender" value="Perempuan">
+                                                            <label class="form-check-label mb-0"
+                                                                for="radioinline2">Perempuan</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="text" id="birthplace"
+                                                        name="birthplace">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control digits" id="birthday" name="birthday"
+                                                        type="date">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row mb-0">
+                                                <label class="col-sm-3 col-form-label">Alamat Lengkap</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" id="address" name="address" rows="5"
+                                                        cols="5" placeholder=""></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Asal Sekolah</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="text" id="school" name="school">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="col-3 col-sm-2 col-xl-1">
+                                                    <h4>Nilai</h4>
+                                                </div>
+                                                <div class="col-9 col-sm-10 col-xl-11">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Nilai Rata - Rata UN</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control digits" type="number" id="un" name="un">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Nilai Bahasa Indonesia</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control digits" type="number" id="indo" name="indo">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Nilai Matematika</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control digits" type="number" id="mtk" name="mtk">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Nilai Ilmu Pengetahuan Alam</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control digits" type="number" id="ipa" name="ipa">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Nilai Bahasa Inggris</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control digits" type="number" id="bing" name="bing">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="col-3 col-sm-2 col-xl-1">
+                                                    <h4>Berkas</h4>
+                                                </div>
+                                                <div class="col-9 col-sm-10 col-xl-11">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Foto</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="foto">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Ijazah</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="ijazah">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Kartu Keluarga</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="kk">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="col-12 justify-content-end d-flex">
+                                        <input class="btn btn-light me-3" type="reset" value="Cancel">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            @if ($student->status == 0)
+                <div class="col-xl-12 col-lg-12 xl-50 morning-sec box-col-12">
+                    <div class="card o-hidden profile-greeting bg-primary">
+                        <div class="card-body">
+                            <div class="greeting-user text-center">
+                                <div class="profile-vector"><img class="img-fluid"
+                                        src="{{ asset('assets/images/dashboard/welcome.png') }}" alt=""></div>
+                                <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span
+                                        class="right-circle"><i class="fa fa-check-circle f-14 middle"></i></span></h4>
+                                <p class="f-20"><span>Anda Sudah Mendaftar, Tunggu Pengumuman Selanjutnya</span>
+                                </p>
+                                <a href="{{ route('user.pdf', $user->id) }}" class="btn btn-outline-light-2x"><i
+                                        class="fa fa-download">
+                                    </i>Download file</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @elseif ($student->status == 1)
+                <div class="col-xl-12 col-lg-12 xl-50 morning-sec box-col-12">
+                    <div class="card o-hidden profile-greeting bg-success">
+                        <div class="card-body">
+                            <div class="greeting-user text-center">
+                                <div class="profile-vector"><img class="img-fluid"
+                                        src="{{ asset('assets/images/dashboard/welcome.png') }}" alt=""></div>
+                                <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span
+                                        class="right-circle"><i class="fa fa-check-circle f-14 middle"></i></span></h4>
+                                <p class="f-20"><span>Selamat Anda Telah Diterima</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @elseif ($student->status == 2)
+                <div class="col-xl-12 col-lg-12 xl-50 morning-sec box-col-12">
+                    <div class="card o-hidden profile-greeting bg-warning">
+                        <div class="card-body">
+                            <div class="greeting-user text-center">
+                                <div class="profile-vector"><img class="img-fluid"
+                                        src="{{ asset('assets/images/dashboard/welcome.png') }}" alt=""></div>
+                                <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span
+                                        class="right-circle"><i class="fa fa-check-circle f-14 middle"></i></span></h4>
+                                <p class="f-20"><span>Selamat Anda Telah Menjadi Cadangan, Pantau terus</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="col-xl-12 col-lg-12 xl-50 morning-sec box-col-12">
+                    <div class="card o-hidden profile-greeting bg-danger">
+                        <div class="card-body">
+                            <div class="greeting-user text-center">
+                                <div class="profile-vector"><img class="img-fluid"
+                                        src="{{ asset('assets/images/dashboard/welcome.png') }}" alt=""></div>
+                                <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span
+                                        class="right-circle"><i class="fa fa-check-circle f-14 middle"></i></span></h4>
+                                <p class="f-20"><span>Maaf, Anda Belum Diterima</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endif
+    @endif
+
 @endsection
 
 @section('script')
@@ -92,4 +319,20 @@
     <script src="{{ asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatable-extension/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
+    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
 @endsection
